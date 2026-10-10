@@ -1,0 +1,23 @@
+# Proje kartlarındaki GitHub bilgileri (yıldız, son güncelleme, sürüm) her gün tazelensin diye
+# Cloudflare Pages'e günde bir kez yeniden derleme komutu gönderir.
+# Gerekli: depo ayarlarında CLOUDFLARE_DEPLOY_HOOK adlı bir secret.
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "CLOUDFLARE_DEPLOY_HOOK secret is not set; skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK"

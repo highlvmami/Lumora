@@ -1,0 +1,22 @@
+{
+  "name": "Lumora Academy",
+  "order": 6,
+  "status": "development",
+  "category": { "tr": "Eğitim", "en": "Education" },
+  "tagline": {
+    "tr": "Öğrenci ve akademisyenler için sınav takvimi yönetim sistemi.",
+    "en": "An exam scheduling system for students and academics."
+  },
+  "description": {
+    "tr": "Sınav tarihlerini, derslikleri ve programları tek yerden takip etmeyi sağlar. Akademisyenler sınav ekleyip düzenler, öğrenciler kendi takvimini görür; aynı saatte aynı sınıfa veya öğretmene çakışan sınav atanması engellenir. Şu an geliştirme aşamasında.",
+    "en": "Keeps exam dates, classrooms and schedules in one place. Academics add and edit exams, students see their own calendar, and clashes in the same room or with the same teacher are blocked. Currently in development."
+  },
+  "features": {
+    "tr": ["Haftalık ve aylık takvim görünümü", "Rol tabanlı yetkilendirme", "Çakışma kontrolü"],
+    "en": ["Weekly and monthly calendar views", "Role-based access", "Clash detection"]
+  },
+  "tech": ["Next.js", "React", "SQL Server", "Tailwind CSS"],
+  "repo": "highlvmami/Lumora-Academy",
+  "accent": "#eab308",
+  "icon": "🎓"
+}

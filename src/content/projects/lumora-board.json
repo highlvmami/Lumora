@@ -1,0 +1,30 @@
+{
+  "name": "LumoraBoard",
+  "order": 3,
+  "featured": true,
+  "status": "live",
+  "category": { "tr": "İşbirliği aracı", "en": "Collaboration" },
+  "tagline": {
+    "tr": "Canlı imleçler, özel odalar ve davet linkleriyle gerçek zamanlı ortak beyaz tahta.",
+    "en": "Real-time collaborative whiteboard with live cursors, private rooms and invite links."
+  },
+  "description": {
+    "tr": "Birden fazla kişi aynı tahtaya aynı anda çizer, birbirinin çizgilerini ve imleçlerini anında görür. Odayı açan kişi sahibidir ve kimin gireceğine karar verir; düzenleme veya sadece izleme davetlerini link olarak paylaşabilir. Arka uç Go ve WebSocket, ön yüz SvelteKit ile yazıldı.",
+    "en": "Several people draw on the same board at once and see each other's strokes and cursors as they happen. Whoever creates a room owns it and decides who gets in, sharing edit or view-only invites as links. The backend is Go with WebSockets; the frontend is SvelteKit."
+  },
+  "features": {
+    "tr": ["Kalem, şekiller, ok, metin ve yapışkan notlar", "Herkesin imlecini isimle canlı görme", "Sahipli özel odalar", "Düzenleme ve izleme davet linkleri"],
+    "en": ["Pen, shapes, arrows, text and sticky notes", "Everyone's cursor live, with names", "Private rooms with owners", "Edit and view-only invite links"]
+  },
+  "tech": ["Go", "WebSocket", "SvelteKit", "TypeScript", "PostgreSQL", "Docker"],
+  "repo": "highlvmami/LumoraBoard",
+  "links": [
+    { "label": { "tr": "Siteye git", "en": "Visit site" }, "url": "https://lumoraboard-demo.onrender.com" }
+  ],
+  "accent": "#22c55e",
+  "icon": "🖍️",
+  "note": {
+    "tr": "Ücretsiz sunucuda çalıştığı için uzun süre ziyaret edilmezse ilk açılış bir dakika kadar sürebilir.",
+    "en": "Runs on a free server, so the first visit after a quiet period can take up to a minute."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "LumoraSocial",
+  "order": 2,
+  "featured": true,
+  "status": "live",
+  "category": { "tr": "Sosyal medya", "en": "Social media" },
+  "tagline": {
+    "tr": "Paylaşımlar, hikayeler, mesajlaşma, #etiketler ve otomatik içerik denetimi olan Türkçe sosyal medya.",
+    "en": "A Turkish social network with posts, stories, messaging, #hashtags and automatic content moderation."
+  },
+  "description": {
+    "tr": "Arkadaşlar ve topluluklar için bir sosyal medya sitesi. Üyeler yazı, fotoğraf ve anket paylaşır, hikaye atar, birbirini takip eder ve mesajlaşır; küfür ve uygunsuz fotoğraflar paylaşılmadan önce otomatik olarak engellenir. Telefon için Android uygulaması da var.",
+    "en": "A social network for friends and communities. Members share text, photos and polls, post stories, follow each other and chat; profanity and inappropriate photos are blocked automatically before they are posted. There is an Android app too."
+  },
+  "features": {
+    "tr": ["Yazı, fotoğraf ve anket paylaşımı", "Hikayeler ve birebir mesajlaşma", "#Etiketler ve keşfet", "Otomatik küfür ve görsel denetimi", "Android uygulaması ve anlık bildirimler"],
+    "en": ["Text, photo and poll posts", "Stories and direct messages", "#Hashtags and explore", "Automatic profanity and image moderation", "Android app and push notifications"]
+  },
+  "tech": ["Node.js", "Express 5", "JavaScript", "SQLite", "Turso", "Web Push", "Android TWA"],
+  "repo": "highlvmami/LumoraSocial",
+  "links": [
+    { "label": { "tr": "Siteye git", "en": "Visit site" }, "url": "https://lumorasocial.onrender.com" },
+    { "label": { "tr": "Android uygulaması", "en": "Android app" }, "url": "https://lumorasocial.onrender.com/indir" }
+  ],
+  "accent": "#3b82f6",
+  "icon": "💬",
+  "note": {
+    "tr": "Ücretsiz sunucuda çalıştığı için uzun süre ziyaret edilmezse ilk açılış bir dakika kadar sürebilir.",
+    "en": "Runs on a free server, so the first visit after a quiet period can take up to a minute."
+  },
+  "screenshots": [
+    { "src": "/projects/social-akis.jpg", "alt": { "tr": "Ana akış", "en": "Home feed" } },
+    { "src": "/projects/social-profil.jpg", "alt": { "tr": "Profil sayfası", "en": "Profile page" } },
+    { "src": "/projects/social-mobil-kesfet.jpg", "alt": { "tr": "Mobilde keşfet", "en": "Explore on mobile" } }
+  ]
+}

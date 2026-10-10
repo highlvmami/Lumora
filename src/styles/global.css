@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/sora';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Sora Variable', 'Inter Variable', ui-sans-serif, sans-serif;
+  --color-ink-950: #07060f;
+  --color-ink-900: #0d0b1a;
+  --color-ink-800: #161329;
+  --color-ink-700: #241f3d;
+  --color-glow-1: #8b5cf6;
+  --color-glow-2: #38bdf8;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink-950);
+}
+
+.text-glow {
+  background: linear-gradient(100deg, #c4b5fd 0%, #818cf8 40%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(60% 50% at 20% 10%, rgb(139 92 246 / 0.28), transparent 70%),
+    radial-gradient(50% 40% at 85% 0%, rgb(56 189 248 / 0.18), transparent 70%);
+}
+
+.card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.015));
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent, #8b5cf6) 55%, transparent);
+  box-shadow: 0 20px 60px -20px color-mix(in srgb, var(--accent, #8b5cf6) 45%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
+}

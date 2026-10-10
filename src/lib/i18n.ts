@@ -1,0 +1,134 @@
+export type Lang = 'tr' | 'en';
+export const languages: Lang[] = ['tr', 'en'];
+
+// Sayfa anahtarı → her dildeki adres. Dil değiştirici aynı sayfanın karşılığına gider.
+export const routes = {
+  home: { tr: '/', en: '/en/' },
+  projects: { tr: '/projeler/', en: '/en/projects/' },
+  about: { tr: '/hakkinda/', en: '/en/about/' },
+  contact: { tr: '/iletisim/', en: '/en/contact/' },
+} as const;
+export type RouteKey = keyof typeof routes;
+
+export function projectUrl(lang: Lang, slug: string) {
+  return `${routes.projects[lang]}${slug}/`;
+}
+
+export const ui = {
+  tr: {
+    'site.description': 'Lumora; oyunlar, sosyal platformlar ve web araçlarından oluşan projelerin evi.',
+    'nav.home': 'Ana sayfa',
+    'nav.projects': 'Projeler',
+    'nav.about': 'Hakkında',
+    'nav.contact': 'İletişim',
+    'nav.menu': 'Menü',
+    'lang.label': 'Dil',
+    'hero.kicker': 'Projelerin evi',
+    'hero.title': 'Fikirleri ışığa çıkarıyoruz.',
+    'hero.text': 'Lumora; oyunlardan sosyal platformlara, gerçek zamanlı araçlardan yapay zekaya kadar geliştirdiğimiz projelerin bir arada durduğu yer.',
+    'hero.cta': 'Projeleri keşfet',
+    'hero.github': "GitHub'da gör",
+    'home.featured': 'Öne çıkan projeler',
+    'home.featuredText': 'Şu an yayında olan ve hemen deneyebileceğin projeler.',
+    'home.more': 'Geliştirilenler',
+    'home.moreText': 'Üzerinde çalıştığımız yeni projeler.',
+    'home.all': 'Tüm projeler',
+    'home.stats.projects': 'proje',
+    'home.stats.live': 'yayında',
+    'home.stats.open': 'açık kaynak',
+    'status.live': 'Yayında',
+    'status.beta': 'Beta',
+    'status.development': 'Geliştiriliyor',
+    'project.details': 'Detaylar',
+    'project.features': 'Öne çıkanlar',
+    'project.tech': 'Teknolojiler',
+    'project.screens': 'Ekran görüntüleri',
+    'project.source': 'Kaynak kod',
+    'project.stars': 'yıldız',
+    'project.updated': 'Son güncelleme',
+    'project.release': 'Son sürüm',
+    'project.back': 'Tüm projeler',
+    'projects.title': 'Projeler',
+    'projects.text': 'Lumora çatısı altındaki tüm projeler. Hepsi açık kaynak ve GitHub üzerinde.',
+    'projects.filter.all': 'Tümü',
+    'about.title': 'Hakkında',
+    'about.p1': "Lumora, kendi fikirlerimizi gerçek ürünlere dönüştürdüğümüz bir proje çatısı. Oyunlar, sosyal platformlar, gerçek zamanlı işbirliği araçları ve yapay zeka denemeleri burada bir araya geliyor.",
+    'about.p2': 'Her proje açık kaynak olarak GitHub üzerinde geliştiriliyor. Kodu incelemek, hata bildirmek ya da katkıda bulunmak herkese açık.',
+    'about.p3': 'Amacımız basit: kullanması keyifli, hızlı ve özenle yapılmış yazılımlar üretmek.',
+    'contact.title': 'İletişim',
+    'contact.text': 'Bir öneri, hata bildirimi ya da işbirliği fikrin mi var? En hızlı yol GitHub.',
+    'contact.github': 'GitHub profili',
+    'contact.githubText': 'Tüm projeler, güncellemeler ve kaynak kod.',
+    'contact.issues': 'Hata bildir veya öneri yap',
+    'contact.issuesText': 'İlgili projenin GitHub sayfasında "Issues" bölümünden yazabilirsin.',
+    'footer.rights': 'Tüm projeler açık kaynaktır.',
+    'notfound.title': 'Sayfa bulunamadı',
+    'notfound.text': 'Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.',
+    'notfound.back': 'Ana sayfaya dön',
+  },
+  en: {
+    'site.description': 'Lumora is the home of our projects: games, social platforms and web tools.',
+    'nav.home': 'Home',
+    'nav.projects': 'Projects',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+    'nav.menu': 'Menu',
+    'lang.label': 'Language',
+    'hero.kicker': 'Home of our projects',
+    'hero.title': 'Bringing ideas to light.',
+    'hero.text': 'Lumora is where everything we build lives together, from games and social platforms to real-time tools and AI.',
+    'hero.cta': 'Explore projects',
+    'hero.github': 'View on GitHub',
+    'home.featured': 'Featured projects',
+    'home.featuredText': 'Live right now and ready to try.',
+    'home.more': 'In development',
+    'home.moreText': "New projects we're working on.",
+    'home.all': 'All projects',
+    'home.stats.projects': 'projects',
+    'home.stats.live': 'live',
+    'home.stats.open': 'open source',
+    'status.live': 'Live',
+    'status.beta': 'Beta',
+    'status.development': 'In development',
+    'project.details': 'Details',
+    'project.features': 'Highlights',
+    'project.tech': 'Tech stack',
+    'project.screens': 'Screenshots',
+    'project.source': 'Source code',
+    'project.stars': 'stars',
+    'project.updated': 'Last updated',
+    'project.release': 'Latest release',
+    'project.back': 'All projects',
+    'projects.title': 'Projects',
+    'projects.text': 'Every project under the Lumora umbrella. All open source on GitHub.',
+    'projects.filter.all': 'All',
+    'about.title': 'About',
+    'about.p1': 'Lumora is the umbrella where we turn our own ideas into real products. Games, social platforms, real-time collaboration tools and AI experiments all come together here.',
+    'about.p2': 'Every project is developed in the open on GitHub. Anyone can read the code, report a bug or contribute.',
+    'about.p3': 'Our goal is simple: build software that is fast, carefully made and a pleasure to use.',
+    'contact.title': 'Contact',
+    'contact.text': 'Have a suggestion, a bug report or an idea to work together? GitHub is the fastest way.',
+    'contact.github': 'GitHub profile',
+    'contact.githubText': 'All projects, updates and source code.',
+    'contact.issues': 'Report a bug or suggest something',
+    'contact.issuesText': 'Open an issue on the GitHub page of the project.',
+    'footer.rights': 'All projects are open source.',
+    'notfound.title': 'Page not found',
+    'notfound.text': "The page you're looking for may have moved or never existed.",
+    'notfound.back': 'Back to home',
+  },
+} as const;
+
+export type UiKey = keyof (typeof ui)['tr'];
+
+export function t(lang: Lang) {
+  return (key: UiKey) => ui[lang][key];
+}
+
+export function formatDate(lang: Lang, iso: string) {
+  return new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(iso));
+}
