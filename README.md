@@ -33,7 +33,7 @@ Metin alanlarının hepsi `{ "tr": "...", "en": "..." }` şeklindedir. Arayüz m
 1. [dash.cloudflare.com](https://dash.cloudflare.com) üzerinden ücretsiz hesap aç.
 2. **Workers & Pages → Create → Pages → Connect to Git** ile bu depoyu seç.
 3. Ayarlar: Framework preset **Astro**, build komutu `npm run build`, çıktı klasörü `dist`.
-4. Proje adını `lumora` yap; site `https://lumora.<hesap>.workers.dev` adresinde açılır. Adres değişirse `astro.config.mjs` içindeki `site` ve `public/robots.txt` adresini güncelle.
+4. Proje adını `lumora` yap; site `https://lumora-2ox.pages.dev` adresinde açılır. Adres değişirse `astro.config.mjs` içindeki `site` ve `public/robots.txt` adresini güncelle.
 5. (İsteğe bağlı) **Settings → Environment variables** altına `GITHUB_TOKEN` ekle; GitHub istek sınırına takılmayı önler.
 
 `main` dalına her birleştirme siteyi otomatik günceller; her PR için ayrı bir önizleme linki oluşur.
