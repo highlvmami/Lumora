@@ -18,7 +18,7 @@ const cover = p.screenshots[0];
     {cover ? (
       <img src={cover.src} alt={cover.alt[lang]} loading="lazy" decoding="async" class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
     ) : (
-      <div class="flex h-full w-full items-center justify-center" style={`background: radial-gradient(70% 90% at 30% 20%, ${p.accent}55, transparent 70%), radial-gradient(60% 80% at 90% 100%, ${p.accent}33, transparent 70%), #110e22`}>
+      <div class="flex h-full w-full items-center justify-center" style={`background: radial-gradient(70% 90% at 30% 20%, ${p.accent}55, transparent 70%), radial-gradient(60% 80% at 90% 100%, ${p.accent}33, transparent 70%), var(--color-ink-800)`}>
         <span class="text-5xl drop-shadow-[0_0_24px_rgba(255,255,255,0.35)]" aria-hidden="true">{p.icon}</span>
       </div>
     )}

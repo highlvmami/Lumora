@@ -28,6 +28,26 @@ npm run build    # çıktı: dist/
 
 Metin alanlarının hepsi `{ "tr": "...", "en": "..." }` şeklindedir. Arayüz metinleri `src/lib/i18n.ts` içindedir.
 
+## Blog yazısı eklemek
+
+`src/content/posts/<adres>/` klasörü açıp içine `tr.md` ve/veya `en.md` koy (iki dil de zorunlu değil; yalnızca bir dil varsa diğer dilin blog sayfasına yönlenir). Dosya başı:
+
+```md
+---
+title: Başlık
+description: Listede görünen kısa açıklama
+date: 2026-10-10
+---
+
+Yazı metni (Markdown).
+```
+
+Yazılar `/blog/<adres>/` ve `/en/blog/<adres>/` altında yayınlanır, ana sayfada son iki yazı görünür.
+
+## Tema
+
+Sağ üstteki düğmeyle koyu/açık tema değiştirilir, seçim tarayıcıda hatırlanır. Açık tema `src/styles/global.css` içinde `html[data-theme='light']` bloğundadır.
+
 ## Yayına alma (Cloudflare Pages, ücretsiz)
 
 1. [dash.cloudflare.com](https://dash.cloudflare.com) üzerinden ücretsiz hesap aç.
@@ -41,6 +61,10 @@ Metin alanlarının hepsi `{ "tr": "...", "en": "..." }` şeklindedir. Arayüz m
 ### Günlük yenileme
 
 Proje kartlarındaki GitHub bilgilerinin her gün tazelenmesi için Cloudflare'de **Settings → Builds → Deploy hooks** ile bir hook oluştur, URL'yi bu deponun **Settings → Secrets and variables → Actions** bölümüne `CLOUDFLARE_DEPLOY_HOOK` adıyla ekle. `.github/workflows/daily-rebuild.yml` her gün 04:00 UTC'de siteyi yeniden derletir.
+
+### Ziyaretçi istatistiği
+
+Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değişikliği gerekmez; çerez kullanmaz.
 
 ### 7/24 izleme
 

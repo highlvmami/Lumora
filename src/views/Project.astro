@@ -14,7 +14,7 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
   <article class="mx-auto max-w-5xl px-4 pt-12 sm:px-6" style={`--accent:${p.accent}`}>
     <a href={routes.projects[lang]} class="text-sm text-white/50 hover:text-white">← {tr('project.back')}</a>
 
-    <header class="relative mt-6 overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-10" style={`background: radial-gradient(80% 120% at 0% 0%, ${p.accent}40, transparent 60%), #0d0b1a`}>
+    <header class="relative mt-6 overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-10" style={`background: radial-gradient(80% 120% at 0% 0%, ${p.accent}40, transparent 60%), var(--color-ink-900)`}>
       <div class="flex flex-wrap items-center gap-3">
         <span class="text-4xl" aria-hidden="true">{p.icon}</span>
         <StatusBadge lang={lang} status={p.status} />
