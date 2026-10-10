@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { getProjects } from '../lib/projects';
-import { routes, t, type Lang } from '../lib/i18n';
+import { getPosts } from '../lib/posts';
+import { routes, postUrl, formatDate, t, type Lang } from '../lib/i18n';
 const { lang } = Astro.props as { lang: Lang };
 const tr = t(lang);
 const projects = await getProjects();
 const featured = projects.filter((p) => p.data.featured);
 const others = projects.filter((p) => !p.data.featured);
+const latest = (await getPosts(lang)).slice(0, 2);
 const live = projects.filter((p) => p.data.status === 'live').length;
 const alternates = { tr: routes.home.tr, en: routes.home.en };
 ---
@@ -51,6 +53,24 @@ const alternates = { tr: routes.home.tr, en: routes.home.en };
       <p class="mb-6 mt-1 text-sm text-white/55">{tr('home.moreText')}</p>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {others.map((p) => <ProjectCard lang={lang} project={p} />)}
+      </div>
+    </section>
+  )}
+
+  {latest.length > 0 && (
+    <section class="mx-auto mt-16 max-w-6xl px-4 sm:px-6" aria-labelledby="latest">
+      <div class="mb-6 flex items-end justify-between gap-4">
+        <h2 id="latest" class="font-display text-2xl font-semibold">{tr('home.latest')}</h2>
+        <a href={routes.blog[lang]} class="text-sm text-violet-300 hover:text-violet-200">{tr('home.latestAll')} →</a>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        {latest.map((p) => (
+          <a href={postUrl(lang, p.slug)} class="card block p-6">
+            <time class="text-xs text-white/50" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
+            <h3 class="mt-1 font-display text-lg font-semibold">{p.data.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-white/60">{p.data.description}</p>
+          </a>
+        ))}
       </div>
     </section>
   )}

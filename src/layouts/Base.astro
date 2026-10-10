@@ -41,6 +41,14 @@ const isHome = current === 'home';
     <meta property="og:image" content={new URL(image, site).href} />
     <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      // Tema: kayıtlı tercih varsa o, yoksa koyu tema. Sayfa çizilmeden önce uygulanır (yanıp sönmesin).
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem('lumora-theme') === 'light' ? 'light' : 'dark';
+      } catch (_) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
     <script is:inline define:vars={{ isHome, lang, alternates }}>
       // Dil tercihi: değiştiriciye tıklanınca hatırlanır. Ana sayfaya ilk gelişte
       // kayıtlı tercih yoksa tarayıcı diline göre doğru dile yönlendirilir.

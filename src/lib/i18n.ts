@@ -5,6 +5,7 @@ export const languages: Lang[] = ['tr', 'en'];
 export const routes = {
   home: { tr: '/', en: '/en/' },
   projects: { tr: '/projeler/', en: '/en/projects/' },
+  blog: { tr: '/blog/', en: '/en/blog/' },
   about: { tr: '/hakkinda/', en: '/en/about/' },
   contact: { tr: '/iletisim/', en: '/en/contact/' },
 } as const;
@@ -14,12 +15,25 @@ export function projectUrl(lang: Lang, slug: string) {
   return `${routes.projects[lang]}${slug}/`;
 }
 
+export function postUrl(lang: Lang, slug: string) {
+  return `${routes.blog[lang]}${slug}/`;
+}
+
 export const ui = {
   tr: {
     'site.description': 'Lumora; oyunlar, sosyal platformlar ve web araçlarından oluşan projelerin evi.',
     'nav.home': 'Ana sayfa',
     'nav.projects': 'Projeler',
     'nav.about': 'Hakkında',
+    'nav.blog': 'Blog',
+    'blog.title': 'Blog',
+    'blog.text': 'Duyurular, sürüm notları ve Lumora projelerinin arkasındaki hikayeler.',
+    'blog.empty': 'Henüz yazı yok.',
+    'blog.back': 'Tüm yazılar',
+    'blog.onlyTr': 'Bu yazı yalnızca Türkçe.',
+    'blog.onlyEn': 'Bu yazı yalnızca İngilizce.',
+    'home.latest': 'Son yazılar',
+    'home.latestAll': 'Tüm yazılar',
     'nav.contact': 'İletişim',
     'nav.menu': 'Menü',
     'lang.label': 'Dil',
@@ -71,6 +85,15 @@ export const ui = {
     'nav.home': 'Home',
     'nav.projects': 'Projects',
     'nav.about': 'About',
+    'nav.blog': 'Blog',
+    'blog.title': 'Blog',
+    'blog.text': 'Announcements, release notes and the stories behind the Lumora projects.',
+    'blog.empty': 'No posts yet.',
+    'blog.back': 'All posts',
+    'blog.onlyTr': 'This post is only available in Turkish.',
+    'blog.onlyEn': 'This post is only available in English.',
+    'home.latest': 'Latest posts',
+    'home.latestAll': 'All posts',
     'nav.contact': 'Contact',
     'nav.menu': 'Menu',
     'lang.label': 'Language',
