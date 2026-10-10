@@ -69,8 +69,8 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
         <h2 class="font-display text-xl font-semibold">{tr('project.screens')}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           {p.screenshots.map((s, i) => (
-            <figure class:list={['overflow-hidden rounded-2xl border border-white/10 bg-ink-900', i === 0 && 'sm:col-span-2']}>
-              <img src={s.src} alt={s.alt[lang]} loading="lazy" decoding="async" class="w-full" />
+            <figure class:list={['overflow-hidden rounded-2xl border border-white/10 bg-ink-900', (i === 0 || s.portrait) && 'sm:col-span-2']}>
+              <img src={s.src} alt={s.alt[lang]} loading="lazy" decoding="async" class:list={[s.portrait ? 'mx-auto max-h-[560px] w-auto' : 'w-full']} />
               <figcaption class="px-4 py-2.5 text-xs text-white/50">{s.alt[lang]}</figcaption>
             </figure>
           ))}

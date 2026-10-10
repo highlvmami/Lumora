@@ -21,7 +21,9 @@ const projects = defineCollection({
       .default([]),
     accent: z.string(),
     icon: z.string(),
-    screenshots: z.array(z.object({ src: z.string(), alt: text })).default([]),
+    screenshots: z
+      .array(z.object({ src: z.string(), alt: text, portrait: z.boolean().default(false) }))
+      .default([]),
     note: text.optional(),
   }),
 });

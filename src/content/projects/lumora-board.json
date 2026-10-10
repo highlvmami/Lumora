@@ -3,28 +3,108 @@
   "order": 3,
   "featured": true,
   "status": "live",
-  "category": { "tr": "İşbirliği aracı", "en": "Collaboration" },
+  "category": {
+    "tr": "İşbirliği aracı",
+    "en": "Collaboration"
+  },
   "tagline": {
     "tr": "Canlı imleçler, özel odalar ve davet linkleriyle gerçek zamanlı ortak beyaz tahta.",
     "en": "Real-time collaborative whiteboard with live cursors, private rooms and invite links."
   },
   "description": {
-    "tr": "Birden fazla kişi aynı tahtaya aynı anda çizer, birbirinin çizgilerini ve imleçlerini anında görür. Odayı açan kişi sahibidir ve kimin gireceğine karar verir; düzenleme veya sadece izleme davetlerini link olarak paylaşabilir. Arka uç Go ve WebSocket, ön yüz SvelteKit ile yazıldı.",
-    "en": "Several people draw on the same board at once and see each other's strokes and cursors as they happen. Whoever creates a room owns it and decides who gets in, sharing edit or view-only invites as links. The backend is Go with WebSockets; the frontend is SvelteKit."
+    "tr": "Birden fazla kişi aynı tahtaya aynı anda çizer, birbirinin çizgilerini ve imleçlerini anında görür. Odayı açan kişi sahibidir ve kimin gireceğine karar verir; düzenleme veya sadece izleme davetini link ya da kısa bir kodla (ör. K7QM-2XRA) paylaşır. Her odanın kendi sohbeti var, tahtalar PNG, SVG, PDF veya JSON yedeği olarak dışa aktarılabilir. Arka uç Go ve WebSocket, ön yüz SvelteKit ile yazıldı; tahtalar Postgres'te saklanır, sunucu yeniden başlasa da kaybolmaz.",
+    "en": "Several people draw on the same board at once and see each other's strokes and cursors as they happen. Whoever creates a room owns it and decides who gets in, sharing an edit or view-only invite as a link or a short code (like K7QM-2XRA). Every room has its own chat, and boards can be exported as PNG, SVG, PDF or a JSON backup. The backend is Go with WebSockets and the frontend is SvelteKit; boards are stored in Postgres, so they survive a server restart."
   },
   "features": {
-    "tr": ["Kalem, şekiller, ok, metin ve yapışkan notlar", "Herkesin imlecini isimle canlı görme", "Sahipli özel odalar", "Düzenleme ve izleme davet linkleri"],
-    "en": ["Pen, shapes, arrows, text and sticky notes", "Everyone's cursor live, with names", "Private rooms with owners", "Edit and view-only invite links"]
+    "tr": [
+      "Kalem, dikdörtgen, elips, ok, metin ve silgi; 24 renkli palet, özel renk ve üç çizgi kalınlığı",
+      "Nesneleri seçip taşıma ve köşelerinden boyutlandırma; kaydırma ve yakınlaştırma",
+      "Herkesin imlecini isimle canlı görme",
+      "Sahipli özel odalar; düzenleme veya sadece izleme davetleri link ya da kısa kodla",
+      "Her oda için sohbet; mesaj tahtadaki bir nesneyi işaret edebilir",
+      "PNG, SVG, yüksek çözünürlüklü PNG, PDF ve JSON yedeği olarak dışa aktarma; JSON yedeğini yeni tahta olarak içe aktarma",
+      "Tahtalar Postgres'te saklanır, bağlantısı kopan kullanıcı kaçırdıklarını yakalar",
+      "Birden fazla sunucuya yayılabilir"
+    ],
+    "en": [
+      "Pen, rectangle, ellipse, arrow, text and eraser, with a 24-color palette, a custom color and three stroke widths",
+      "Select, move and resize objects by their corner handles; pan and zoom",
+      "Everyone's cursor live, with names",
+      "Private rooms with owners; edit or view-only invites as a link or a short code",
+      "Per-room chat; a message can point at an object on the board",
+      "Export as PNG, SVG, high-resolution PNG, PDF or a JSON backup; import a backup as a new board",
+      "Boards live in Postgres, and a reconnecting client catches up on what it missed",
+      "Can scale out across several servers"
+    ]
   },
-  "tech": ["Go", "WebSocket", "SvelteKit", "TypeScript", "PostgreSQL", "Docker"],
+  "tech": [
+    "Go",
+    "WebSocket",
+    "SvelteKit",
+    "TypeScript",
+    "Canvas",
+    "PostgreSQL",
+    "Docker"
+  ],
   "repo": "highlvmami/LumoraBoard",
   "links": [
-    { "label": { "tr": "Siteye git", "en": "Visit site" }, "url": "https://lumoraboard-demo.onrender.com" }
+    {
+      "label": {
+        "tr": "Siteye git",
+        "en": "Visit site"
+      },
+      "url": "https://lumoraboard-demo.onrender.com"
+    }
   ],
   "accent": "#22c55e",
   "icon": "🖍️",
   "note": {
     "tr": "Ücretsiz sunucuda çalıştığı için uzun süre ziyaret edilmezse ilk açılış bir dakika kadar sürebilir.",
     "en": "Runs on a free server, so the first visit after a quiet period can take up to a minute."
-  }
+  },
+  "screenshots": [
+    {
+      "src": "/projects/board-ortak-cizim.webp",
+      "alt": {
+        "tr": "İki kişi aynı tahtada çiziyor, diğer kişinin imleci adıyla görünüyor",
+        "en": "Two people drawing on the same board, the other person's cursor shown with their name"
+      }
+    },
+    {
+      "src": "/projects/board-davet.webp",
+      "alt": {
+        "tr": "Davet menüsü: düzenleme ve sadece izleme linkleri ile kodları",
+        "en": "Invite menu with edit and view-only links and codes"
+      }
+    },
+    {
+      "src": "/projects/board-boyut-renk.webp",
+      "alt": {
+        "tr": "Seçili bir dikdörtgen köşe tutamaçlarından boyutlandırılıyor, renk paleti açık",
+        "en": "A selected rectangle being resized by its corner handles, color palette open"
+      }
+    },
+    {
+      "src": "/projects/board-menu.webp",
+      "alt": {
+        "tr": "Menü: oda oluştur veya odaya katıl",
+        "en": "Menu: create a room or join one"
+      }
+    },
+    {
+      "src": "/projects/board-giris.webp",
+      "alt": {
+        "tr": "Karşılama ekranı: adını gir",
+        "en": "Welcome screen: enter your name"
+      }
+    },
+    {
+      "src": "/projects/board-mobil-izleyici.webp",
+      "portrait": true,
+      "alt": {
+        "tr": "Telefonda sadece izleme davetiyle açılmış bir tahta",
+        "en": "A board on a phone opened with a view-only invite"
+      }
+    }
+  ]
 }
