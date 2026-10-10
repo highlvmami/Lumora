@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StatusBadge from './StatusBadge.astro';
+import RepoMeta from './RepoMeta.astro';
+import { projectUrl, type Lang } from '../lib/i18n';
+interface Props { lang: Lang; project: CollectionEntry<'projects'>; large?: boolean }
+const { lang, project, large = false } = Astro.props;
+const p = project.data;
+const cover = p.screenshots[0];
+---
+<a
+  href={projectUrl(lang, project.id)}
+  class="card group flex flex-col overflow-hidden"
+  style={`--accent:${p.accent}`}
+  data-category={p.category[lang]}
+>
+  <div class:list={['relative overflow-hidden', large ? 'aspect-[16/9]' : 'aspect-[16/7]']}>
+    {cover ? (
+      <img src={cover.src} alt={cover.alt[lang]} loading="lazy" decoding="async" class="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100" />
+    ) : (
+      <div class="flex h-full w-full items-center justify-center" style={`background: radial-gradient(70% 90% at 30% 20%, ${p.accent}55, transparent 70%), radial-gradient(60% 80% at 90% 100%, ${p.accent}33, transparent 70%), #110e22`}>
+        <span class="text-5xl drop-shadow-[0_0_24px_rgba(255,255,255,0.35)]" aria-hidden="true">{p.icon}</span>
+      </div>
+    )}
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink-950/80 to-transparent"></div>
+  </div>
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <div class="flex items-center justify-between gap-3">
+      <h3 class="font-display text-lg font-semibold">
+        <span class="mr-1.5" aria-hidden="true">{p.icon}</span>{p.name}
+      </h3>
+      <StatusBadge lang={lang} status={p.status} />
+    </div>
+    <p class="text-sm leading-relaxed text-white/65">{p.tagline[lang]}</p>
+    <div class="mt-auto flex flex-wrap gap-1.5 pt-1">
+      {p.tech.slice(0, 4).map((x) => (
+        <span class="rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-white/60">{x}</span>
+      ))}
+    </div>
+    <RepoMeta lang={lang} repo={p.repo} />
+  </div>
+</a>

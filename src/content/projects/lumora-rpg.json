@@ -1,0 +1,32 @@
+{
+  "name": "LumoraRPG",
+  "order": 1,
+  "featured": true,
+  "status": "live",
+  "category": { "tr": "Oyun", "en": "Game" },
+  "tagline": {
+    "tr": "Dalga dalga canavarlar, boss'lar, petler ve arkadaşlarınla canlı co-op içeren 3D pixel-art roguelike survivor.",
+    "en": "A 3D pixel-art roguelike survivor with endless waves, bosses, pets and live co-op with friends."
+  },
+  "description": {
+    "tr": "Bir karakter seçip açık bir haritaya iniyorsun; canavarlar her yönden gelir, silahların menzile gireni kendiliğinden vurur. Her seviyede üç karttan birini seçip güçlenirsin, her beş dakikada bir boss gelir. Kazandığın EXP, altın, eşya ve kasalar hesabında kalır; ekipman, petler ve yetenek ağacıyla bir sonraki oyuna daha güçlü başlarsın. Tarayıcıda ve Windows'ta çalışır.",
+    "en": "Pick a character and drop onto an open map: monsters pour in from every side and your weapons fire on their own. Each level you pick one of three cards to power up, and a boss arrives every five minutes. EXP, gold, items and crates stay on your account, so equipment, pets and the skill tree make every run start stronger. Runs in the browser and on Windows."
+  },
+  "features": {
+    "tr": ["Otomatik saldıran silahlar ve kart seçimli güçlenme", "Her 5 dakikada bir boss", "Petler, ekipman ve yetenek ağacı", "Çevrimiçi hesaplar ve canlı co-op", "Sıralama tablosu"],
+    "en": ["Auto-firing weapons and card-based upgrades", "A boss every 5 minutes", "Pets, equipment and a skill tree", "Online accounts and live co-op", "Leaderboards"]
+  },
+  "tech": ["Godot 4.5", "GDScript", "Node.js", "WebSocket", "PostgreSQL"],
+  "repo": "highlvmami/LumoraRPG",
+  "links": [
+    { "label": { "tr": "Tarayıcıda oyna", "en": "Play in browser" }, "url": "https://highlvmami.github.io/LumoraRPG/" },
+    { "label": { "tr": "Windows için indir", "en": "Download for Windows" }, "url": "https://github.com/highlvmami/LumoraRPG/releases/download/latest/LumoraRPG-windows.zip" }
+  ],
+  "accent": "#a855f7",
+  "icon": "⚔️",
+  "screenshots": [
+    { "src": "/projects/rpg-oyun.jpg", "alt": { "tr": "Oyun içi savaş", "en": "In-game combat" } },
+    { "src": "/projects/rpg-yetenek-agaci.jpg", "alt": { "tr": "Yetenek ağacı", "en": "Skill tree" } },
+    { "src": "/projects/rpg-karakterler.jpg", "alt": { "tr": "Karakter seçimi", "en": "Character select" } }
+  ]
+}

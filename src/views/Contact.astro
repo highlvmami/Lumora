@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { routes, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const items = [
+  { href: 'https://github.com/highlvmami', title: tr('contact.github'), text: tr('contact.githubText') },
+  { href: routes.projects[lang], title: tr('contact.issues'), text: tr('contact.issuesText') },
+];
+---
+<Base lang={lang} current="contact" title={tr('contact.title')} alternates={{ tr: routes.contact.tr, en: routes.contact.en }}>
+  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
+    <h1 class="font-display text-4xl font-semibold tracking-tight"><span class="text-glow">{tr('contact.title')}</span></h1>
+    <p class="mt-4 text-lg text-white/65">{tr('contact.text')}</p>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2">
+      {items.map((i) => (
+        <a href={i.href} class="card block p-6">
+          <h2 class="font-display text-lg font-semibold">{i.title} →</h2>
+          <p class="mt-2 text-sm text-white/60">{i.text}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
