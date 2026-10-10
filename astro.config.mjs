@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://lumora.pages.dev',
+  site: 'https://lumora.muhammetorucoglugfb.workers.dev',
   i18n: {
     defaultLocale: 'tr',
     locales: ['tr', 'en'],
