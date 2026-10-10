@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lumora.pages.dev/sitemap-index.xml
+Sitemap: https://lumora.muhammetorucoglugfb.workers.dev/sitemap-index.xml
