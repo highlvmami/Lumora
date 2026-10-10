@@ -21,9 +21,22 @@ const projects = defineCollection({
       .default([]),
     accent: z.string(),
     icon: z.string(),
-    screenshots: z.array(z.object({ src: z.string(), alt: text })).default([]),
+    screenshots: z
+      .array(z.object({ src: z.string(), alt: text, portrait: z.boolean().default(false) }))
+      .default([]),
     note: text.optional(),
   }),
 });
 
-export const collections = { projects };
+// Blog yazıları: src/content/posts/<adres>/tr.md ve en.md (iki dil de zorunlu değil).
+const posts = defineCollection({
+  loader: glob({ pattern: '*/{tr,en}.md', base: './src/content/posts' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    project: z.string().optional(),
+  }),
+});
+
+export const collections = { projects, posts };

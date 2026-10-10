@@ -14,7 +14,7 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
   <article class="mx-auto max-w-5xl px-4 pt-12 sm:px-6" style={`--accent:${p.accent}`}>
     <a href={routes.projects[lang]} class="text-sm text-white/50 hover:text-white">← {tr('project.back')}</a>
 
-    <header class="relative mt-6 overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-10" style={`background: radial-gradient(80% 120% at 0% 0%, ${p.accent}40, transparent 60%), #0d0b1a`}>
+    <header class="relative mt-6 overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-10" style={`background: radial-gradient(80% 120% at 0% 0%, ${p.accent}40, transparent 60%), var(--color-ink-900)`}>
       <div class="flex flex-wrap items-center gap-3">
         <span class="text-4xl" aria-hidden="true">{p.icon}</span>
         <StatusBadge lang={lang} status={p.status} />
@@ -69,8 +69,8 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
         <h2 class="font-display text-xl font-semibold">{tr('project.screens')}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           {p.screenshots.map((s, i) => (
-            <figure class:list={['overflow-hidden rounded-2xl border border-white/10 bg-ink-900', i === 0 && 'sm:col-span-2']}>
-              <img src={s.src} alt={s.alt[lang]} loading="lazy" decoding="async" class="w-full" />
+            <figure class:list={['overflow-hidden rounded-2xl border border-white/10 bg-ink-900', (i === 0 || s.portrait) && 'sm:col-span-2']}>
+              <img src={s.src} alt={s.alt[lang]} loading="lazy" decoding="async" class:list={[s.portrait ? 'mx-auto max-h-[560px] w-auto' : 'w-full']} />
               <figcaption class="px-4 py-2.5 text-xs text-white/50">{s.alt[lang]}</figcaption>
             </figure>
           ))}

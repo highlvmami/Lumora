@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPosts } from '../lib/posts';
+import { postUrl, routes, formatDate, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const posts = await getPosts(lang);
+---
+<Base lang={lang} current="blog" title={tr('blog.title')} description={tr('blog.text')} alternates={{ tr: routes.blog.tr, en: routes.blog.en }}>
+  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
+    <h1 class="font-display text-4xl font-semibold tracking-tight"><span class="text-glow">{tr('blog.title')}</span></h1>
+    <p class="mt-4 text-lg text-white/65">{tr('blog.text')}</p>
+    {posts.length === 0 ? (
+      <p class="mt-10 text-white/50">{tr('blog.empty')}</p>
+    ) : (
+      <ul class="mt-10 space-y-4">
+        {posts.map((p) => (
+          <li>
+            <a href={postUrl(lang, p.slug)} class="card block p-6">
+              <time class="text-xs text-white/50" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
+              <h2 class="mt-1 font-display text-xl font-semibold">{p.data.title}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-white/60">{p.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>
