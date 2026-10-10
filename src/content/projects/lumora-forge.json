@@ -1,0 +1,22 @@
+{
+  "name": "Lumora Forge",
+  "order": 5,
+  "status": "development",
+  "category": { "tr": "Yapay zeka", "en": "AI" },
+  "tagline": {
+    "tr": "Yapay zekayla görsel üretme stüdyosu.",
+    "en": "An AI image generation studio."
+  },
+  "description": {
+    "tr": "Google hesabıyla giriş yapıp metinden görsel üretmeye odaklanan bir web uygulaması. Şu an geliştirme aşamasında.",
+    "en": "A web app for signing in with Google and generating images from text. Currently in development."
+  },
+  "features": {
+    "tr": ["Metinden görsel üretme", "Google ile giriş"],
+    "en": ["Text-to-image generation", "Google sign-in"]
+  },
+  "tech": ["Next.js", "TypeScript", "Firebase", "Tailwind CSS"],
+  "repo": "highlvmami/Lumora-Forge",
+  "accent": "#ec4899",
+  "icon": "✨"
+}
