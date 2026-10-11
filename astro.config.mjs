@@ -12,7 +12,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       i18n: { defaultLocale: 'tr', locales: { tr: 'tr-TR', en: 'en-US' } },
-      filter: (page) => !page.endsWith('/404/'),
+      filter: (page) => !/\/(404|blog\/yazi|blog\/yaz|blog\/post|blog\/write)\/$/.test(page),
     }),
   ],
   vite: { plugins: [tailwindcss()] },

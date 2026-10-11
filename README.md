@@ -133,6 +133,10 @@ Kod `functions/` altındaki Cloudflare Pages Functions'tır (`/api/auth/*`, `/ap
 
 Yerelde denemek için `npm run build` sonrası `npx wrangler pages dev dist --kv FAVORITES --binding SESSION_SECRET=x GITHUB_CLIENT_ID=x GITHUB_CLIENT_SECRET=x`.
 
+### Yönetici blog editörü
+
+Giriş yapınca blog sayfasında **+ Yeni yazı** düğmesi çıkar. Editörde başlık, kısa açıklama, dil, adres ve Markdown metni yazılır, yanında canlı önizleme görünür. Yazılar aynı Cloudflare KV'ye (`FAVORITES` bağlaması) `post:<adres>` anahtarıyla kaydedilir, blog listesinde tarihe göre statik yazıların arasına girer, yazı sayfasında yöneticiye **Düzenle** ve **Sil** düğmeleri görünür. Ek bir kurulum gerekmez. Yazı sayfası `/blog/yazi/?s=<adres>` adresinde istemci tarafında çizilir ve arama motorlarına kapalıdır; kalıcı ve aranabilir yazılar için `src/content/posts/` altına Markdown dosyası eklemeye devam edebilirsin. Güvenlik başlıkları (CSP) yüzünden yazılarda yalnızca siteden sunulan görseller (`/projects/...` gibi) görünür.
+
 ## Proje yapısı
 
 | Klasör | İçerik |

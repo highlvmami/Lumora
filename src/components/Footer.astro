@@ -102,6 +102,8 @@ const tr = t(lang);
       .then((me) => {
         if (!me.admin) return;
         admin = true;
+        document.documentElement.dataset.admin = '1';
+        document.dispatchEvent(new CustomEvent('lumora:admin'));
         link.textContent = `${link.dataset.logoutLabel} (${me.login})`;
         link.href = `/api/auth/logout?next=${link.dataset.next}`;
         if (!grid) return loadFavs();

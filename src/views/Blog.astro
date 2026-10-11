@@ -7,23 +7,62 @@ const tr = t(lang);
 const posts = await getPosts(lang);
 ---
 <Base lang={lang} current="blog" title={tr('blog.title')} description={tr('blog.text')} alternates={{ tr: routes.blog.tr, en: routes.blog.en }}>
-  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
-    <h1 class="font-display text-4xl font-semibold tracking-tight"><span class="text-glow">{tr('blog.title')}</span></h1>
+  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6" data-blog-list data-lang={lang} data-view-url={routes.blogView[lang]} data-edit-label={tr('blog.edit')}>
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <h1 class="font-display text-4xl font-semibold tracking-tight"><span class="text-glow">{tr('blog.title')}</span></h1>
+      <a href={routes.blogNew[lang]} data-admin-only class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink-950 transition hover:bg-violet-100">+ {tr('blog.new')}</a>
+    </div>
     <p class="mt-4 text-lg text-white/65">{tr('blog.text')}</p>
-    {posts.length === 0 ? (
-      <p class="mt-10 text-white/50">{tr('blog.empty')}</p>
-    ) : (
-      <ul class="mt-10 space-y-4">
-        {posts.map((p) => (
-          <li>
-            <a href={postUrl(lang, p.slug)} class="card block p-6">
-              <time class="text-xs text-white/50" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
-              <h2 class="mt-1 font-display text-xl font-semibold">{p.data.title}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-white/60">{p.data.description}</p>
-            </a>
-          </li>
-        ))}
-      </ul>
-    )}
+    <p class="mt-10 text-white/50" data-empty hidden={posts.length > 0}>{tr('blog.empty')}</p>
+    <ul class="mt-10 space-y-4" data-posts>
+      {posts.map((p) => (
+        <li data-date={p.data.date.toISOString().slice(0, 10)}>
+          <a href={postUrl(lang, p.slug)} class="card block p-6">
+            <time class="text-xs text-white/50" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
+            <h2 class="mt-1 font-display text-xl font-semibold">{p.data.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-white/60">{p.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 </Base>
+
+<script>
+  // Yönetici editöründen eklenen yazılar Cloudflare KV'de durur; liste açılınca tarihe göre araya eklenir.
+  const root = document.querySelector<HTMLElement>('[data-blog-list]');
+  if (root) {
+    const lang = root.dataset.lang!;
+    const viewUrl = root.dataset.viewUrl!;
+    const list = root.querySelector<HTMLUListElement>('[data-posts]')!;
+    const empty = root.querySelector<HTMLElement>('[data-empty]')!;
+    const fmt = (d: string) => new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(d));
+
+    fetch(`/api/posts?lang=${lang}`)
+      .then((r) => r.json())
+      .then((data: { posts: { slug: string; title: string; description: string; date: string }[] }) => {
+        for (const p of data.posts ?? []) {
+          const li = document.createElement('li');
+          li.dataset.date = p.date;
+          const a = document.createElement('a');
+          a.href = `${viewUrl}?s=${encodeURIComponent(p.slug)}`;
+          a.className = 'card block p-6';
+          const time = document.createElement('time');
+          time.className = 'text-xs text-white/50';
+          time.textContent = fmt(p.date);
+          const h2 = document.createElement('h2');
+          h2.className = 'mt-1 font-display text-xl font-semibold';
+          h2.textContent = p.title;
+          const d = document.createElement('p');
+          d.className = 'mt-2 text-sm leading-relaxed text-white/60';
+          d.textContent = p.description;
+          a.append(time, h2, d);
+          li.append(a);
+          const before = [...list.children].find((c) => ((c as HTMLElement).dataset.date ?? '') < p.date);
+          list.insertBefore(li, before ?? null);
+        }
+        empty.hidden = list.children.length > 0;
+      })
+      .catch(() => {});
+  }
+</script>
