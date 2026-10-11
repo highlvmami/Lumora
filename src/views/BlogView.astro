@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { routes, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+---
+<Base lang={lang} current="blog" title={tr('blog.title')} alternates={{ tr: routes.blogView.tr, en: routes.blogView.en }} noindex>
+  <article class="mx-auto max-w-3xl px-4 pt-12 sm:px-6" data-kv-post data-lang={lang} data-edit-url={routes.blogNew[lang]} data-blog-url={routes.blog[lang]} data-confirm={tr('blog.confirmDelete')} data-notfound={tr('blog.notFound')}>
+    <a href={routes.blog[lang]} class="text-sm text-white/50 hover:text-white">← {tr('blog.back')}</a>
+    <p class="mt-8 text-white/50" data-status>{tr('blog.loading')}</p>
+    <div data-content hidden>
+      <time class="mt-8 block text-sm text-white/50" data-date></time>
+      <h1 class="mt-2 font-display text-4xl font-semibold leading-tight tracking-tight" data-title></h1>
+      <p class="mt-4 text-lg text-white/65" data-description></p>
+      <div class="mt-6 flex gap-3" data-admin-only>
+        <a data-edit class="rounded-full border border-white/20 px-4 py-1.5 text-sm text-white/80 hover:border-white/50">{tr('blog.edit')}</a>
+        <button type="button" data-delete class="rounded-full border border-red-400/40 px-4 py-1.5 text-sm text-red-300 hover:border-red-300">{tr('blog.delete')}</button>
+      </div>
+      <div class="prose-lumora mt-10" data-body></div>
+    </div>
+  </article>
+</Base>
+
+<script>
+  import { renderMarkdown } from '../lib/markdown';
+
+  const root = document.querySelector<HTMLElement>('[data-kv-post]');
+  if (root) {
+    const lang = root.dataset.lang!;
+    const slug = new URLSearchParams(location.search).get('s') ?? '';
+    const q = (s: string) => root.querySelector<HTMLElement>(s)!;
+    const status = q('[data-status]');
+    const fail = () => { status.textContent = root.dataset.notfound!; status.hidden = false; };
+
+    fetch(`/api/posts/${encodeURIComponent(slug)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((p: { title: string; description: string; date: string; body: string }) => {
+        document.title = `${p.title} · Lumora`;
+        q('[data-title]').textContent = p.title;
+        q('[data-description]').textContent = p.description;
+        q('[data-date]').textContent = new Intl.DateTimeFormat(lang === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(p.date));
+        q('[data-body]').innerHTML = renderMarkdown(p.body);
+        q('[data-edit]').setAttribute('href', `${root.dataset.editUrl}?s=${encodeURIComponent(slug)}`);
+        status.hidden = true;
+        q('[data-content]').hidden = false;
+      })
+      .catch(fail);
+
+    q('[data-delete]').addEventListener('click', async () => {
+      if (!confirm(root.dataset.confirm!)) return;
+      const res = await fetch(`/api/posts/${encodeURIComponent(slug)}`, { method: 'DELETE' });
+      if (res.ok) location.href = root.dataset.blogUrl!;
+    });
+  }
+</script>

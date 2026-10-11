@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import { routes, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const field = 'mt-1 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-violet-400';
+---
+<Base lang={lang} current="blog" title={tr('editor.title')} alternates={{ tr: routes.blogNew.tr, en: routes.blogNew.en }} noindex>
+  <section class="mx-auto max-w-5xl px-4 pt-12 sm:px-6" data-editor data-lang={lang} data-view-url={routes.blogView[lang]} data-saving={tr('editor.saving')} data-error={tr('editor.error')}>
+    <a href={routes.blog[lang]} class="text-sm text-white/50 hover:text-white">← {tr('blog.back')}</a>
+    <h1 class="mt-6 font-display text-3xl font-semibold tracking-tight">{tr('editor.title')}</h1>
+
+    <div data-need-login hidden class="mt-8 text-white/65">
+      <p>{tr('editor.needLogin')}</p>
+      <a class="mt-4 inline-block rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink-950" href={`/api/auth/login?next=${routes.blogNew[lang]}`} rel="nofollow">{tr('editor.login')}</a>
+    </div>
+
+    <form data-form hidden class="mt-8 grid gap-5">
+      <label class="block text-sm text-white/70">{tr('editor.fTitle')}<input name="title" required maxlength="120" class={field} /></label>
+      <label class="block text-sm text-white/70">{tr('editor.fDescription')}<input name="description" required maxlength="240" class={field} /></label>
+      <div class="grid gap-5 sm:grid-cols-3">
+        <label class="block text-sm text-white/70">{tr('editor.fLang')}
+          <select name="lang" class={field}>
+            <option value="tr" selected={lang === 'tr'}>Türkçe</option>
+            <option value="en" selected={lang === 'en'}>English</option>
+          </select>
+        </label>
+        <label class="block text-sm text-white/70">{tr('editor.fSlug')}<input name="slug" required maxlength="80" pattern="[a-z0-9\-]+" class={field} /></label>
+        <label class="block text-sm text-white/70">{tr('editor.fDate')}<input name="date" type="date" required class={field} /></label>
+      </div>
+      <div class="grid gap-5 lg:grid-cols-2">
+        <label class="block text-sm text-white/70">{tr('editor.fBody')}
+          <textarea name="body" required rows="18" maxlength="50000" class={`${field} font-mono`}></textarea>
+        </label>
+        <div>
+          <p class="text-sm text-white/70">{tr('editor.preview')}</p>
+          <div class="prose-lumora mt-1 min-h-[12rem] rounded-lg border border-white/10 p-4" data-preview></div>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button type="submit" class="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-violet-100">{tr('editor.publish')}</button>
+        <span class="text-sm text-white/60" data-msg></span>
+      </div>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { renderMarkdown } from '../lib/markdown';
+
+  const root = document.querySelector<HTMLElement>('[data-editor]');
+  if (root) {
+    const form = root.querySelector<HTMLFormElement>('[data-form]')!;
+    const need = root.querySelector<HTMLElement>('[data-need-login]')!;
+    const preview = root.querySelector<HTMLElement>('[data-preview]')!;
+    const msg = root.querySelector<HTMLElement>('[data-msg]')!;
+    const el = (n: string) => form.elements.namedItem(n) as HTMLInputElement;
+    const editSlug = new URLSearchParams(location.search).get('s');
+    let slugTouched = Boolean(editSlug);
+
+    const slugify = (s: string) =>
+      s.toLowerCase().replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u')
+        .normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
+
+    el('date').value = new Date().toISOString().slice(0, 10);
+    el('title').addEventListener('input', () => { if (!slugTouched) el('slug').value = slugify(el('title').value); });
+    el('slug').addEventListener('input', () => { slugTouched = true; });
+    let timer: number | undefined;
+    el('body').addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(() => { preview.innerHTML = renderMarkdown(el('body').value); }, 150);
+    });
+
+    async function init() {
+      const me = await fetch('/api/auth/me').then((r) => r.json()).catch(() => ({ admin: false }));
+      if (!me.admin) { need.hidden = false; return; }
+      form.hidden = false;
+      if (editSlug) {
+        const p = await fetch(`/api/posts/${encodeURIComponent(editSlug)}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+        if (p) {
+          for (const k of ['title', 'description', 'lang', 'slug', 'date', 'body']) el(k).value = p[k];
+          el('slug').readOnly = true;
+          preview.innerHTML = renderMarkdown(p.body);
+        }
+      }
+    }
+    init();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = root.dataset.saving!;
+      const slug = el('slug').value;
+      const res = await fetch(`/api/posts/${encodeURIComponent(slug)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: el('title').value, description: el('description').value, lang: el('lang').value, date: el('date').value, body: el('body').value }),
+      }).catch(() => null);
+      if (res?.ok) {
+        location.href = `${root.dataset.viewUrl}?s=${encodeURIComponent(slug)}`;
+      } else {
+        const err = await res?.json().catch(() => ({}));
+        msg.textContent = root.dataset.error! + (err?.error ?? '');
+      }
+    });
+  }
+</script>
