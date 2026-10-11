@@ -1,6 +1,6 @@
 {
   "name": "Lumora Forge",
-  "order": 5,
+  "order": 6,
   "status": "development",
   "category": { "tr": "Yapay zeka", "en": "AI" },
   "tagline": {
