@@ -17,6 +17,108 @@ const tr = t(lang);
       <a class="hover:text-white" href={routes.about[lang]}>{tr('nav.about')}</a>
       <a class="hover:text-white" href={routes.contact[lang]}>{tr('nav.contact')}</a>
       <a class="hover:text-white" href="https://github.com/highlvmami" rel="noopener">GitHub</a>
+      <a class="hover:text-white" href={`/api/auth/login?next=${routes.home[lang]}`} data-admin-link data-login-label={tr('admin.login')} data-logout-label={tr('admin.logout')} data-next={routes.home[lang]} data-fav-add={tr('fav.add')} data-fav-remove={tr('fav.remove')} data-fav-error={tr('fav.error')} rel="nofollow">{tr('admin.login')}</a>
     </nav>
   </div>
 </footer>
+
+<script>
+  // Öne çıkanlar (herkese açık) ve yönetici girişi. Statik site, /api/* ise Cloudflare Pages Functions.
+  const link = document.querySelector<HTMLAnchorElement>('[data-admin-link]');
+  const grid = document.querySelector<HTMLElement>('[data-fav-grid="featured"]');
+  const moreGrid = document.querySelector<HTMLElement>('[data-fav-more] [data-fav-grid]');
+  const moreSection = document.querySelector<HTMLElement>('[data-fav-more]');
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-slug]')];
+  const staticFeatured = cards.filter((c) => c.hasAttribute('data-static-fav')).map((c) => c.dataset.slug!);
+  const hasFlag = document.cookie.split('; ').some((c) => c === 'lumora_admin=1');
+
+  let favs: string[] = [];
+  let admin = false;
+
+  const effective = () => (favs.length ? favs : staticFeatured);
+
+  function render() {
+    const set = effective();
+    if (grid) {
+      for (const c of grid.querySelectorAll<HTMLElement>('[data-slug]')) {
+        const i = set.indexOf(c.dataset.slug!);
+        c.hidden = i < 0;
+        c.style.order = String(i < 0 ? 99 : i);
+      }
+    }
+    if (moreGrid && moreSection) {
+      let visible = 0;
+      for (const c of moreGrid.querySelectorAll<HTMLElement>('[data-slug]')) {
+        c.hidden = set.includes(c.dataset.slug!);
+        if (!c.hidden) visible++;
+      }
+      moreSection.hidden = visible === 0;
+    }
+    for (const c of cards) {
+      const on = set.includes(c.dataset.slug!);
+      const btn = c.querySelector<HTMLButtonElement>('[data-fav-btn]');
+      if (!btn || !link) continue;
+      btn.hidden = !admin;
+      btn.setAttribute('aria-pressed', String(on));
+      const label = on ? link.dataset.favRemove! : link.dataset.favAdd!;
+      btn.setAttribute('aria-label', label);
+      btn.title = label;
+      btn.style.color = on ? '#fcd34d' : '';
+      btn.style.borderColor = on ? '#fcd34d' : '';
+      btn.querySelector('[data-fav-icon]')!.textContent = on ? '★' : '☆';
+    }
+  }
+
+  async function loadFavs() {
+    try {
+      const res = await fetch('/api/favorites');
+      const data = await res.json();
+      if (Array.isArray(data.slugs)) favs = data.slugs;
+    } catch {}
+    render();
+  }
+
+  async function toggle(slug: string) {
+    const set = effective();
+    const next = set.includes(slug) ? set.filter((s) => s !== slug) : [...set, slug];
+    const prev = favs;
+    favs = next;
+    render();
+    try {
+      const res = await fetch('/api/favorites', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slugs: next }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+    } catch {
+      favs = prev;
+      render();
+      alert(link?.dataset.favError ?? 'Error');
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>('[data-fav-btn]');
+    if (!btn) return;
+    e.preventDefault();
+    const slug = btn.closest<HTMLElement>('[data-slug]')?.dataset.slug;
+    if (slug) toggle(slug);
+  });
+
+  if (grid) loadFavs();
+
+  if (hasFlag && link) {
+    fetch('/api/auth/me')
+      .then((r) => r.json())
+      .then((me) => {
+        if (!me.admin) return;
+        admin = true;
+        link.textContent = `${link.dataset.logoutLabel} (${me.login})`;
+        link.href = `/api/auth/logout?next=${link.dataset.next}`;
+        if (!grid) return loadFavs();
+        render();
+      })
+      .catch(() => {});
+  }
+</script>

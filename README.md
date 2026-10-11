@@ -120,6 +120,20 @@ Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değ
 
 [UptimeRobot](https://uptimerobot.com) (ücretsiz) üzerinde site ve projelerin canlı adresleri için HTTP monitörü kur; kesinti olduğunda e-posta veya Telegram bildirimi gelir ve ücretsiz bir durum sayfası açılabilir.
 
+## Yönetici girişi ve öne çıkarma
+
+Site sahibi GitHub hesabıyla girip projeleri yıldızlayarak ana sayfadaki "Öne çıkan projeler" listesini değiştirebilir. Alt bilgideki **Yönetici girişi** bağlantısı GitHub OAuth ile giriş yaptırır; yalnızca `ADMIN_LOGIN` hesabı (varsayılan `highlvmami`) yetkilidir. Giriş yapınca kartların köşesinde ☆/★ düğmesi çıkar; seçim Cloudflare KV'ye yazılır ve herkese açık ana sayfa bu listeyi okur. Liste boşsa JSON'daki `featured` alanı geçerlidir.
+
+Kod `functions/` altındaki Cloudflare Pages Functions'tır (`/api/auth/*`, `/api/favorites`). Çalışması için Cloudflare'de bir kerelik kurulum gerekir:
+
+1. GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**: Homepage `https://lumorahub.pages.dev`, Authorization callback URL `https://lumorahub.pages.dev/api/auth/callback`. Oluşan **Client ID**'yi not al, **Generate a new client secret** ile bir secret üret.
+2. Cloudflare → **Workers & Pages → KV → Create namespace** (ör. `lumora-favorites`).
+3. Cloudflare → `lumorahub` projesi → **Settings → Bindings → Add → KV namespace**: değişken adı `FAVORITES`, az önceki namespace.
+4. Aynı projede **Settings → Variables and Secrets** altına ekle (Production): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (Secret olarak), `SESSION_SECRET` (rastgele uzun bir metin, Secret olarak). İsteğe bağlı: `ADMIN_LOGIN`.
+5. Siteyi yeniden dağıt (Deployments → son dağıtım → Retry) ya da `main`'e yeni bir birleştirme yap.
+
+Yerelde denemek için `npm run build` sonrası `npx wrangler pages dev dist --kv FAVORITES --binding SESSION_SECRET=x GITHUB_CLIENT_ID=x GITHUB_CLIENT_SECRET=x`.
+
 ## Proje yapısı
 
 | Klasör | İçerik |
@@ -129,5 +143,6 @@ Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değ
 | `src/views/` | İki dilin paylaştığı sayfa gövdeleri |
 | `src/components/`, `src/layouts/` | Başlık, alt bilgi, kartlar, ortak sayfa iskeleti |
 | `src/lib/` | Arayüz metinleri, GitHub verisi, proje ve yazı yardımcıları |
+| `functions/` | Giriş ve öne çıkarma API'si (Cloudflare Pages Functions) |
 | `public/` | Logo, görseller, `robots.txt`, güvenlik başlıkları |
 | `.github/workflows/` | Derleme kontrolü ve günlük yeniden derleme |
