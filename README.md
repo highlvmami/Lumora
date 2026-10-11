@@ -69,7 +69,6 @@ Node 22 gerekir (`.nvmrc`).
 | Alan | Açıklama |
 | --- | --- |
 | `status` | `live` (Yayında), `beta` veya `development` (Geliştiriliyor) |
-| `featured` | `true` ise ana sayfada "Öne çıkan projeler" bölümünde büyük kartla görünür |
 | `order` | Sıralama |
 | `repo` | `kullanici/depo`; yıldız sayısı, son güncelleme ve son sürüm buradan otomatik çekilir |
 | `links` | "Siteye git", "İndir" gibi butonlar; ilki ana buton olur |
@@ -122,7 +121,7 @@ Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değ
 
 ## Yönetici girişi ve öne çıkarma
 
-Site sahibi GitHub hesabıyla girip projeleri yıldızlayarak ana sayfadaki "Öne çıkan projeler" listesini değiştirebilir. Alt bilgideki **Yönetici girişi** bağlantısı GitHub OAuth ile giriş yaptırır; yalnızca `ADMIN_LOGIN` hesabı (varsayılan `highlvmami`) yetkilidir. Giriş yapınca kartların köşesinde ☆/★ düğmesi çıkar; seçim Cloudflare KV'ye yazılır ve herkese açık ana sayfa bu listeyi okur. Liste boşsa JSON'daki `featured` alanı geçerlidir.
+Site sahibi GitHub hesabıyla girip projeleri yıldızlayarak ana sayfanın en üstündeki "Öne çıkan projeler" bölümünü belirleyebilir; altında her zaman "Tüm projeler" bölümü durur. Alt bilgideki **Yönetici girişi** bağlantısı GitHub OAuth ile giriş yaptırır; yalnızca `ADMIN_LOGIN` hesabı (varsayılan `highlvmami`) yetkilidir. Giriş yapınca kartların köşesinde ☆/★ düğmesi çıkar; seçim Cloudflare KV'ye yazılır ve herkese açık ana sayfa bu listeyi okur. Hiç favori seçilmemişse üstteki bölüm görünmez.
 
 Kod `functions/` altındaki Cloudflare Pages Functions'tır (`/api/auth/*`, `/api/favorites`). Çalışması için Cloudflare'de bir kerelik kurulum gerekir:
 

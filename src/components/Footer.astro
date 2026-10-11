@@ -25,37 +25,26 @@ const tr = t(lang);
 <script>
   // Öne çıkanlar (herkese açık) ve yönetici girişi. Statik site, /api/* ise Cloudflare Pages Functions.
   const link = document.querySelector<HTMLAnchorElement>('[data-admin-link]');
-  const grid = document.querySelector<HTMLElement>('[data-fav-grid="featured"]');
-  const moreGrid = document.querySelector<HTMLElement>('[data-fav-more] [data-fav-grid]');
-  const moreSection = document.querySelector<HTMLElement>('[data-fav-more]');
+  const section = document.querySelector<HTMLElement>('[data-fav-section]');
+  const grid = section?.querySelector<HTMLElement>('[data-fav-grid]') ?? null;
   const cards = [...document.querySelectorAll<HTMLElement>('[data-slug]')];
-  const staticFeatured = cards.filter((c) => c.hasAttribute('data-static-fav')).map((c) => c.dataset.slug!);
   const hasFlag = document.cookie.split('; ').some((c) => c === 'lumora_admin=1');
 
   let favs: string[] = [];
   let admin = false;
 
-  const effective = () => (favs.length ? favs : staticFeatured);
-
   function render() {
-    const set = effective();
-    if (grid) {
+    if (grid && section) {
+      // Üstte yalnızca favoriler (kaydedilen sırayla); liste boşsa bölüm hiç görünmez.
       for (const c of grid.querySelectorAll<HTMLElement>('[data-slug]')) {
-        const i = set.indexOf(c.dataset.slug!);
+        const i = favs.indexOf(c.dataset.slug!);
         c.hidden = i < 0;
         c.style.order = String(i < 0 ? 99 : i);
       }
-    }
-    if (moreGrid && moreSection) {
-      let visible = 0;
-      for (const c of moreGrid.querySelectorAll<HTMLElement>('[data-slug]')) {
-        c.hidden = set.includes(c.dataset.slug!);
-        if (!c.hidden) visible++;
-      }
-      moreSection.hidden = visible === 0;
+      section.hidden = favs.length === 0;
     }
     for (const c of cards) {
-      const on = set.includes(c.dataset.slug!);
+      const on = favs.includes(c.dataset.slug!);
       const btn = c.querySelector<HTMLButtonElement>('[data-fav-btn]');
       if (!btn || !link) continue;
       btn.hidden = !admin;
@@ -79,8 +68,7 @@ const tr = t(lang);
   }
 
   async function toggle(slug: string) {
-    const set = effective();
-    const next = set.includes(slug) ? set.filter((s) => s !== slug) : [...set, slug];
+    const next = favs.includes(slug) ? favs.filter((s) => s !== slug) : [...favs, slug];
     const prev = favs;
     favs = next;
     render();
