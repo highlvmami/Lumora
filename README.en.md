@@ -69,7 +69,6 @@ Add a new `.json` file to `src/content/projects/` (copying an existing one is ea
 | Field | Description |
 | --- | --- |
 | `status` | `live`, `beta` or `development` |
-| `featured` | If `true`, shown as a large card in "Featured projects" on the home page |
 | `order` | Sort order |
 | `repo` | `user/repo`; stars, last update and latest release are fetched from it automatically |
 | `links` | Buttons such as "Visit site" or "Download"; the first one is the primary button |
@@ -120,6 +119,18 @@ Open the project in Cloudflare and choose **Metrics → Web Analytics → Enable
 
 Set up HTTP monitors for the site and the projects' live addresses on [UptimeRobot](https://uptimerobot.com) (free); you get an email or Telegram alert on downtime, and a free status page can be opened.
 
+## Admin sign-in and featuring
+
+The site owner can sign in with GitHub and star projects to choose the "Featured projects" section at the very top of the home page; an "All projects" section always sits below it. The **Admin sign-in** link in the footer starts GitHub OAuth; only the `ADMIN_LOGIN` account (default `highlvmami`) is allowed. Once signed in, a ☆/★ button appears on the cards; the choice is written to Cloudflare KV and the public home page reads it. If nothing is starred, the top section is hidden.
+
+The code is Cloudflare Pages Functions under `functions/` (`/api/auth/*`, `/api/favorites`). One-time setup in Cloudflare:
+
+1. GitHub → **Settings → Developer settings → OAuth Apps → New OAuth App**: Homepage `https://lumorahub.pages.dev`, Authorization callback URL `https://lumorahub.pages.dev/api/auth/callback`. Note the **Client ID** and generate a **client secret**.
+2. Cloudflare → **Workers & Pages → KV → Create namespace** (e.g. `lumora-favorites`).
+3. Cloudflare → `lumorahub` project → **Settings → Bindings → Add → KV namespace**: variable name `FAVORITES`.
+4. Same project, **Settings → Variables and Secrets** (Production): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (as a secret), `SESSION_SECRET` (a long random string, as a secret). Optional: `ADMIN_LOGIN`.
+5. Redeploy (Deployments → latest → Retry deployment).
+
 ## Project structure
 
 | Folder | Contents |
@@ -129,5 +140,6 @@ Set up HTTP monitors for the site and the projects' live addresses on [UptimeRob
 | `src/views/` | Page bodies shared by both languages |
 | `src/components/`, `src/layouts/` | Header, footer, cards, shared page shell |
 | `src/lib/` | UI strings, GitHub data, project and post helpers |
+| `functions/` | Sign-in and featuring API (Cloudflare Pages Functions) |
 | `public/` | Logo, images, `robots.txt`, security headers |
 | `.github/workflows/` | Build check and daily rebuild |

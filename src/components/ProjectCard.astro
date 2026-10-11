@@ -4,13 +4,13 @@ import StatusBadge from './StatusBadge.astro';
 import RepoMeta from './RepoMeta.astro';
 import { projectUrl, type Lang } from '../lib/i18n';
 import { t } from '../lib/i18n';
-interface Props { lang: Lang; project: CollectionEntry<'projects'>; large?: boolean; hidden?: boolean; fav?: boolean }
-const { lang, project, large = false, hidden = false, fav = false } = Astro.props;
+interface Props { lang: Lang; project: CollectionEntry<'projects'>; large?: boolean; hidden?: boolean }
+const { lang, project, large = false, hidden = false } = Astro.props;
 const tr = t(lang);
 const p = project.data;
 const cover = p.screenshots[0];
 ---
-<div class="relative" data-slug={project.id} data-static-fav={fav ? '1' : undefined} hidden={hidden}>
+<div class="relative" data-slug={project.id} hidden={hidden}>
 <a
   href={projectUrl(lang, project.id)}
   class="card group flex h-full flex-col overflow-hidden"
