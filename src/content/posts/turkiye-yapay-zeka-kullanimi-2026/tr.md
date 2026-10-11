@@ -9,6 +9,8 @@ date: 2026-10-11
 
 Türkiye'de üretken yapay zeka kullananların oranı bir yılda **%19,2'den %37,6'ya** yükseldi.
 
+<figure class="chart" role="group" aria-label="Yıllık artış çubukları"><div class="chart-title">Üretken yapay zeka kullanan Türkiyeliler</div><p class="chart-sub">Yaklaşık 1 yılda</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">Önceki yıl</span><span class="chart-track"><span class="chart-fill dim" style="width:48%"></span></span><span class="chart-value">%19,2</span></div><div class="chart-row"><span class="chart-label">2026</span><span class="chart-track"><span class="chart-fill " style="width:94%"></span></span><span class="chart-value">%37,6</span></div></div><p class="chart-note">Kaynak: TÜİK 2026, CHIP Online üzerinden.</p></figure>
+
 ## Kim kullanıyor?
 
 **Yaşa göre:**
@@ -20,7 +22,11 @@ Türkiye'de üretken yapay zeka kullananların oranı bir yılda **%19,2'den %37
 - 55–64 yaş: %10,6
 - 65–74 yaş: %5,1
 
+<figure class="chart" role="group" aria-label="Yaşa göre kullanım çubukları"><div class="chart-title">Yaşa göre kullanım</div><p class="chart-sub">Üretken yapay zeka kullanan kişilerin oranı</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">16–24</span><span class="chart-track"><span class="chart-fill " style="width:92.71428571428572%"></span></span><span class="chart-value">%64,9</span></div><div class="chart-row"><span class="chart-label">25–34</span><span class="chart-track"><span class="chart-fill " style="width:79.57142857142857%"></span></span><span class="chart-value">%55,7</span></div><div class="chart-row"><span class="chart-label">35–44</span><span class="chart-track"><span class="chart-fill " style="width:54.42857142857142%"></span></span><span class="chart-value">%38,1</span></div><div class="chart-row"><span class="chart-label">45–54</span><span class="chart-track"><span class="chart-fill " style="width:29.42857142857143%"></span></span><span class="chart-value">%20,6</span></div><div class="chart-row"><span class="chart-label">55–64</span><span class="chart-track"><span class="chart-fill " style="width:15.14285714285714%"></span></span><span class="chart-value">%10,6</span></div><div class="chart-row"><span class="chart-label">65–74</span><span class="chart-track"><span class="chart-fill " style="width:7.285714285714286%"></span></span><span class="chart-value">%5,1</span></div></div><p class="chart-note">Kaynak: TÜİK 2026.</p></figure>
+
 **Eğitime göre:** Yükseköğretim mezunlarında %62,7; lise ve dengi okullarda %45,4; ortaokul düzeyinde %35,5; ilkokul düzeyinde %8,5.
+
+<figure class="chart" role="group" aria-label="Eğitime göre kullanım çubukları"><div class="chart-title">Eğitime göre kullanım</div><p class="chart-sub"></p><div class="chart-rows"><div class="chart-row"><span class="chart-label">Yükseköğretim</span><span class="chart-track"><span class="chart-fill " style="width:89.57142857142858%"></span></span><span class="chart-value">%62,7</span></div><div class="chart-row"><span class="chart-label">Lise ve dengi</span><span class="chart-track"><span class="chart-fill " style="width:64.85714285714286%"></span></span><span class="chart-value">%45,4</span></div><div class="chart-row"><span class="chart-label">Ortaokul</span><span class="chart-track"><span class="chart-fill " style="width:50.71428571428571%"></span></span><span class="chart-value">%35,5</span></div><div class="chart-row"><span class="chart-label">İlkokul</span><span class="chart-track"><span class="chart-fill " style="width:12.142857142857142%"></span></span><span class="chart-value">%8,5</span></div></div><p class="chart-note">Kaynak: TÜİK 2026.</p></figure>
 
 **Cinsiyete göre:** Kadınlarda %38,1, erkeklerde %37,2. Fark çok küçük.
 
@@ -29,6 +35,8 @@ Türkiye'de üretken yapay zeka kullananların oranı bir yılda **%19,2'den %37
 - Kişisel amaçlarla: %86,4
 - İş amaçlarıyla: %37,3
 - Eğitim amaçlarıyla: %32,6
+
+<figure class="chart" role="group" aria-label="Kullanım amacı çubukları"><div class="chart-title">Ne için kullanılıyor?</div><p class="chart-sub">Birden fazla amaç seçilebilir</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">Kişisel</span><span class="chart-track"><span class="chart-fill " style="width:86.4%"></span></span><span class="chart-value">%86,4</span></div><div class="chart-row"><span class="chart-label">İş</span><span class="chart-track"><span class="chart-fill " style="width:37.3%"></span></span><span class="chart-value">%37,3</span></div><div class="chart-row"><span class="chart-label">Eğitim</span><span class="chart-track"><span class="chart-fill " style="width:32.6%"></span></span><span class="chart-value">%32,6</span></div></div><p class="chart-note">Kaynak: TÜİK 2026.</p></figure>
 
 Yani kullanımın büyük kısmı iş değil, günlük hayat: soru sormak, yazmak, öğrenmek.
 
@@ -41,6 +49,8 @@ Kullanmayanların nedenleri:
 - Teknolojiden haberi yok: %12,4
 - Gizlilik ve güvenlik endişesi: %5,5
 
+<figure class="chart" role="group" aria-label="Kullanmama nedenleri çubukları"><div class="chart-title">Neden kullanmıyorlar?</div><p class="chart-sub">Kullanmayanların nedenleri</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">İhtiyaç duymuyor</span><span class="chart-track"><span class="chart-fill " style="width:90.42857142857143%"></span></span><span class="chart-value">%63,3</span></div><div class="chart-row"><span class="chart-label">Nasıl kullanılacağını bilmiyor</span><span class="chart-track"><span class="chart-fill " style="width:26.71428571428571%"></span></span><span class="chart-value">%18,7</span></div><div class="chart-row"><span class="chart-label">Teknolojiden haberi yok</span><span class="chart-track"><span class="chart-fill " style="width:17.714285714285715%"></span></span><span class="chart-value">%12,4</span></div><div class="chart-row"><span class="chart-label">Gizlilik ve güvenlik endişesi</span><span class="chart-track"><span class="chart-fill " style="width:7.857142857142857%"></span></span><span class="chart-value">%5,5</span></div></div><p class="chart-note">Kaynak: TÜİK 2026.</p></figure>
+
 Güvenlik kaygısının bu kadar düşük çıkması, asıl engelin korku değil bilgi ve ihtiyaç olduğunu gösteriyor.
 
 ## İşletmeler tarafında durum
@@ -50,6 +60,8 @@ Güvenlik kaygısının bu kadar düşük çıkması, asıl engelin korku değil
 - En çok kullanılan alanlar: pazarlama ve satış (%51), Ar-Ge ve yenilik (%46,3), üretim ve hizmet süreçleri (%43,4).
 - Açık kaynak yapay zeka yazılımı kullananlar %67,8, kapalı kaynak kullananlar %49,1, kendi geliştirdiğini kullananlar %32,1.
 - Yapay zeka kullanmayı planlayanlar yalnızca %8,3.
+
+<figure class="chart" role="group" aria-label="İşletme kullanım çubukları"><div class="chart-title">İşletmelerde yapay zeka kullanımı</div><p class="chart-sub">Herhangi bir yapay zeka teknolojisi kullanan işletme oranı</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">2021</span><span class="chart-track"><span class="chart-fill dim" style="width:16.875%"></span></span><span class="chart-value">%2,7</span></div><div class="chart-row"><span class="chart-label">2025</span><span class="chart-track"><span class="chart-fill dim" style="width:46.875%"></span></span><span class="chart-value">%7,5</span></div><div class="chart-row"><span class="chart-label">2026</span><span class="chart-track"><span class="chart-fill " style="width:87.5%"></span></span><span class="chart-value">%14</span></div></div><p class="chart-note">Kaynak: TÜİK 2026.</p></figure>
 
 Engeller sıralaması da dikkat çekici: nitelikli personel eksikliği (%72,3), yasal belirsizlik (%66,4), veri güvenliği ve gizlilik riskleri (%65,4), mevcut sistemlerle uyumsuzluk (%65,2) ve maliyet (%65).
 

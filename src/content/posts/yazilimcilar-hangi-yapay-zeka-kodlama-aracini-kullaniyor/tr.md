@@ -12,6 +12,8 @@ Yazılım dünyasında "yapay zeka kullanıyor musun?" sorusu yerini "hangisini 
 
 Yani artık bu araçlar bir merak ya da deney değil, günlük iş akışının parçası.
 
+<figure class="chart" role="group" aria-label="Kullanım oranları"><div class="chart-title">Günlük iş akışında yapay zeka</div><p class="chart-sub">Profesyonel geliştiriciler</p><div class="chart-stats"><div class="chart-stat"><b>%90</b><span>en az haftada bir yapay zeka kodlama ajanı kullanıyor</span></div><div class="chart-stat"><b>%68</b><span>her gün kullanıyor</span></div></div></figure>
+
 ## Hangi araç ne kadar kullanılıyor?
 
 İşyerinde kullanım oranları:
@@ -25,6 +27,8 @@ Yani artık bu araçlar bir merak ya da deney değil, günlük iş akışının 
 | JetBrains AI (IDE'ler ve/veya Junie) | ~%9 | n/a |
 | OpenCode | %7 | n/a |
 | Google Antigravity | %6 | Sabit |
+
+<figure class="chart" role="group" aria-label="Araç kullanım çubukları"><div class="chart-title">Yapay zeka kodlama araçlarının işyerinde kullanımı</div><p class="chart-sub">JetBrains Developer Ecosystem Survey 2026, geliştiricilerin yüzdesi</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">Claude Code</span><span class="chart-track"><span class="chart-fill " style="width:97.5%"></span></span><span class="chart-value">~%39</span></div><div class="chart-row"><span class="chart-label">GitHub Copilot</span><span class="chart-track"><span class="chart-fill " style="width:52.5%"></span></span><span class="chart-value">%21</span></div><div class="chart-row"><span class="chart-label">Codex</span><span class="chart-track"><span class="chart-fill " style="width:40%"></span></span><span class="chart-value">%16</span></div><div class="chart-row"><span class="chart-label">Cursor</span><span class="chart-track"><span class="chart-fill " style="width:30%"></span></span><span class="chart-value">%12</span></div><div class="chart-row"><span class="chart-label">JetBrains AI</span><span class="chart-track"><span class="chart-fill " style="width:22.5%"></span></span><span class="chart-value">~%9</span></div><div class="chart-row"><span class="chart-label">OpenCode</span><span class="chart-track"><span class="chart-fill " style="width:17.5%"></span></span><span class="chart-value">%7</span></div><div class="chart-row"><span class="chart-label">Google Antigravity</span><span class="chart-track"><span class="chart-fill " style="width:15%"></span></span><span class="chart-value">%6</span></div></div><p class="chart-note">Kaynak: JetBrains Blog, AI Coding Agents: Adoption Trends (Ağustos 2026). Anket JetBrains’in kendi kitlesine yapıldı.</p></figure>
 
 ## Öne çıkan hikâyeler
 
