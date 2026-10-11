@@ -60,5 +60,38 @@
   "note": {
     "tr": "Telefon ile bilgisayar aynı Wi-Fi'de olmalı. Kilitle, uyut ve kapat gibi sistem komutları şimdilik yalnızca Windows'ta çalışır.",
     "en": "Your phone and computer must be on the same Wi-Fi. System commands such as lock, sleep and shut down currently work only on Windows."
-  }
+  },
+  "screenshots": [
+    {
+      "src": "/projects/files-telefon.webp",
+      "alt": {
+        "tr": "Telefon sayfası: Dosya, Kumanda ve Ekran sekmeleri",
+        "en": "Phone page: Files, Remote and Screen tabs"
+      }
+    },
+    {
+      "src": "/projects/files-pencere.webp",
+      "alt": {
+        "tr": "Bilgisayardaki pencere: QR kod, PIN, gelen ve gönderilen dosyalar",
+        "en": "The desktop window: QR code, PIN, received and shared files"
+      },
+      "portrait": true
+    },
+    {
+      "src": "/projects/files-kumanda.webp",
+      "alt": {
+        "tr": "Fare ve klavye, bilgisayar komutları ve programlar, PIN ile giriş",
+        "en": "Mouse and keyboard, system commands and programs, PIN sign-in"
+      },
+      "portrait": true
+    },
+    {
+      "src": "/projects/files-ekran.webp",
+      "alt": {
+        "tr": "Bilgisayar ekranını telefonda canlı izleme",
+        "en": "Watching the computer screen live on the phone"
+      },
+      "portrait": true
+    }
+  ]
 }
