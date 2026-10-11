@@ -123,3 +123,37 @@ html[data-admin='1'] [data-admin-only] { display: revert !important; }
 .prose-lumora table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
 .prose-lumora th, .prose-lumora td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--card-border); }
 .prose-lumora th { color: var(--color-white); font-weight: 600; }
+
+/* Blog grafikleri: yazı içine yerleştirilen, tema ile uyumlu çubuk grafikler. */
+.prose-lumora .chart {
+  --c1: #3987e5; --c2: #d95926; --c3: #199e70; --c-other: #6b6a73;
+  --track: rgb(255 255 255 / 0.07);
+  margin: 2rem 0; padding: 1.25rem 1.25rem 1rem; border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-white) 4%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-white) 10%, transparent);
+}
+html[data-theme='light'] .prose-lumora .chart {
+  --c1: #2a78d6; --c2: #eb6834; --c3: #1baf7a; --c-other: #8a8994;
+  --track: rgb(20 17 43 / 0.07);
+}
+.chart-title { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--color-white); }
+.chart-sub { font-size: 0.85rem; margin: 0.15rem 0 1rem; color: color-mix(in srgb, var(--color-white) 60%, transparent); }
+.chart-rows { display: grid; gap: 0.5rem; }
+.chart-row { display: grid; grid-template-columns: minmax(5.5rem, 28%) 1fr 4.5rem; align-items: center; gap: 0.75rem; font-size: 0.9rem; }
+.chart-label { color: color-mix(in srgb, var(--color-white) 78%, transparent); }
+.chart-track { height: 0.9rem; background: var(--track); border-radius: 0.25rem 0.5rem 0.5rem 0.25rem; overflow: hidden; }
+.chart-fill { display: block; height: 100%; background: var(--c1); border-radius: 0.25rem 0.5rem 0.5rem 0.25rem; }
+.chart-fill.c2 { background: var(--c2); } .chart-fill.c3 { background: var(--c3); } .chart-fill.dim { background: var(--c-other); }
+.chart-value { text-align: right; font-variant-numeric: tabular-nums; color: var(--color-white); font-weight: 600; }
+.chart-stack { display: flex; gap: 2px; height: 1.6rem; border-radius: 0.5rem; overflow: hidden; }
+.chart-stack span { display: block; height: 100%; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin-top: 0.9rem; font-size: 0.9rem; list-style: none; padding: 0; }
+.chart-legend li { display: flex; align-items: center; gap: 0.45rem; margin: 0; }
+.chart-legend i { width: 0.7rem; height: 0.7rem; border-radius: 0.2rem; display: inline-block; }
+.chart-legend b { color: var(--color-white); }
+.chart-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.75rem; }
+.chart-stat { padding: 0.75rem 0.9rem; border-radius: 0.75rem; background: var(--track); }
+.chart-stat b { display: block; font-family: var(--font-display); font-size: 1.9rem; line-height: 1.1; color: var(--color-white); }
+.chart-stat span { font-size: 0.85rem; color: color-mix(in srgb, var(--color-white) 65%, transparent); }
+.chart-note { font-size: 0.8rem; margin: 0.9rem 0 0; color: color-mix(in srgb, var(--color-white) 50%, transparent); }
+@media (max-width: 480px) { .chart-row { grid-template-columns: 1fr 4rem; } .chart-row .chart-label { grid-column: 1 / -1; } }
