@@ -1,8 +1,56 @@
+<div align="center">
+
 # Lumora
 
-Lumora projelerinin vitrin sitesi: LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, Lumora Forge ve Lumora Academy.
+**Lumora projelerinin vitrin sitesi: oyunlar, sosyal ağlar, gerçek zamanlı araçlar ve daha fazlası tek yerde. Türkçe ve İngilizce, koyu ve açık tema, hızlı ve statik.**
 
-Türkçe ve İngilizce, statik (Astro + Tailwind CSS), Cloudflare Pages üzerinde yayınlanır.
+**[Siteyi aç → lumorahub.pages.dev](https://lumorahub.pages.dev)**
+
+Türkçe · [English](README.en.md)
+
+<p>
+  <img src="https://img.shields.io/badge/Astro-5-BC52EE?logo=astro&logoColor=white" alt="Astro 5">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Cloudflare%20Pages-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Pages">
+  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="GitHub Actions">
+</p>
+
+</div>
+
+Lumora, geliştirdiğimiz projelerin bir arada durduğu ana sitedir. Her projenin kendi sayfasında tanıtım metni, ekran görüntüleri, özellikler, kullanılan teknolojiler ve "Siteye git / İndir / Kaynak kod" bağlantıları bulunur. Yıldız sayısı, son güncelleme ve son sürüm bilgisi GitHub'dan otomatik çekilir ve her gün tazelenir. Site tamamen statiktir: çökecek bir sunucu yoktur, Cloudflare'in dünya çapındaki ağından servis edilir.
+
+## Ekran görüntüleri
+
+<p align="center">
+  <img src="docs/screenshots/anasayfa.jpg" alt="Ana sayfa: tanıtım ve öne çıkan projeler" width="100%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/projeler.jpg" alt="Projeler: kategori ve duruma göre süzülebilen liste" width="49%">
+  <img src="docs/screenshots/proje-detay.jpg" alt="Proje sayfası: açıklama, özellikler ve teknolojiler" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/acik-tema.jpg" alt="Açık tema" width="49%">
+  <img src="docs/screenshots/ingilizce.jpg" alt="İngilizce sürüm" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/mobil.jpg" alt="Telefonda ana sayfa" width="30%">
+</p>
+
+<p align="center"><sub>Ana sayfa · Projeler · Proje sayfası · Açık tema · İngilizce sürüm · Mobil görünüm</sub></p>
+
+## Neler var
+
+- **Projeler:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink ve LumoraTools yayında; Lumora Forge ve Lumora Academy geliştiriliyor.
+- **İki dil:** Türkçe `/`, İngilizce `/en/`. Sağ üstteki TR | EN düğmesi aynı sayfanın diğer dilini açar, seçim hatırlanır ve ilk ziyarette tarayıcı diline göre yönlendirilir.
+- **Koyu ve açık tema:** sağ üstteki düğmeyle değişir, seçim tarayıcıda saklanır.
+- **Blog:** duyurular ve sürüm notları için, yazılar Markdown dosyasıdır.
+- **GitHub bilgileri:** yıldız, son güncelleme ve son sürüm derleme sırasında çekilir; günlük otomatik yeniden derleme ile güncel kalır.
+- **SEO ve paylaşım:** sitemap, hreflang, Open Graph görseli ve güvenlik başlıkları hazırdır.
+- **Hızlı ve hafif:** sayfalar önceden HTML olarak üretilir, çerez ve takip betiği yoktur.
 
 ## Geliştirme
 
@@ -11,6 +59,8 @@ npm install
 npm run dev      # http://localhost:4321
 npm run build    # çıktı: dist/
 ```
+
+Node 22 gerekir (`.nvmrc`).
 
 ## Yeni proje eklemek
 
@@ -23,7 +73,7 @@ npm run build    # çıktı: dist/
 | `order` | Sıralama |
 | `repo` | `kullanici/depo`; yıldız sayısı, son güncelleme ve son sürüm buradan otomatik çekilir |
 | `links` | "Siteye git", "İndir" gibi butonlar; ilki ana buton olur |
-| `screenshots` | `public/projects/` altındaki görseller; ilki kart kapağı olur. Yoksa kartta ikon ve renk gösterilir |
+| `screenshots` | `public/projects/` altındaki görseller; ilki kart kapağı olur. Yoksa kartta ikon ve renk gösterilir. Telefon görüntüleri için `"portrait": true` |
 | `accent`, `icon` | Projenin vurgu rengi ve emojisi |
 
 Metin alanlarının hepsi `{ "tr": "...", "en": "..." }` şeklindedir. Arayüz metinleri `src/lib/i18n.ts` içindedir.
@@ -46,7 +96,7 @@ Yazılar `/blog/<adres>/` ve `/en/blog/<adres>/` altında yayınlanır, ana sayf
 
 ## Tema
 
-Sağ üstteki düğmeyle koyu/açık tema değiştirilir, seçim tarayıcıda hatırlanır. Açık tema `src/styles/global.css` içinde `html[data-theme='light']` bloğundadır.
+Açık tema `src/styles/global.css` içinde `html[data-theme='light']` bloğundadır; renkler değişken olarak tanımlıdır, mevcut Tailwind sınıfları temayla birlikte kendiliğinden tersine döner.
 
 ## Yayına alma (Cloudflare Pages, ücretsiz)
 
@@ -69,3 +119,15 @@ Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değ
 ### 7/24 izleme
 
 [UptimeRobot](https://uptimerobot.com) (ücretsiz) üzerinde site ve projelerin canlı adresleri için HTTP monitörü kur; kesinti olduğunda e-posta veya Telegram bildirimi gelir ve ücretsiz bir durum sayfası açılabilir.
+
+## Proje yapısı
+
+| Klasör | İçerik |
+| --- | --- |
+| `src/content/` | Projeler (JSON) ve blog yazıları (Markdown) |
+| `src/pages/` | Türkçe sayfalar; `src/pages/en/` altında İngilizce karşılıkları |
+| `src/views/` | İki dilin paylaştığı sayfa gövdeleri |
+| `src/components/`, `src/layouts/` | Başlık, alt bilgi, kartlar, ortak sayfa iskeleti |
+| `src/lib/` | Arayüz metinleri, GitHub verisi, proje ve yazı yardımcıları |
+| `public/` | Logo, görseller, `robots.txt`, güvenlik başlıkları |
+| `.github/workflows/` | Derleme kontrolü ve günlük yeniden derleme |
