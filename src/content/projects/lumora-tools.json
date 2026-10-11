@@ -1,0 +1,124 @@
+{
+  "name": "LumoraTools",
+  "order": 5,
+  "featured": true,
+  "status": "live",
+  "category": {
+    "tr": "Araç",
+    "en": "Tool"
+  },
+  "tagline": {
+    "tr": "Tek pencerede 14 yerel Windows aracı: dosya düzenleme, arama, temizlik, sistem izleme ve görevler. Tek .exe, otomatik güncelleme.",
+    "en": "14 local Windows tools in a single window: file organizing, search, cleanup, system monitoring and tasks. One .exe, auto-updating."
+  },
+  "description": {
+    "tr": "Küçük ama işe yarayan araçlardan oluşan bir masaüstü seti. Soldaki menüden bir araç seçilir; hepsi aynı pencerede ve aynı temayla çalışır. Her şey yerel çalışır: hesap yok, bulut yok, veriler yalnızca senin bilgisayarında durur. Uygulama tek bir .exe olarak dağıtılır ve açılışta GitHub Releases'tan kendini günceller (indirme https üzerinden yapılır ve SHA-256 özeti doğrulanmadan uygulanmaz). Kod imzalı olmadığı için Windows SmartScreen ilk açılışta uyarı gösterebilir.",
+    "en": "A desktop suite of small, useful tools. Pick a tool from the menu on the left; they all run in the same window with the same theme. Everything runs locally: no account, no cloud, your data stays on your computer. The app ships as a single .exe and updates itself from GitHub Releases on launch (downloads use https and are applied only after the SHA-256 digest is verified). The code is not signed, so Windows SmartScreen may show a warning on first launch."
+  },
+  "features": {
+    "tr": [
+      "Yerel Arama: dosya içeriğinde anında arama (metin, kod, .docx, .pdf)",
+      "Dosya Düzenleyici: önizleme, toplu taşıma ve Geri al",
+      "Boyut Analizcisi, Sistem Temizleyici ve Program Kaldırıcı",
+      "Sistem Bilgisi, İşlem Yöneticisi ve Ağ Araçları",
+      "Pano Geçmişi, Yapılacaklar ve Zaman Takibi",
+      "12 tema ve sürükleyerek düzenlenen menü",
+      "Hesap ve bulut yok, veriler yalnızca bilgisayarında",
+      "Güvenli otomatik güncelleme (SHA-256 doğrulaması)"
+    ],
+    "en": [
+      "Local Search: instant search inside file contents (text, code, .docx, .pdf)",
+      "File Organizer: preview, bulk move and Undo",
+      "Size Analyzer, System Cleaner and Program Uninstaller",
+      "System Info, Process Manager and Network Tools",
+      "Clipboard History, To-do and Time Tracking",
+      "12 themes and a drag-to-reorder menu",
+      "No account, no cloud: data stays on your computer",
+      "Safe auto-update (SHA-256 verified)"
+    ]
+  },
+  "tech": [
+    "Python",
+    "customtkinter",
+    "SQLite FTS5",
+    "PyInstaller",
+    "pytest"
+  ],
+  "repo": "highlvmami/LumoraTools",
+  "links": [
+    {
+      "label": {
+        "tr": "Windows için indir",
+        "en": "Download for Windows"
+      },
+      "url": "https://github.com/highlvmami/LumoraTools/releases/latest"
+    }
+  ],
+  "accent": "#14b8a6",
+  "icon": "🧰",
+  "screenshots": [
+    {
+      "src": "/projects/tools-ana-sayfa.jpg",
+      "alt": {
+        "tr": "Ana sayfa: kategorilere ayrılmış araçlar",
+        "en": "Home: tools grouped by category"
+      }
+    },
+    {
+      "src": "/projects/tools-dosya-duzenleyici.jpg",
+      "alt": {
+        "tr": "Dosya Düzenleyici: neyin nereye taşınacağı önizlemede",
+        "en": "File Organizer: a preview of what moves where"
+      }
+    },
+    {
+      "src": "/projects/tools-boyut-analizcisi.jpg",
+      "alt": {
+        "tr": "Boyut Analizcisi",
+        "en": "Size Analyzer"
+      }
+    },
+    {
+      "src": "/projects/tools-yapilacaklar.jpg",
+      "alt": {
+        "tr": "Yapılacaklar",
+        "en": "To-do"
+      }
+    },
+    {
+      "src": "/projects/tools-sistem-bilgisi.jpg",
+      "alt": {
+        "tr": "Sistem Bilgisi",
+        "en": "System Info"
+      }
+    },
+    {
+      "src": "/projects/tools-ayarlar.jpg",
+      "alt": {
+        "tr": "Ayarlar: 12 tema ve menü düzeni",
+        "en": "Settings: 12 themes and menu layout"
+      }
+    },
+    {
+      "src": "/projects/tools-rehberler.jpg",
+      "alt": {
+        "tr": "Rehberler",
+        "en": "Guides"
+      }
+    },
+    {
+      "src": "/projects/tools-tema-gun-batimi.jpg",
+      "alt": {
+        "tr": "Gün Batımı teması",
+        "en": "Sunset theme"
+      }
+    },
+    {
+      "src": "/projects/tools-tema-gunduz.jpg",
+      "alt": {
+        "tr": "Gündüz teması",
+        "en": "Day theme"
+      }
+    }
+  ]
+}
