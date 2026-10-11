@@ -42,16 +42,16 @@ const alternates = { tr: routes.home.tr, en: routes.home.en };
       </div>
       <a href={routes.projects[lang]} class="hidden text-sm text-violet-300 hover:text-violet-200 sm:block">{tr('home.all')} →</a>
     </div>
-    <div class="grid gap-5 sm:grid-cols-2">
-      {featured.map((p) => <ProjectCard lang={lang} project={p} large />)}
+    <div class="grid gap-5 sm:grid-cols-2" data-fav-grid="featured">
+      {projects.map((p) => <ProjectCard lang={lang} project={p} large fav={Boolean(p.data.featured)} hidden={!p.data.featured} />)}
     </div>
   </section>
 
   {others.length > 0 && (
-    <section class="mx-auto mt-16 max-w-6xl px-4 sm:px-6" aria-labelledby="more">
+    <section class="mx-auto mt-16 max-w-6xl px-4 sm:px-6" aria-labelledby="more" data-fav-more>
       <h2 id="more" class="font-display text-2xl font-semibold">{tr('home.more')}</h2>
       <p class="mb-6 mt-1 text-sm text-white/55">{tr('home.moreText')}</p>
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-fav-grid="more">
         {others.map((p) => <ProjectCard lang={lang} project={p} />)}
       </div>
     </section>
