@@ -14,6 +14,8 @@ Yapay zeka asistanı kullanımı içindeki paylar şöyle:
 - **Claude:** %10,3
 - **Grok, Perplexity, DeepSeek ve Meta AI:** her biri %5'in altında
 
+<figure class="chart" role="group" aria-label="Kullanım payı çubuğu"><div class="chart-title">Yapay zeka asistanı kullanım payı</div><p class="chart-sub">Mayıs 2026 sonuna kadar, uygulama kullanımı üzerinden</p><div class="chart-stack" role="img" aria-label="ChatGPT %46,4, Gemini %27,7, Claude %10,3, Diğerleri %15,6"><span style="flex:46.4;background:var(--c1)" title="ChatGPT: %46,4"></span><span style="flex:27.7;background:var(--c2)" title="Gemini: %27,7"></span><span style="flex:10.3;background:var(--c3)" title="Claude: %10,3"></span><span style="flex:15.6;background:var(--c-other)" title="Diğerleri: %15,6"></span></div><ul class="chart-legend"><li><i style="background:var(--c1)"></i>ChatGPT <b>%46,4</b></li><li><i style="background:var(--c2)"></i>Gemini <b>%27,7</b></li><li><i style="background:var(--c3)"></i>Claude <b>%10,3</b></li><li><i style="background:var(--c-other)"></i>Diğerleri <b>%15,6</b></li></ul><p class="chart-note">Kaynak: Sensor Tower, State of AI Report for 2026 (TechCrunch üzerinden). Diğerleri = %100’e tamamlanan fark; Grok, Perplexity, DeepSeek ve Meta AI’nin her biri %5’in altında.</p></figure>
+
 En dikkat çekici nokta, ChatGPT'nin payının Ocak 2026'ya kadar %50'nin üzerinde olması ve ilk kez bu seviyenin altına inmesi. Hâlâ açık ara önde, ama rakipler hızla yaklaşıyor.
 
 ## Aylık aktif kullanıcılar
@@ -24,6 +26,8 @@ Aynı rapora göre aylık aktif kullanıcı sayıları:
 - **Gemini:** 662 milyon
 - **Claude:** 245 milyon
 
+<figure class="chart" role="group" aria-label="Aylık aktif kullanıcı çubukları"><div class="chart-title">Aylık aktif kullanıcılar</div><p class="chart-sub">Milyon kullanıcı</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">ChatGPT</span><span class="chart-track"><span class="chart-fill " style="width:100%"></span></span><span class="chart-value">1.100+</span></div><div class="chart-row"><span class="chart-label">Gemini</span><span class="chart-track"><span class="chart-fill c2" style="width:60.18181818181818%"></span></span><span class="chart-value">662</span></div><div class="chart-row"><span class="chart-label">Claude</span><span class="chart-track"><span class="chart-fill c3" style="width:22.272727272727273%"></span></span><span class="chart-value">245</span></div></div><p class="chart-note">ChatGPT için “1,1 milyardan fazla” değeri 1.100 olarak çizildi.</p></figure>
+
 ChatGPT, 1 milyar aylık kullanıcıya ulaşan en hızlı uygulama oldu. Küçük bir not: OpenAI kendi tarafında aylık değil haftalık aktif kullanıcı açıklıyor; en son açıkladığı rakam Şubat 2026'da 900 milyon haftalık kullanıcıydı.
 
 ## Para ve zaman nereye gidiyor?
@@ -32,6 +36,10 @@ ChatGPT, 1 milyar aylık kullanıcıya ulaşan en hızlı uygulama oldu. Küçü
 - Uygulamalara yapılan harcamanın 4,2 milyar doları aştığı tahmin ediliyor; 2025'in ilk yarısında bu rakam 1,83 milyar dolardı.
 - Claude kullanıcılarının %13'ü ücretli abonelik kullanıyor.
 - ChatGPT'de Şubat 2026'da başlayan reklamlar, Mayıs'a gelindiğinde günlük kullanıcıların ortalama %17'sine gösteriliyordu.
+
+<figure class="chart" role="group" aria-label="Harcanan süre çubukları"><div class="chart-title">Yapay zeka uygulamalarına harcanan süre</div><p class="chart-sub">2025’in ilk yarısı ve 2026’nın ilk yarısı, milyar saat</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">2025 ilk yarı</span><span class="chart-track"><span class="chart-fill dim" style="width:47.77777777777777%"></span></span><span class="chart-value">17,2</span></div><div class="chart-row"><span class="chart-label">2026 ilk yarı</span><span class="chart-track"><span class="chart-fill " style="width:100%"></span></span><span class="chart-value">36</span></div></div><p class="chart-note">Kaynak: Sensor Tower.</p></figure>
+
+<figure class="chart" role="group" aria-label="Harcama çubukları"><div class="chart-title">Uygulamalara yapılan harcama</div><p class="chart-sub">2025’in ilk yarısı ve 2026’nın ilk yarısı, milyar dolar</p><div class="chart-rows"><div class="chart-row"><span class="chart-label">2025 ilk yarı</span><span class="chart-track"><span class="chart-fill dim" style="width:43.57142857142857%"></span></span><span class="chart-value">1,83</span></div><div class="chart-row"><span class="chart-label">2026 ilk yarı (tahmin)</span><span class="chart-track"><span class="chart-fill " style="width:100%"></span></span><span class="chart-value">4,2+</span></div></div><p class="chart-note">Kaynak: Sensor Tower; 2026 değeri tahmindir.</p></figure>
 
 ## Bu rakamları nasıl okumalı?
 
