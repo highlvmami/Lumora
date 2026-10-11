@@ -1,0 +1,64 @@
+{
+  "name": "LumoraFiles",
+  "order": 6,
+  "featured": true,
+  "status": "live",
+  "category": {
+    "tr": "Araç",
+    "en": "Tool"
+  },
+  "tagline": {
+    "tr": "Aynı Wi-Fi'deki telefonla bilgisayar arasında dosya aktar, telefonu bilgisayarın uzaktan kumandasına çevir. Uygulama kurmak da internet de gerekmez.",
+    "en": "Move files between your phone and computer on the same Wi-Fi, and turn your phone into a remote for the computer. No app install, no internet needed."
+  },
+  "description": {
+    "tr": "Bilgisayarda küçük bir pencere açılır ve bir QR kod, adres ve PIN gösterir. QR'ı telefonla okutunca tarayıcıda bir sayfa açılır; oradan dosya gönderir, bilgisayardan dosya indirir, ses ve sunumu yönetir, fareyi ve klavyeyi kullanır, ekranı canlı izlersin. Her şey yerel ağda kalır, hiçbir veri internete çıkmaz. Her açılışta yeni bir PIN üretilir ve uzaktan kontrol pencereden tek tıkla kapatılabilir. Windows'ta LumoraFiles.bat dosyasına çift tıklamak yeter, gerekenleri ilk açılışta kendisi kurar (Python 3.10+ gerekir).",
+    "en": "A small window opens on the computer showing a QR code, an address and a PIN. Scan the QR with your phone and a page opens in the browser: send files, download files from the computer, control volume and presentations, use the mouse and keyboard, and watch the screen live. Everything stays on your local network; no data goes to the internet. A new PIN is generated on every launch, and remote control can be switched off from the window with one click. On Windows, double-click LumoraFiles.bat and it sets itself up on first launch (requires Python 3.10+)."
+  },
+  "features": {
+    "tr": [
+      "Telefondan bilgisayara çoklu dosya gönderimi, dosya başına ilerleme çubuğu",
+      "Bilgisayardan telefona: dosyayı pencereye sürükle-bırak",
+      "Medya ve ses kumandası: oynat/durdur, sonraki, ses aç/kıs",
+      "Sunum kumandası: ileri, geri, başlat, karart, bitir",
+      "Dokunmatik fare ve Türkçe karakterli klavye",
+      "Bilgisayar ekranını telefonda canlı izleme, dokunarak tıklama",
+      "Kilitle, uyut, kapat ve listeden program açma",
+      "Her açılışta yeni PIN, QR ile giriş ve deneme sınırı"
+    ],
+    "en": [
+      "Send multiple files from phone to computer, with a progress bar per file",
+      "Computer to phone: drag and drop files onto the window",
+      "Media and volume remote: play/pause, next, volume up/down",
+      "Presentation remote: next, previous, start, blank, end",
+      "Touchpad mouse and a keyboard with full Turkish characters",
+      "Watch the computer screen live on your phone and tap to click",
+      "Lock, sleep, shut down, and open programs from a list",
+      "A new PIN on every launch, QR sign-in and a retry limit"
+    ]
+  },
+  "tech": [
+    "Python",
+    "Flask",
+    "Tkinter",
+    "JavaScript",
+    "pynput",
+    "mss"
+  ],
+  "repo": "highlvmami/LumoraFiles",
+  "links": [
+    {
+      "label": {
+        "tr": "İndir (ZIP)",
+        "en": "Download (ZIP)"
+      },
+      "url": "https://github.com/highlvmami/LumoraFiles/archive/refs/heads/main.zip"
+    }
+  ],
+  "accent": "#6366f1",
+  "icon": "📲",
+  "note": {
+    "tr": "Telefon ile bilgisayar aynı Wi-Fi'de olmalı. Kilitle, uyut ve kapat gibi sistem komutları şimdilik yalnızca Windows'ta çalışır.",
+    "en": "Your phone and computer must be on the same Wi-Fi. System commands such as lock, sleep and shut down currently work only on Windows."
+  }
+}
