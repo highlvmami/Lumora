@@ -131,6 +131,10 @@ The code is Cloudflare Pages Functions under `functions/` (`/api/auth/*`, `/api/
 4. Same project, **Settings → Variables and Secrets** (Production): `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (as a secret), `SESSION_SECRET` (a long random string, as a secret). Optional: `ADMIN_LOGIN`.
 5. Redeploy (Deployments → latest → Retry deployment).
 
+### Admin blog editor
+
+Once signed in, a **+ New post** button appears on the blog page. The editor takes a title, short description, language, address and Markdown text, with a live preview. Posts are saved to the same Cloudflare KV (the `FAVORITES` binding) under `post:<address>`, appear in the blog list sorted by date among the static posts, and admins see **Edit** and **Delete** buttons on the post page. No extra setup is needed. The post page is rendered client-side at `/blog/post/?s=<address>` and is hidden from search engines; for permanent, searchable posts keep adding Markdown files under `src/content/posts/`. Because of the security headers (CSP), posts can only show images served from the site itself (such as `/projects/...`).
+
 ## Project structure
 
 | Folder | Contents |

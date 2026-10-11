@@ -11,7 +11,9 @@ export interface Env {
 // Cloudflare Workers tiplerini eklememek için KV'nin kullandığımız küçük kısmı.
 export interface KVNamespace {
   get(key: string): Promise<string | null>;
-  put(key: string, value: string): Promise<void>;
+  put(key: string, value: string, options?: { metadata?: unknown }): Promise<void>;
+  delete(key: string): Promise<void>;
+  list(options?: { prefix?: string }): Promise<{ keys: { name: string; metadata?: unknown }[] }>;
 }
 
 export const SESSION_COOKIE = 'lumora_session';
@@ -89,6 +91,15 @@ export function sessionCookies(token: string): string[] {
 
 export function clearSessionCookies(): string[] {
   return [cookie(SESSION_COOKIE, '', { maxAge: 0 }), cookie(FLAG_COOKIE, '', { maxAge: 0, httpOnly: false })];
+}
+
+// Yazma isteklerinde ortak kontrol: giriş yapmış yönetici ve aynı site kökeni. Başarısızsa yanıtı döndürür.
+export async function requireAdmin(request: Request, env: Env): Promise<Response | null> {
+  if (!(await readSession(env, request))) return json({ error: 'yetkisiz' }, 401);
+  const origin = request.headers.get('Origin');
+  if (origin && origin !== new URL(request.url).origin) return json({ error: 'yasak' }, 403);
+  if (!env.FAVORITES) return json({ error: 'KV ayarlanmamış' }, 503);
+  return null;
 }
 
 export function safeNext(value: string | null): string {
