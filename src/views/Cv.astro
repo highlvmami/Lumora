@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import { getProjects } from '../lib/projects';
+import { cv } from '../data/cv';
+import { routes, projectUrl, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const projects = await getProjects();
+const skills = new Map<string, number>();
+for (const p of projects) for (const s of p.data.tech) skills.set(s, (skills.get(s) ?? 0) + 1);
+const skillList = [...skills.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+<Base lang={lang} current="cv" title={tr('cv.title')} alternates={{ tr: routes.cv.tr, en: routes.cv.en }}>
+  <section class="cv mx-auto max-w-4xl px-4 pt-14 sm:px-6">
+    <div class="cv-top">
+      <div>
+        <p class="prompt mb-3"><b>~/cv</b> <i>main</i> $ cat cv.md</p>
+        <h1 class="hero-title !text-[clamp(1.8rem,5vw,3rem)]"><span class="hl hl-accent" data-n="1">{cv.name}</span></h1>
+        <p class="mt-2 pl-[2.4rem] font-mono text-sm text-white/70">{cv.role[lang]}</p>
+      </div>
+      <button type="button" class="btn-ghost no-print" onclick="window.print()">{tr('cv.print')}</button>
+    </div>
+    <p class="comment mt-6">{tr('cv.text')}</p>
+
+    {cv.summary && (
+      <div class="cv-block"><h2 class="head2">{tr('cv.about')}</h2><p class="mt-3 text-white/75">{cv.summary[lang]}</p></div>
+    )}
+
+    {cv.experience.length > 0 && (
+      <div class="cv-block">
+        <h2 class="head2">{tr('cv.experience')}</h2>
+        <ul class="cv-list">
+          {cv.experience.map((e) => (
+            <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div>{e.text && <p class="mt-1 text-white/70">{e.text[lang]}</p>}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {cv.education.length > 0 && (
+      <div class="cv-block">
+        <h2 class="head2">{tr('cv.education')}</h2>
+        <ul class="cv-list">
+          {cv.education.map((e) => (
+            <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="cv-block">
+      <h2 class="head2">{tr('cv.skills')}</h2>
+      <p class="mt-4 flex flex-wrap gap-2">
+        {skillList.map(([name, n]) => <span class="chip">{name}<small>×{n}</small></span>)}
+      </p>
+    </div>
+
+    <div class="cv-block">
+      <h2 class="head2">{tr('cv.projects')}</h2>
+      <ul class="cv-list">
+        {projects.map((p) => (
+          <li>
+            <div class="cv-row"><a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a><span>{p.data.status}</span></div>
+            <div class="cv-sub">{p.data.tagline[lang]}</div>
+            <div class="cv-sub">{p.data.tech.join(' · ')}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="cv-block">
+      <h2 class="head2">{tr('cv.links')}</h2>
+      <p class="mt-3 font-mono text-sm"><a href={cv.github} rel="noopener" style="color:var(--brand)">github.com/highlvmami</a></p>
+    </div>
+  </section>
+</Base>

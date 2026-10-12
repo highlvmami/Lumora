@@ -12,66 +12,58 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
 ---
 <Base lang={lang} current="projects" title={p.name} description={p.tagline[lang]} alternates={alternates} image={p.screenshots[0]?.src}>
   <article class="mx-auto max-w-5xl px-4 pt-12 sm:px-6" style={`--accent:${p.accent}`}>
-    <a href={routes.projects[lang]} class="text-sm text-white/50 hover:text-white">← {tr('project.back')}</a>
+    <a href={routes.projects[lang]} class="kicker hover:text-white">← {tr('project.back')}</a>
 
-    <header class="relative mt-6 overflow-hidden rounded-3xl border border-white/10 p-7 sm:p-10" style={`background: radial-gradient(80% 120% at 0% 0%, ${p.accent}40, transparent 60%), var(--color-ink-900)`}>
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="text-4xl" aria-hidden="true">{p.icon}</span>
+    <header class="term mt-8 !font-sans p-6 sm:p-10" style="border-color:var(--line-strong);background:var(--surface)">
+      <div class="flex flex-wrap items-center gap-4">
         <StatusBadge lang={lang} status={p.status} />
-        <span class="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-white/60">{p.category[lang]}</span>
+        <span class="kicker">{p.category[lang]}</span>
       </div>
-      <h1 class="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">{p.name}</h1>
-      <p class="mt-3 max-w-2xl text-lg text-white/70">{p.tagline[lang]}</p>
-      <div class="mt-7 flex flex-wrap gap-3">
+      <h1 class="display mt-5 text-[clamp(2.2rem,6.4vw,4.2rem)]">{p.name}</h1>
+      <p class="mt-5 max-w-2xl text-xl leading-relaxed text-white/75">{p.tagline[lang]}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
         {p.links.map((l, i) => (
-          <a
-            href={l.url}
-            rel="noopener"
-            class:list={[
-              'rounded-full px-5 py-2.5 text-sm font-semibold transition',
-              i === 0 ? 'bg-white text-ink-950 hover:bg-white/85' : 'border border-white/15 text-white/85 hover:border-white/40',
-            ]}
-          >{l.label[lang]}{i === 0 && ' →'}</a>
+          <a href={l.url} rel="noopener" class={i === 0 ? 'btn' : 'btn-ghost'}>{l.label[lang]}{i === 0 && ' →'}</a>
         ))}
-        <a href={`https://github.com/${p.repo}`} rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/40">
+        <a href={`https://github.com/${p.repo}`} rel="noopener" class="btn-ghost">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" /></svg>
           {tr('project.source')}
         </a>
       </div>
-      {p.note && <p class="mt-5 max-w-2xl text-xs text-white/45">{p.note[lang]}</p>}
-      <div class="mt-6"><RepoMeta lang={lang} repo={p.repo} detailed /></div>
+      {p.note && <p class="meta-row mt-6 max-w-2xl">{p.note[lang]}</p>}
+      <div class="mt-6 border-t pt-4" style="border-color:var(--line)"><RepoMeta lang={lang} repo={p.repo} detailed /></div>
     </header>
 
     <div class="mt-12 grid gap-10 md:grid-cols-[1.6fr_1fr]">
       <section>
-        <h2 class="font-display text-xl font-semibold">{tr('project.details')}</h2>
-        <p class="mt-3 leading-relaxed text-white/70">{p.description[lang]}</p>
-        <h2 class="mt-10 font-display text-xl font-semibold">{tr('project.features')}</h2>
+        <h2 class="head2 !text-[1.6rem]">{tr('project.details')}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-white/75">{p.description[lang]}</p>
+        <h2 class="head2 mt-12 !text-[1.6rem]">{tr('project.features')}</h2>
         <ul class="mt-4 space-y-2.5">
           {p.features[lang].map((f) => (
             <li class="flex gap-3 text-white/75">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={`background:${p.accent}; box-shadow: 0 0 10px ${p.accent}`}></span>
+              <span class="mt-2.5 h-2 w-2 shrink-0" style="background:var(--brand)"></span>
               {f}
             </li>
           ))}
         </ul>
       </section>
       <aside>
-        <h2 class="font-display text-xl font-semibold">{tr('project.tech')}</h2>
+        <h2 class="head2 !text-[1.6rem]">{tr('project.tech')}</h2>
         <ul class="mt-4 flex flex-wrap gap-2">
-          {p.tech.map((x) => <li class="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/75">{x}</li>)}
+          {p.tech.map((x) => <li class="tech-line border-[1.5px] px-3 py-1.5" style="border-color:var(--line-strong)">{x}</li>)}
         </ul>
       </aside>
     </div>
 
     {p.screenshots.length > 0 && (
       <section class="mt-14">
-        <h2 class="font-display text-xl font-semibold">{tr('project.screens')}</h2>
+        <h2 class="head2 !text-[1.6rem]">{tr('project.screens')}</h2>
         <div class="mt-5 grid gap-4 sm:grid-cols-2">
           {p.screenshots.map((s, i) => (
-            <figure class:list={['overflow-hidden rounded-2xl border border-white/10 bg-ink-900', (i === 0 || s.portrait) && 'sm:col-span-2']}>
+            <figure class:list={['overflow-hidden border-[1.5px] bg-ink-900', (i === 0 || s.portrait) && 'sm:col-span-2']} style="border-color:var(--line-strong)">
               <img src={s.src} alt={s.alt[lang]} loading="lazy" decoding="async" class:list={[s.portrait ? 'mx-auto max-h-[560px] w-auto' : 'w-full']} />
-              <figcaption class="px-4 py-2.5 text-xs text-white/50">{s.alt[lang]}</figcaption>
+              <figcaption class="meta-row border-t px-4 py-2.5" style="border-color:var(--line)">{s.alt[lang]}</figcaption>
             </figure>
           ))}
         </div>
