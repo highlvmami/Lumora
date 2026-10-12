@@ -12,61 +12,58 @@ const live = projects.filter((p) => p.data.status === 'live').length;
 const alternates = { tr: routes.home.tr, en: routes.home.en };
 ---
 <Base lang={lang} current="home" alternates={alternates}>
-  <section class="mx-auto max-w-6xl px-4 pb-16 pt-20 sm:px-6 sm:pt-28">
-    <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white/70">
-      <span class="h-1.5 w-1.5 rounded-full bg-violet-400 shadow-[0_0_10px_2px_rgba(167,139,250,0.8)]"></span>
-      {tr('hero.kicker')}
-    </p>
-    <h1 class="max-w-3xl font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl">
-      <span class="text-glow">{tr('hero.title')}</span>
-    </h1>
-    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/65">{tr('hero.text')}</p>
-    <div class="mt-9 flex flex-wrap gap-3">
-      <a href={routes.projects[lang]} class="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-[0_0_40px_-8px_rgba(167,139,250,0.9)] transition hover:bg-violet-100">{tr('hero.cta')}</a>
-      <a href="https://github.com/highlvmami" rel="noopener" class="rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/40">{tr('hero.github')}</a>
+  <section class="mx-auto max-w-6xl px-4 pb-14 pt-14 sm:px-6 sm:pt-20">
+    <p class="kicker mb-6 flex items-center gap-3"><span class="inline-block h-[3px] w-10" style="background:var(--brand)"></span>{tr('hero.kicker')}</p>
+    <h1 class="display text-[clamp(3.4rem,11.5vw,8.6rem)]">{tr('hero.title')}</h1>
+    <div class="mt-10 grid items-end gap-8 md:grid-cols-[1.25fr_1fr]">
+      <p class="max-w-xl text-lg leading-relaxed text-white/75">{tr('hero.text')}</p>
+      <div class="flex flex-wrap gap-3 md:justify-end">
+        <a href={routes.projects[lang]} class="btn">{tr('hero.cta')} →</a>
+        <a href="https://github.com/highlvmami" rel="noopener" class="btn-ghost">{tr('hero.github')}</a>
+      </div>
     </div>
-    <dl class="mt-14 grid max-w-md grid-cols-3 gap-6">
-      <div><dt class="text-xs text-white/50">{tr('home.stats.projects')}</dt><dd class="font-display text-3xl font-semibold">{projects.length}</dd></div>
-      <div><dt class="text-xs text-white/50">{tr('home.stats.live')}</dt><dd class="font-display text-3xl font-semibold">{live}</dd></div>
-      <div><dt class="text-xs text-white/50">{tr('home.stats.open')}</dt><dd class="font-display text-3xl font-semibold">100%</dd></div>
-    </dl>
   </section>
 
-  <section class="mx-auto max-w-6xl px-4 sm:px-6" aria-labelledby="featured" data-fav-section hidden>
-    <div class="mb-6">
-      <h2 id="featured" class="font-display text-2xl font-semibold">{tr('home.featured')}</h2>
-      <p class="mt-1 text-sm text-white/55">{tr('home.featuredText')}</p>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <dl class="spec">
+      <div><dt class="kicker">{tr('home.stats.projects')}</dt><dd>{projects.length}</dd></div>
+      <div><dt class="kicker">{tr('home.stats.live')}</dt><dd>{live}</dd></div>
+      <div><dt class="kicker">{tr('home.stats.open')}</dt><dd>100%</dd></div>
+    </dl>
+  </div>
+
+  <section class="mx-auto mt-20 max-w-6xl px-4 sm:px-6" aria-labelledby="featured" data-fav-section hidden>
+    <div class="section-head">
+      <h2 id="featured" class="head2">{tr('home.featured')}</h2>
     </div>
-    <div class="grid gap-5 sm:grid-cols-2" data-fav-grid>
+    <p class="-mt-3 mb-6 text-sm text-white/60">{tr('home.featuredText')}</p>
+    <div class="grid gap-6 sm:grid-cols-2" data-fav-grid>
       {projects.map((p) => <ProjectCard lang={lang} project={p} large hidden />)}
     </div>
   </section>
 
-  <section class="mx-auto mt-16 max-w-6xl px-4 sm:px-6" aria-labelledby="all">
-    <div class="mb-6 flex items-end justify-between gap-4">
-      <div>
-        <h2 id="all" class="font-display text-2xl font-semibold">{tr('home.more')}</h2>
-        <p class="mt-1 text-sm text-white/55">{tr('home.moreText')}</p>
-      </div>
-      <a href={routes.projects[lang]} class="hidden text-sm text-violet-300 hover:text-violet-200 sm:block">{tr('home.all')} →</a>
+  <section class="mx-auto mt-20 max-w-6xl px-4 sm:px-6" aria-labelledby="all">
+    <div class="section-head">
+      <h2 id="all" class="head2">{tr('home.more')}</h2>
+      <a href={routes.projects[lang]} class="kicker hidden hover:text-white sm:block" style="color:var(--brand)">{tr('home.all')} →</a>
     </div>
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-all-grid>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-all-grid>
       {projects.map((p) => <ProjectCard lang={lang} project={p} />)}
     </div>
   </section>
 
   {latest.length > 0 && (
-    <section class="mx-auto mt-16 max-w-6xl px-4 sm:px-6" aria-labelledby="latest">
-      <div class="mb-6 flex items-end justify-between gap-4">
-        <h2 id="latest" class="font-display text-2xl font-semibold">{tr('home.latest')}</h2>
-        <a href={routes.blog[lang]} class="text-sm text-violet-300 hover:text-violet-200">{tr('home.latestAll')} →</a>
+    <section class="mx-auto mt-20 max-w-6xl px-4 sm:px-6" aria-labelledby="latest">
+      <div class="section-head">
+        <h2 id="latest" class="head2">{tr('home.latest')}</h2>
+        <a href={routes.blog[lang]} class="kicker hover:text-white" style="color:var(--brand)">{tr('home.latestAll')} →</a>
       </div>
-      <div class="grid gap-5 sm:grid-cols-2">
+      <div class="grid gap-6 sm:grid-cols-2">
         {latest.map((p) => (
           <a href={postUrl(lang, p.slug)} class="card block p-6">
-            <time class="text-xs text-white/50" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
-            <h3 class="mt-1 font-display text-lg font-semibold">{p.data.title}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-white/60">{p.data.description}</p>
+            <time class="kicker" datetime={p.data.date.toISOString()}>{formatDate(lang, p.data.date.toISOString())}</time>
+            <h3 class="mt-2 font-display text-[1.35rem] font-bold leading-tight" style="font-variation-settings:'wdth' 90">{p.data.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/65">{p.data.description}</p>
           </a>
         ))}
       </div>

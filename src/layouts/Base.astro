@@ -34,7 +34,7 @@ const isHome = current === 'home';
     <link rel="alternate" hreflang="en" href={new URL(alternates.en, site).href} />
     <link rel="alternate" hreflang="x-default" href={new URL(alternates.tr, site).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#07060f" />
+    <meta name="theme-color" content="#141311" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Lumora" />
     <meta property="og:title" content={fullTitle} />
@@ -44,9 +44,11 @@ const isHome = current === 'home';
     <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
-      // Tema: kayıtlı tercih varsa o, yoksa koyu tema. Sayfa çizilmeden önce uygulanır (yanıp sönmesin).
+      // Tema: kayıtlı tercih varsa o, yoksa cihazın teması. Sayfa çizilmeden önce uygulanır (yanıp sönmesin).
       try {
-        document.documentElement.dataset.theme = localStorage.getItem('lumora-theme') === 'light' ? 'light' : 'dark';
+        var saved = localStorage.getItem('lumora-theme');
+        var light = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.dataset.theme = light ? 'light' : 'dark';
       } catch (_) {
         document.documentElement.dataset.theme = 'dark';
       }
@@ -68,10 +70,9 @@ const isHome = current === 'home';
     </script>
   </head>
   <body class="min-h-screen font-sans text-white antialiased">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-3 focus:py-2 focus:text-ink-950">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink-900 focus:px-3 focus:py-2">
       {lang === 'tr' ? 'İçeriğe geç' : 'Skip to content'}
     </a>
-    <div class="bg-aurora pointer-events-none absolute inset-x-0 top-0 -z-10 h-[640px]"></div>
     <Header lang={lang} current={current} alternates={alternates} />
     <main id="main">
       <slot />

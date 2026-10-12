@@ -4,14 +4,14 @@ import { routes, t, type Lang } from '../lib/i18n';
 const { lang } = Astro.props as { lang: Lang };
 const tr = t(lang);
 ---
-<footer class="mt-24 border-t border-white/5">
-  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-white/50 sm:flex-row sm:items-center sm:px-6">
-    <div class="flex items-center gap-2 text-white/80">
+<footer class="mt-28 border-t-[1.5px]" style="border-color:var(--line-strong)">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:px-6">
+    <div class="flex items-center gap-2.5">
       <Logo size={22} />
-      <span class="font-display font-semibold">Lumora</span>
+      <span class="wordmark text-lg">Lumora</span>
     </div>
-    <p>© {new Date().getFullYear()} Lumora. {tr('footer.rights')}</p>
-    <nav class="flex gap-4 sm:ml-auto">
+    <p class="meta-row">© {new Date().getFullYear()} Lumora. {tr('footer.rights')}</p>
+    <nav class="meta-row flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto">
       <a class="hover:text-white" href={routes.projects[lang]}>{tr('nav.projects')}</a>
       <a class="hover:text-white" href={routes.blog[lang]}>{tr('nav.blog')}</a>
       <a class="hover:text-white" href={routes.about[lang]}>{tr('nav.about')}</a>
@@ -52,8 +52,7 @@ const tr = t(lang);
       const label = on ? link.dataset.favRemove! : link.dataset.favAdd!;
       btn.setAttribute('aria-label', label);
       btn.title = label;
-      btn.style.color = on ? '#fcd34d' : '';
-      btn.style.borderColor = on ? '#fcd34d' : '';
+      btn.dataset.on = String(on);
       btn.querySelector('[data-fav-icon]')!.textContent = on ? '★' : '☆';
     }
   }

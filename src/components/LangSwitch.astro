@@ -3,18 +3,8 @@ import { languages, type Lang } from '../lib/i18n';
 interface Props { lang: Lang; alternates: Record<Lang, string>; label: string }
 const { lang, alternates, label } = Astro.props;
 ---
-<div class="flex items-center rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-semibold" role="group" aria-label={label}>
+<div class="seg" role="group" aria-label={label}>
   {languages.map((l) => (
-    <a
-      href={alternates[l]}
-      hreflang={l}
-      lang={l}
-      data-lang-switch={l}
-      aria-current={l === lang ? 'true' : undefined}
-      class:list={[
-        'rounded-full px-2.5 py-1 uppercase tracking-wide transition',
-        l === lang ? 'bg-white text-ink-950' : 'text-white/60 hover:text-white',
-      ]}
-    >{l}</a>
+    <a href={alternates[l]} hreflang={l} lang={l} data-lang-switch={l} aria-current={l === lang ? 'true' : undefined}>{l}</a>
   ))}
 </div>

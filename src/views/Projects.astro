@@ -11,19 +11,20 @@ const label = (f: (typeof filters)[number]) => (f === 'all' ? tr('projects.filte
 ---
 <Base lang={lang} current="projects" title={tr('projects.title')} alternates={{ tr: routes.projects.tr, en: routes.projects.en }}>
   <section class="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
-    <h1 class="font-display text-4xl font-semibold tracking-tight">{tr('projects.title')}</h1>
-    <p class="mt-3 max-w-2xl text-white/60">{tr('projects.text')}</p>
+    <p class="kicker mb-4">Lumora</p>
+    <h1 class="display text-[clamp(3rem,8vw,5.5rem)]">{tr('projects.title')}</h1>
+    <p class="mt-5 max-w-2xl text-lg text-white/70">{tr('projects.text')}</p>
     <div class="mt-8 flex flex-wrap gap-2" role="group" data-filters>
       {filters.map((f, i) => (
         <button
           type="button"
           data-filter={f}
           aria-pressed={i === 0 ? 'true' : 'false'}
-          class="rounded-full border border-white/10 px-3.5 py-1.5 text-sm text-white/70 transition hover:text-white aria-pressed:border-white aria-pressed:bg-white aria-pressed:text-ink-950"
+          class="kicker border-[1.5px] px-3.5 py-2 transition hover:text-white aria-pressed:bg-white aria-pressed:text-ink-950" style="border-color:var(--line-strong)"
         >{label(f)}</button>
       ))}
     </div>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-grid>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-grid>
       {projects.map((p) => (
         <div data-status={p.data.status}><ProjectCard lang={lang} project={p} /></div>
       ))}
