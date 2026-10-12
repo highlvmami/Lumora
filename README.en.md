@@ -23,12 +23,17 @@ Lumora is the main site where our projects live together. Each project has its o
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/anasayfa.jpg" alt="Home: intro and featured projects" width="100%">
+  <img src="docs/screenshots/anasayfa.jpg" alt="Home: terminal-style intro, project list and stats" width="100%">
 </p>
 
 <p align="center">
   <img src="docs/screenshots/projeler.jpg" alt="Projects: a list filterable by category and status" width="49%">
   <img src="docs/screenshots/proje-detay.jpg" alt="Project page: description, features and tech" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/cv.jpg" alt="CV page: technologies and projects fill in automatically" width="49%">
+  <img src="docs/screenshots/giris.jpg" alt="Admin sign-in page" width="49%">
 </p>
 
 <p align="center">
@@ -40,12 +45,15 @@ Lumora is the main site where our projects live together. Each project has its o
   <img src="docs/screenshots/mobil.jpg" alt="Home page on a phone" width="30%">
 </p>
 
-<p align="center"><sub>Ana sayfa · Projeler · Proje sayfası · Light theme · English version · Mobil görünüm</sub></p>
+<p align="center"><sub>Home · Projects · Project page · CV · Admin sign-in · Light theme · English version · Mobile</sub></p>
 
 ## What's inside
 
 - **Projects:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools and LumoraFiles are live; Lumora Forge and Lumora Academy are in development.
 - **Two languages:** Turkish at `/`, English at `/en/`. The TR | EN switch in the top right opens the same page in the other language, the choice is remembered, and first-time visitors are redirected by browser language.
+- **Developer-site look:** a terminal-style home page (typed command, line-numbered Geist Mono heading, project panel), code-comment section headings, a status-bar footer and CSS-only animations (disabled under `prefers-reduced-motion`).
+- **CV page:** `/cv/` and `/en/cv/`; technologies and projects come from the project files automatically, experience and education are filled in `src/data/cv.ts` (empty sections stay hidden). The "Save as PDF" button uses the print layout.
+- **Admin sign-in page:** `/giris/` and `/en/login/`; GitHub sign-in with shortcuts to the post editor and sign-out.
 - **Dark and light theme:** toggled from the top right, the choice is stored in the browser.
 - **Blog:** for announcements and release notes; posts are Markdown files.
 - **GitHub data:** stars, last update and latest release are fetched at build time and kept fresh by a daily automatic rebuild.
@@ -95,7 +103,7 @@ Posts are published under `/blog/<slug>/` and `/en/blog/<slug>/`, and the latest
 
 ## Theme
 
-Colors live in two blocks at the top of `src/styles/global.css` (dark: `html`, light: `html[data-theme='light']`); the Tailwind classes are bound to those variables. To change the accent, edit `--brand` and `--brand-fg` in both blocks. The theme follows the device on the first visit and the choice is remembered in the browser.
+Colors live in the two blocks at the top of `src/styles/global.css` (dark: `html`, light: `html[data-theme='light']`); Tailwind classes are bound to these variables. To change the accent color, `--brand` and `--brand-fg` in both blocks are enough. Fonts are self-hosted: JetBrains Mono (body and code) and Geist Mono (the main heading). The theme follows the device on the first visit and the choice is stored in the browser.
 
 ## Deploying (Cloudflare Pages, free)
 
@@ -121,7 +129,7 @@ Set up HTTP monitors for the site and the projects' live addresses on [UptimeRob
 
 ## Admin sign-in and featuring
 
-The site owner can sign in with GitHub and star projects to choose the "Featured projects" section at the very top of the home page; an "All projects" section always sits below it. The **Admin sign-in** link in the footer starts GitHub OAuth; only the `ADMIN_LOGIN` account (default `highlvmami`) is allowed. Once signed in, a ☆/★ button appears on the cards; the choice is written to Cloudflare KV and the public home page reads it. If nothing is starred, the top section is hidden.
+The site owner can sign in with GitHub and star projects to choose the "Featured projects" section at the very top of the home page; an "All projects" section always sits below it. The **Admin sign-in** link in the footer opens the `/en/login/` page, whose button starts GitHub OAuth; only the `ADMIN_LOGIN` account (default `highlvmami`) is allowed. Once signed in, a ☆/★ button appears on the cards; the choice is written to Cloudflare KV and the public home page reads it. If nothing is starred, the top section is hidden.
 
 The code is Cloudflare Pages Functions under `functions/` (`/api/auth/*`, `/api/favorites`). One-time setup in Cloudflare:
 
@@ -143,6 +151,7 @@ Once signed in, a **+ New post** button appears on the blog page. The editor tak
 | `src/pages/` | Turkish pages; English counterparts under `src/pages/en/` |
 | `src/views/` | Page bodies shared by both languages |
 | `src/components/`, `src/layouts/` | Header, footer, cards, shared page shell |
+| `src/data/` | CV data (`cv.ts`) |
 | `src/lib/` | UI strings, GitHub data, project and post helpers |
 | `functions/` | Sign-in and featuring API (Cloudflare Pages Functions) |
 | `public/` | Logo, images, `robots.txt`, security headers |

@@ -23,12 +23,17 @@ Lumora, geliştirdiğimiz projelerin bir arada durduğu ana sitedir. Her projeni
 ## Ekran görüntüleri
 
 <p align="center">
-  <img src="docs/screenshots/anasayfa.jpg" alt="Ana sayfa: tanıtım ve öne çıkan projeler" width="100%">
+  <img src="docs/screenshots/anasayfa.jpg" alt="Ana sayfa: terminal temalı tanıtım, proje listesi ve istatistikler" width="100%">
 </p>
 
 <p align="center">
   <img src="docs/screenshots/projeler.jpg" alt="Projeler: kategori ve duruma göre süzülebilen liste" width="49%">
   <img src="docs/screenshots/proje-detay.jpg" alt="Proje sayfası: açıklama, özellikler ve teknolojiler" width="49%">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/cv.jpg" alt="CV sayfası: teknolojiler ve projeler otomatik gelir" width="49%">
+  <img src="docs/screenshots/giris.jpg" alt="Yönetici giriş sayfası" width="49%">
 </p>
 
 <p align="center">
@@ -40,12 +45,15 @@ Lumora, geliştirdiğimiz projelerin bir arada durduğu ana sitedir. Her projeni
   <img src="docs/screenshots/mobil.jpg" alt="Telefonda ana sayfa" width="30%">
 </p>
 
-<p align="center"><sub>Ana sayfa · Projeler · Proje sayfası · Açık tema · İngilizce sürüm · Mobil görünüm</sub></p>
+<p align="center"><sub>Ana sayfa · Projeler · Proje sayfası · CV · Yönetici girişi · Açık tema · İngilizce sürüm · Mobil görünüm</sub></p>
 
 ## Neler var
 
 - **Projeler:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools ve LumoraFiles yayında; Lumora Forge ve Lumora Academy geliştiriliyor.
 - **İki dil:** Türkçe `/`, İngilizce `/en/`. Sağ üstteki TR | EN düğmesi aynı sayfanın diğer dilini açar, seçim hatırlanır ve ilk ziyarette tarayıcı diline göre yönlendirilir.
+- **Yazılımcı sitesi görünümü:** terminal temalı ana sayfa (yazılan komut, satır numaralı Geist Mono başlık, proje paneli), kod yorumu tarzı bölüm başlıkları, durum çubuğu altlık ve CSS ile yapılmış animasyonlar (`prefers-reduced-motion` açıkken kapanır).
+- **CV sayfası:** `/cv/` ve `/en/cv/`; teknolojiler ve projeler proje dosyalarından otomatik gelir, deneyim ve eğitim `src/data/cv.ts` içinde doldurulur (boş bölümler görünmez). "PDF olarak kaydet" düğmesi yazdırma görünümünü kullanır.
+- **Yönetici giriş sayfası:** `/giris/` ve `/en/login/`; GitHub ile giriş, yazı editörüne ve çıkışa kısayol.
 - **Koyu ve açık tema:** sağ üstteki düğmeyle değişir, seçim tarayıcıda saklanır.
 - **Blog:** duyurular ve sürüm notları için, yazılar Markdown dosyasıdır.
 - **GitHub bilgileri:** yıldız, son güncelleme ve son sürüm derleme sırasında çekilir; günlük otomatik yeniden derleme ile güncel kalır.
@@ -95,7 +103,7 @@ Yazılar `/blog/<adres>/` ve `/en/blog/<adres>/` altında yayınlanır, ana sayf
 
 ## Tema
 
-Renkler `src/styles/global.css` başındaki iki blokta durur (koyu: `html`, açık: `html[data-theme='light']`); Tailwind sınıfları bu değişkenlere bağlıdır. Vurgu rengini değiştirmek için iki blokta `--brand` ve `--brand-fg` yeterlidir. Tema ilk ziyarette cihazın temasını izler, seçim tarayıcıda saklanır.
+Renkler `src/styles/global.css` başındaki iki blokta durur (koyu: `html`, açık: `html[data-theme='light']`); Tailwind sınıfları bu değişkenlere bağlıdır. Vurgu rengini değiştirmek için iki blokta `--brand` ve `--brand-fg` yeterlidir. Yazı tipleri siteden sunulur: JetBrains Mono (genel metin ve kod) ve Geist Mono (ana başlık). Tema ilk ziyarette cihazın temasını izler, seçim tarayıcıda saklanır.
 
 ## Yayına alma (Cloudflare Pages, ücretsiz)
 
@@ -121,7 +129,7 @@ Cloudflare'de projeyi aç, **Metrics → Web Analytics → Enable** de. Kod değ
 
 ## Yönetici girişi ve öne çıkarma
 
-Site sahibi GitHub hesabıyla girip projeleri yıldızlayarak ana sayfanın en üstündeki "Öne çıkan projeler" bölümünü belirleyebilir; altında her zaman "Tüm projeler" bölümü durur. Alt bilgideki **Yönetici girişi** bağlantısı GitHub OAuth ile giriş yaptırır; yalnızca `ADMIN_LOGIN` hesabı (varsayılan `highlvmami`) yetkilidir. Giriş yapınca kartların köşesinde ☆/★ düğmesi çıkar; seçim Cloudflare KV'ye yazılır ve herkese açık ana sayfa bu listeyi okur. Hiç favori seçilmemişse üstteki bölüm görünmez.
+Site sahibi GitHub hesabıyla girip projeleri yıldızlayarak ana sayfanın en üstündeki "Öne çıkan projeler" bölümünü belirleyebilir; altında her zaman "Tüm projeler" bölümü durur. Alt bilgideki **Yönetici girişi** bağlantısı `/giris/` sayfasını açar, oradaki düğme GitHub OAuth ile giriş yaptırır; yalnızca `ADMIN_LOGIN` hesabı (varsayılan `highlvmami`) yetkilidir. Giriş yapınca kartların köşesinde ☆/★ düğmesi çıkar; seçim Cloudflare KV'ye yazılır ve herkese açık ana sayfa bu listeyi okur. Hiç favori seçilmemişse üstteki bölüm görünmez.
 
 Kod `functions/` altındaki Cloudflare Pages Functions'tır (`/api/auth/*`, `/api/favorites`). Çalışması için Cloudflare'de bir kerelik kurulum gerekir:
 
@@ -145,6 +153,7 @@ Giriş yapınca blog sayfasında **+ Yeni yazı** düğmesi çıkar. Editörde b
 | `src/pages/` | Türkçe sayfalar; `src/pages/en/` altında İngilizce karşılıkları |
 | `src/views/` | İki dilin paylaştığı sayfa gövdeleri |
 | `src/components/`, `src/layouts/` | Başlık, alt bilgi, kartlar, ortak sayfa iskeleti |
+| `src/data/` | CV bilgileri (`cv.ts`) |
 | `src/lib/` | Arayüz metinleri, GitHub verisi, proje ve yazı yardımcıları |
 | `functions/` | Giriş ve öne çıkarma API'si (Cloudflare Pages Functions) |
 | `public/` | Logo, görseller, `robots.txt`, güvenlik başlıkları |
