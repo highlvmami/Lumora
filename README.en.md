@@ -95,7 +95,7 @@ Posts are published under `/blog/<slug>/` and `/en/blog/<slug>/`, and the latest
 
 ## Theme
 
-The light theme is the `html[data-theme='light']` block in `src/styles/global.css`; colors are variables, so existing Tailwind classes invert with the theme automatically.
+Colors live in two blocks at the top of `src/styles/global.css` (dark: `html`, light: `html[data-theme='light']`); the Tailwind classes are bound to those variables. To change the accent, edit `--brand` and `--brand-fg` in both blocks. The theme follows the device on the first visit and the choice is remembered in the browser.
 
 ## Deploying (Cloudflare Pages, free)
 

@@ -95,7 +95,7 @@ Yazılar `/blog/<adres>/` ve `/en/blog/<adres>/` altında yayınlanır, ana sayf
 
 ## Tema
 
-Açık tema `src/styles/global.css` içinde `html[data-theme='light']` bloğundadır; renkler değişken olarak tanımlıdır, mevcut Tailwind sınıfları temayla birlikte kendiliğinden tersine döner.
+Renkler `src/styles/global.css` başındaki iki blokta durur (koyu: `html`, açık: `html[data-theme='light']`); Tailwind sınıfları bu değişkenlere bağlıdır. Vurgu rengini değiştirmek için iki blokta `--brand` ve `--brand-fg` yeterlidir. Tema ilk ziyarette cihazın temasını izler, seçim tarayıcıda saklanır.
 
 ## Yayına alma (Cloudflare Pages, ücretsiz)
 
