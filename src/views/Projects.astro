@@ -12,7 +12,7 @@ const label = (f: (typeof filters)[number]) => (f === 'all' ? tr('projects.filte
 <Base lang={lang} current="projects" title={tr('projects.title')} alternates={{ tr: routes.projects.tr, en: routes.projects.en }}>
   <section class="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
     <p class="kicker mb-4">Lumora</p>
-    <h1 class="display text-[clamp(3rem,8vw,5.5rem)]">{tr('projects.title')}</h1>
+    <h1 class="display text-[clamp(2.1rem,5.6vw,3.7rem)]">{tr('projects.title')}</h1>
     <p class="mt-5 max-w-2xl text-lg text-white/70">{tr('projects.text')}</p>
     <div class="mt-8 flex flex-wrap gap-2" role="group" data-filters>
       {filters.map((f, i) => (

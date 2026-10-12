@@ -14,23 +14,27 @@ const cover = p.screenshots[0];
 <a
   href={projectUrl(lang, project.id)}
   class="card group flex h-full flex-col overflow-hidden"
-  style={`--accent:${p.accent}`}
   data-category={p.category[lang]}
 >
-  <div class:list={['relative overflow-hidden border-b-[1.5px]', large ? 'aspect-[16/9]' : 'aspect-[16/8]']} style="border-color:var(--line-strong)">
+  <div class="card-bar">
+    <span class="card-path">~/lumora/<b>{project.id}</b></span>
+    <StatusBadge lang={lang} status={p.status} />
+  </div>
+  <div class:list={['relative overflow-hidden border-b', large ? 'aspect-[16/9]' : 'aspect-[16/8]']} style="border-color:var(--line-strong)">
     {cover ? (
-      <img src={cover.src} alt={cover.alt[lang]} loading="lazy" decoding="async" class:list={['h-full w-full', cover.portrait ? 'bg-ink-800 object-contain' : 'object-cover object-top']} />
+      <img src={cover.src} alt={cover.alt[lang]} loading="lazy" decoding="async" class:list={['h-full w-full transition duration-500 group-hover:scale-[1.03]', cover.portrait ? 'bg-ink-800 object-contain' : 'object-cover object-top']} />
     ) : (
-      <div class="initial-block h-full w-full text-8xl" aria-hidden="true">{p.name.replace(/^Lumora\s*/i, '').charAt(0).toUpperCase() || 'L'}</div>
+      <div class="initial-block h-full w-full text-8xl" aria-hidden="true">{p.name.replace(/^Lumora\s*/i, '').charAt(0).toLowerCase() || 'l'}_</div>
     )}
   </div>
   <div class="flex flex-1 flex-col gap-3 p-5">
-    <div class="flex items-baseline justify-between gap-3">
-      <h3 class="font-display text-[1.45rem] font-extrabold leading-none tracking-tight" style="font-variation-settings:'wdth' 88">{p.name}</h3>
-      <StatusBadge lang={lang} status={p.status} />
-    </div>
+    <h3 class="text-[1.3rem] font-bold leading-tight tracking-tight">{p.name}</h3>
     <p class="text-[0.95rem] leading-relaxed text-white/70">{p.tagline[lang]}</p>
-    <p class="tech-line mt-auto pt-1">{p.tech.slice(0, 4).join(' / ')}</p>
+    <div class="tech-line mt-auto pt-1">
+      <span class="k">stack</span><span>:</span><span>[</span>
+      {p.tech.slice(0, 4).map((x, i, arr) => <span class="s">"{x}"{i < arr.length - 1 ? ',' : ''}</span>)}
+      <span>]</span>
+    </div>
     <div class="border-t pt-3" style="border-color:var(--line)"><RepoMeta lang={lang} repo={p.repo} /></div>
   </div>
 </a>

@@ -1,23 +1,20 @@
 ---
-import Logo from './Logo.astro';
 import { routes, t, type Lang } from '../lib/i18n';
 const { lang } = Astro.props as { lang: Lang };
 const tr = t(lang);
 ---
-<footer class="mt-28 border-t-[1.5px]" style="border-color:var(--line-strong)">
-  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:px-6">
-    <div class="flex items-center gap-2.5">
-      <Logo size={22} />
-      <span class="wordmark text-lg">Lumora</span>
-    </div>
-    <p class="meta-row">© {new Date().getFullYear()} Lumora. {tr('footer.rights')}</p>
-    <nav class="meta-row flex flex-wrap gap-x-5 gap-y-2 sm:ml-auto">
-      <a class="hover:text-white" href={routes.projects[lang]}>{tr('nav.projects')}</a>
-      <a class="hover:text-white" href={routes.blog[lang]}>{tr('nav.blog')}</a>
-      <a class="hover:text-white" href={routes.about[lang]}>{tr('nav.about')}</a>
-      <a class="hover:text-white" href={routes.contact[lang]}>{tr('nav.contact')}</a>
-      <a class="hover:text-white" href="https://github.com/highlvmami" rel="noopener">GitHub</a>
-      <a class="hover:text-white" href={`/api/auth/login?next=${routes.home[lang]}`} data-admin-link data-login-label={tr('admin.login')} data-logout-label={tr('admin.logout')} data-next={routes.home[lang]} data-fav-add={tr('fav.add')} data-fav-remove={tr('fav.remove')} data-fav-error={tr('fav.error')} rel="nofollow">{tr('admin.login')}</a>
+<footer class="statusbar mt-28">
+  <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-2.5 sm:flex-row sm:items-center sm:gap-5 sm:px-6">
+    <span class="flex items-center font-semibold"><span class="dot"></span>main</span>
+    <span class="opacity-80">© {new Date().getFullYear()} Lumora. {tr('footer.rights')}</span>
+    <nav class="flex flex-wrap gap-x-5 gap-y-1 sm:ml-auto">
+      <a href={routes.projects[lang]}>{tr('nav.projects')}</a>
+      <a href={routes.blog[lang]}>{tr('nav.blog')}</a>
+      <a href={routes.cv[lang]}>{tr('nav.cv')}</a>
+      <a href={routes.about[lang]}>{tr('nav.about')}</a>
+      <a href={routes.contact[lang]}>{tr('nav.contact')}</a>
+      <a href="https://github.com/highlvmami" rel="noopener">GitHub</a>
+      <a href={routes.login[lang]} data-admin-link data-login-label={tr('admin.login')} data-logout-label={tr('admin.logout')} data-next={routes.home[lang]} data-fav-add={tr('fav.add')} data-fav-remove={tr('fav.remove')} data-fav-error={tr('fav.error')} rel="nofollow">{tr('admin.login')}</a>
     </nav>
   </div>
 </footer>

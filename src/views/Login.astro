@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { routes, t, type Lang } from '../lib/i18n';
+const { lang } = Astro.props as { lang: Lang };
+const tr = t(lang);
+const next = routes.blogNew[lang];
+---
+<Base lang={lang} noindex title={tr('login.title')} alternates={{ tr: routes.login.tr, en: routes.login.en }}>
+  <section class="mx-auto max-w-xl px-4 pt-16 sm:px-6">
+    <div class="term" data-login-box>
+      <div class="term-bar"><i></i><i></i><i></i><span>ssh admin@lumora</span></div>
+      <div class="term-body !p-6">
+        <p class="prompt mb-4"><b>~/admin</b> <i>auth</i> $ <span class="typed" style="--n:10">sudo login</span></p>
+        <h1 class="head2 mb-3">{tr('login.title')}</h1>
+        <p class="text-white/70">{tr('login.text')}</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3" data-login-out hidden>
+          <a class="btn" href={`/api/auth/login?next=${next}`} rel="nofollow">{tr('login.button')} →</a>
+        </div>
+        <div class="mt-6" data-login-in hidden>
+          <p class="comment mb-4" style="color:var(--syn-str)"><span data-login-name></span></p>
+          <div class="flex flex-wrap gap-3">
+            <a class="btn" href={routes.blogNew[lang]}>{tr('login.editor')} →</a>
+            <a class="btn-ghost" href={`/api/auth/logout?next=${routes.login[lang]}`}>{tr('login.logout')}</a>
+          </div>
+        </div>
+        <p class="comment mt-6">{tr('login.note')}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+<script is:inline define:vars={{ signed: tr('login.signed') }}>
+  (function () {
+    var out = document.querySelector('[data-login-out]');
+    var inn = document.querySelector('[data-login-in]');
+    out.hidden = false;
+    fetch('/api/auth/me', { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (me) {
+        if (!me.admin) return;
+        out.hidden = true;
+        inn.hidden = false;
+        inn.querySelector('[data-login-name]').textContent = '# ' + signed + ' ' + me.login;
+      })
+      .catch(function () {});
+  })();
+</script>

@@ -14,12 +14,12 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
   <article class="mx-auto max-w-5xl px-4 pt-12 sm:px-6" style={`--accent:${p.accent}`}>
     <a href={routes.projects[lang]} class="kicker hover:text-white">← {tr('project.back')}</a>
 
-    <header class="mt-8 border-[1.5px] p-6 sm:p-10" style="border-color:var(--line-strong);background:var(--surface);box-shadow:8px 8px 0 var(--brand)">
+    <header class="term mt-8 !font-sans p-6 sm:p-10" style="border-color:var(--line-strong);background:var(--surface)">
       <div class="flex flex-wrap items-center gap-4">
         <StatusBadge lang={lang} status={p.status} />
         <span class="kicker">{p.category[lang]}</span>
       </div>
-      <h1 class="display mt-5 text-[clamp(3rem,9vw,6rem)]">{p.name}</h1>
+      <h1 class="display mt-5 text-[clamp(2.2rem,6.4vw,4.2rem)]">{p.name}</h1>
       <p class="mt-5 max-w-2xl text-xl leading-relaxed text-white/75">{p.tagline[lang]}</p>
       <div class="mt-8 flex flex-wrap gap-3">
         {p.links.map((l, i) => (
