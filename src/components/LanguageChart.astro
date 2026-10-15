@@ -1,0 +1,84 @@
+---
+// Proje deposunun dil dağılımı: GitHub'dan derleme sırasında çekilir, veri yoksa hiç gösterilmez.
+import { getRepoLanguages } from '../lib/github';
+import { t, type Lang } from '../lib/i18n';
+interface Props { lang: Lang; repo: string }
+const { lang, repo } = Astro.props;
+const tr = t(lang);
+const all = await getRepoLanguages(repo);
+
+// GitHub'ın (linguist) dil renkleri; listede olmayan diller yedek paletten renk alır.
+const colors: Record<string, string> = {
+  JavaScript: '#f1e05a', TypeScript: '#3178c6', HTML: '#e34c26', CSS: '#663399', SCSS: '#c6538c',
+  Python: '#3572a5', Go: '#00add8', Java: '#b07219', Kotlin: '#a97bff', Swift: '#f05138',
+  'C#': '#178600', 'C++': '#f34b7d', C: '#555555', Rust: '#dea584', PHP: '#4f5d95', Ruby: '#701516',
+  Dart: '#00b4ab', Svelte: '#ff3e00', Vue: '#41b883', Astro: '#ff5a03', GDScript: '#478cbf',
+  TSQL: '#e38c00', PLpgSQL: '#336790', Shell: '#89e051', PowerShell: '#2c6db5', Dockerfile: '#384d54',
+  Makefile: '#427819', Lua: '#3d5afe', 'Jupyter Notebook': '#da5b0b', MDX: '#fcb32c',
+};
+const fallback = ['#83a598', '#b8bb26', '#d3869b', '#fabd2f', '#8ec07c', '#fe8019'];
+
+// Çok küçük paylar "Diğer" diliminde toplanır, en fazla 6 dilim gösterilir.
+const MIN = 1.5;
+const MAX = 6;
+let slices: { name: string; percent: number; color: string }[] = [];
+if (all && all.length) {
+  const main = all.filter((l, i) => i < MAX - 1 && l.percent >= MIN);
+  const rest = all.slice(main.length);
+  let fb = 0;
+  slices = main.map((l) => ({ ...l, color: colors[l.name] ?? fallback[fb++ % fallback.length] }));
+  const restTotal = rest.reduce((a, l) => a + l.percent, 0);
+  if (rest.length === 1) {
+    slices.push({ ...rest[0], color: colors[rest[0].name] ?? fallback[fb % fallback.length] });
+  } else if (restTotal > 0) {
+    slices.push({ name: tr('project.languages.other'), percent: restTotal, color: 'var(--syn-com)' });
+  }
+}
+
+// Çevresi 100 olan çember: her dilimin çizgi uzunluğu doğrudan yüzdesine eşit.
+const R = 15.9155;
+const GAP = slices.length > 1 ? 0.8 : 0;
+let start = 0;
+const arcs = slices.map((s) => {
+  const arc = { ...s, dash: Math.max(s.percent - GAP, 0.2), offset: 25 - start };
+  start += s.percent;
+  return arc;
+});
+const fmt = (n: number) => {
+  const v = (n < 10 ? n.toFixed(1).replace(/\.0$/, '') : Math.round(n).toString()).replace('.', lang === 'tr' ? ',' : '.');
+  return lang === 'tr' ? `%${v}` : `${v}%`;
+};
+const top = slices[0];
+---
+{slices.length > 0 && (
+  <section class="mt-10">
+    <h2 class="head2 !text-[1.6rem]">{tr('project.languages')}</h2>
+    <div class="mt-5 flex flex-wrap items-center gap-6">
+      <figure class="relative h-36 w-36 shrink-0">
+        <svg viewBox="0 0 42 42" class="h-full w-full" role="img"
+          aria-label={slices.map((s) => `${s.name} ${fmt(s.percent)}`).join(', ')}>
+          <circle cx="21" cy="21" r={R} fill="none" stroke="var(--surface-2)" stroke-width="6" />
+          {arcs.map((a) => (
+            <circle cx="21" cy="21" r={R} fill="none" stroke={a.color} stroke-width="6"
+              stroke-dasharray={`${a.dash} ${100 - a.dash}`} stroke-dashoffset={a.offset}>
+              <title>{a.name} {fmt(a.percent)}</title>
+            </circle>
+          ))}
+        </svg>
+        <figcaption class="absolute inset-0 flex flex-col items-center justify-center text-center" aria-hidden="true">
+          <span class="font-mono text-lg font-semibold leading-none">{fmt(top.percent)}</span>
+          <span class="meta-row mt-1 max-w-20 truncate">{top.name}</span>
+        </figcaption>
+      </figure>
+      <ul class="min-w-36 flex-1 space-y-1.5">
+        {slices.map((s) => (
+          <li class="flex items-center gap-2.5 font-mono text-[0.8rem]">
+            <span class="h-2.5 w-2.5 shrink-0 rounded-full" style={`background:${s.color}`}></span>
+            <span class="truncate">{s.name}</span>
+            <span class="ml-auto pl-2 text-white/60">{fmt(s.percent)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
