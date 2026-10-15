@@ -43,3 +43,30 @@ export function getRepoStats(repo: string) {
   if (!cache.has(repo)) cache.set(repo, load(repo));
   return cache.get(repo)!;
 }
+
+// Depodaki dillerin byte cinsinden kullanım payları (GitHub'ın dil çubuğuyla aynı veri).
+export interface RepoLanguage {
+  name: string;
+  percent: number;
+}
+
+const langCache = new Map<string, Promise<RepoLanguage[] | null>>();
+
+async function loadLanguages(repo: string): Promise<RepoLanguage[] | null> {
+  try {
+    const data: Record<string, number> | null = await gh(`/repos/${repo}/languages`);
+    if (!data) return null;
+    const total = Object.values(data).reduce((a, b) => a + b, 0);
+    if (!total) return null;
+    return Object.entries(data)
+      .map(([name, bytes]) => ({ name, percent: (bytes / total) * 100 }))
+      .sort((a, b) => b.percent - a.percent);
+  } catch {
+    return null;
+  }
+}
+
+export function getRepoLanguages(repo: string) {
+  if (!langCache.has(repo)) langCache.set(repo, loadLanguages(repo));
+  return langCache.get(repo)!;
+}

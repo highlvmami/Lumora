@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import StatusBadge from '../components/StatusBadge.astro';
 import RepoMeta from '../components/RepoMeta.astro';
+import LanguageChart from '../components/LanguageChart.astro';
 import { projectUrl, routes, t, type Lang } from '../lib/i18n';
 interface Props { lang: Lang; project: CollectionEntry<'projects'> }
 const { lang, project } = Astro.props;
@@ -53,6 +54,7 @@ const alternates = { tr: projectUrl('tr', project.id), en: projectUrl('en', proj
         <ul class="mt-4 flex flex-wrap gap-2">
           {p.tech.map((x) => <li class="tech-line border-[1.5px] px-3 py-1.5" style="border-color:var(--line-strong)">{x}</li>)}
         </ul>
+        <LanguageChart lang={lang} repo={p.repo} />
       </aside>
     </div>
 
