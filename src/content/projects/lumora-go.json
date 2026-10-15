@@ -1,0 +1,110 @@
+{
+  "name": "LumoraGo",
+  "order": 7,
+  "featured": true,
+  "status": "live",
+  "category": {
+    "tr": "Araç",
+    "en": "Tool"
+  },
+  "tagline": {
+    "tr": "Windows için Spotlight / Raycast tarzı launcher. Alt+Space'e bas, yaz, Enter'a bas.",
+    "en": "A Spotlight / Raycast style launcher for Windows. Press Alt+Space, type, hit Enter."
+  },
+  "description": {
+    "tr": "Alt+Space ile ekranın ortasında bir arama çubuğu açılır. Uygulama adı yazınca uygulamayı, /f ile dosyayı bulur; 2+3*4 yazınca hesaplar, 100 usd tl yazınca kuru çevirir. Eğik çizgiyle başlayan komutlar hava durumunu, haberleri, namaz vakitlerini, çeviriyi, sistem durumunu, Gmail'i, takvimi ve Spotify'ı aynı satıra getirir; ? ile başlayan soruyu yapay zekâ yanıtlar. Arama bilgisayarda yapılır, şifreler ve hesap bilgileri Windows hesabına bağlı şifreli bir dosyada durur. Kurulum dosyasıyla kurulur, güncellemeler kendiliğinden gelir; kendi eklentini de yazabilirsin.",
+    "en": "Alt+Space opens a search bar in the middle of the screen. Type an app name to launch it or use /f to find a file; type 2+3*4 to calculate or 100 usd tl to convert currency. Slash commands bring weather, news, prayer times, translation, system status, Gmail, your calendar and Spotify into the same line, and a question starting with ? is answered by AI. Search runs on your computer, and passwords and account details are kept in an encrypted file tied to your Windows account. It installs with a setup file and updates itself, and you can write your own plugins."
+  },
+  "features": {
+    "tr": [
+      "Uygulama, dosya, ayar ve yer imi arama; yazdıkça tamamlama",
+      "Hesap makinesi, döviz ve birim çevirme",
+      "/sistem ile işlemci, bellek, disk ve pil; /temizle ile gereksiz dosyaları silme",
+      "/hava, /haber, /ezan, /çevir, /film ve /dizi",
+      "Google Kişiler, Gmail, Takvim, Görevler ve Drive; kişiye Ctrl+Enter ile WhatsApp",
+      "Spotify araması ve çalma kontrolü",
+      "? soru ile Claude'a sorma; panodaki metni özetleme, çevirme, düzeltme",
+      "Pano geçmişi, hazır metinler, notlar, pencere yerleştirme ve ekrandan metin okuma (OCR)",
+      "Açık ve koyu tema, kendiliğinden güncelleme, eklenti desteği"
+    ],
+    "en": [
+      "Search apps, files, settings and bookmarks, with completion as you type",
+      "Calculator, currency and unit conversion",
+      "/sistem shows CPU, memory, disk and battery; /temizle clears junk files",
+      "Weather, news, prayer times, translation, movies and TV shows",
+      "Google Contacts, Gmail, Calendar, Tasks and Drive; Ctrl+Enter on a contact opens WhatsApp",
+      "Spotify search and playback control",
+      "Ask Claude with ? question; summarize, translate or fix the text on the clipboard",
+      "Clipboard history, text snippets, notes, window snapping and text from the screen (OCR)",
+      "Light and dark themes, automatic updates, plugin support"
+    ]
+  },
+  "tech": [
+    "C#",
+    ".NET 10",
+    "WPF",
+    "Velopack",
+    "Claude API",
+    "Google API"
+  ],
+  "repo": "highlvmami/LumoraGo",
+  "links": [
+    {
+      "label": {
+        "tr": "İndir (Windows)",
+        "en": "Download (Windows)"
+      },
+      "url": "https://github.com/highlvmami/LumoraGo/releases/latest/download/LumoraGo-win-Setup.exe"
+    }
+  ],
+  "accent": "#8b5cf6",
+  "icon": "⚡",
+  "note": {
+    "tr": "Yalnızca Windows'ta çalışır. Yapay zekâ, Google, Spotify ve film komutları için Ayarlar'dan ilgili hesaba bağlanmak ya da kendi API anahtarını girmek gerekir; diğer komutlar kurar kurmaz çalışır.",
+    "en": "Windows only. The AI, Google, Spotify and movie commands need you to connect the account or enter your own API key in Settings; everything else works right after install."
+  },
+  "screenshots": [
+    {
+      "src": "/projects/go-uygulama-arama.webp",
+      "alt": {
+        "tr": "Launcher'da \"notepad\" araması, eşleşen uygulamalar listeleniyor",
+        "en": "Searching \"notepad\" in the launcher, matching apps listed"
+      }
+    },
+    {
+      "src": "/projects/go-sistem.webp",
+      "alt": {
+        "tr": "/sistem: işlemci, bellek ve disk kartları, en çok bellek kullanan uygulamalar",
+        "en": "/sistem: CPU, memory and disk cards, and the apps using the most memory"
+      }
+    },
+    {
+      "src": "/projects/go-hava.webp",
+      "alt": {
+        "tr": "/hava istanbul: anlık hava durumu, sıcaklık grafiği ve sonraki günler",
+        "en": "/hava istanbul: current weather, a temperature graph and the next days"
+      }
+    },
+    {
+      "src": "/projects/go-haber.webp",
+      "alt": {
+        "tr": "/haber: seçilen sitelerden son başlıklar",
+        "en": "/haber: latest headlines from the chosen news sites"
+      }
+    },
+    {
+      "src": "/projects/go-temizle.webp",
+      "alt": {
+        "tr": "/temizle: geçici dosyalar, Geri Dönüşüm Kutusu ve tarayıcı önbelleklerinin kapladığı yer",
+        "en": "/temizle: space taken by temp files, the Recycle Bin and browser caches"
+      }
+    },
+    {
+      "src": "/projects/go-ceviri.webp",
+      "alt": {
+        "tr": "/çevir: İngilizce bir cümlenin Türkçe çevirisi",
+        "en": "/çevir: an English sentence translated into Turkish"
+      }
+    }
+  ]
+}

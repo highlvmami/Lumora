@@ -49,7 +49,7 @@ Lumora, geliştirdiğimiz projelerin bir arada durduğu ana sitedir. Her projeni
 
 ## Neler var
 
-- **Projeler:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools ve LumoraFiles yayında; Lumora Forge ve Lumora Academy geliştiriliyor.
+- **Projeler:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools, LumoraFiles ve LumoraGo yayında; Lumora Forge ve Lumora Academy geliştiriliyor.
 - **İki dil:** Türkçe `/`, İngilizce `/en/`. Sağ üstteki TR | EN düğmesi aynı sayfanın diğer dilini açar, seçim hatırlanır ve ilk ziyarette tarayıcı diline göre yönlendirilir.
 - **Yazılımcı sitesi görünümü:** terminal temalı ana sayfa, kod yorumu tarzı başlıklar, durum çubuğu altlık ve hafif animasyonlar (hareketi azalt ayarı açıkken kapanır).
 - **CV sayfası:** teknolojiler ve projeler sitedeki projelerden otomatik gelir; "PDF olarak kaydet" düğmesiyle yazdırılabilir.
