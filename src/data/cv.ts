@@ -9,9 +9,9 @@ export const cv = {
   contacts: [
     { name: 'Web', url: 'https://lumora.is-a.dev' },
     { name: 'GitHub', url: 'https://github.com/highlvmami' },
-    { name: 'LinkedIn', url: '' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/muhammet-oruçoğlu' },
+    { name: 'Instagram', url: 'https://www.instagram.com/highlvmami' },
     { name: 'E-posta', url: '' }, // mailto:adres@ornek.com
-    { name: 'Instagram', url: '' },
     { name: 'X', url: '' },
     { name: 'YouTube', url: '' },
     { name: 'Discord', url: '' },
