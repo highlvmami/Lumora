@@ -3,14 +3,22 @@
 type Text = { tr: string; en: string };
 
 export const cv = {
-  name: 'highlvmami',
+  name: 'Muhammet Oruçoğlu',
   role: { tr: 'Yazılım geliştirici', en: 'Software developer' } as Text,
   site: 'https://lumora.is-a.dev',
   github: 'https://github.com/highlvmami',
   // Boşsa sayfa projelerden kısa bir özet üretir.
   summary: null as Text | null,
-  experience: [] as { title: Text; place: string; period: string; text?: Text }[],
-  education: [] as { title: Text; place: string; period: string }[],
+  experience: [
+    { title: { tr: 'Stajyer', en: 'Intern' }, place: 'Grandoria Turizm', period: '07.2021 – 09.2021' },
+  ] as { title: Text; place: string; period: string; text?: Text }[],
+  education: [
+    {
+      title: { tr: 'Veri Tabanı Programcılığı', en: 'Database Programming' },
+      place: 'Profilo Barış Mesleki ve Teknik Anadolu Lisesi',
+      period: '2018 – 2022',
+    },
+  ] as { title: Text; place: string; period: string }[],
 };
 
 // Teknolojilerin CV'de hangi grupta görüneceği. Listede olmayan "Diğer" grubuna düşer.
