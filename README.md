@@ -4,7 +4,7 @@
 
 **Lumora projelerinin vitrin sitesi: oyunlar, sosyal ağlar, gerçek zamanlı araçlar ve daha fazlası tek yerde. Türkçe ve İngilizce, koyu ve açık tema, hızlı ve statik.**
 
-**[Siteyi aç → lumorahub.pages.dev](https://lumorahub.pages.dev)**
+**[Siteyi aç → lumora.is-a.dev](https://lumora.is-a.dev)**
 
 Türkçe · [English](README.en.md)
 

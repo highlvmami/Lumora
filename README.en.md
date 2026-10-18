@@ -4,7 +4,7 @@
 
 **The showcase site for Lumora projects: games, social networks, real-time tools and more in one place. Turkish and English, dark and light theme, fast and static.**
 
-**[Open the site → lumorahub.pages.dev](https://lumorahub.pages.dev)**
+**[Open the site → lumora.is-a.dev](https://lumora.is-a.dev)**
 
 [Türkçe](README.md) · English
 
