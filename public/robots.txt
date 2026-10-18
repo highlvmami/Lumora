@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lumorahub.pages.dev/sitemap-index.xml
+Sitemap: https://lumora.is-a.dev/sitemap-index.xml
