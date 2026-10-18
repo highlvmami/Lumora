@@ -1,76 +1,137 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getProjects } from '../lib/projects';
-import { cv } from '../data/cv';
+import { cv, skillGroups, skillName } from '../data/cv';
 import { routes, projectUrl, t, type Lang } from '../lib/i18n';
 const { lang } = Astro.props as { lang: Lang };
 const tr = t(lang);
 const projects = await getProjects();
-const skills = new Map<string, number>();
-for (const p of projects) for (const s of p.data.tech) skills.set(s, (skills.get(s) ?? 0) + 1);
-const skillList = [...skills.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+
+// Her teknoloji kaç projede geçiyor (sürüm ekleri birleştirilmiş adla).
+const counts = new Map<string, number>();
+for (const p of projects) for (const s of new Set(p.data.tech.map(skillName))) counts.set(s, (counts.get(s) ?? 0) + 1);
+for (const s of cv.extraSkills) if (!counts.has(s)) counts.set(s, 0);
+const byCount = (a: string, b: string) => counts.get(b)! - counts.get(a)! || a.localeCompare(b);
+const grouped = new Set(skillGroups.flatMap((g) => g.items));
+const groups = [
+  ...skillGroups.map((g) => ({ name: g.name[lang], items: g.items.filter((s) => counts.has(s)).sort(byCount) })),
+  { name: tr('cv.other'), items: [...counts.keys()].filter((s) => !grouped.has(s)).sort(byCount) },
+].filter((g) => g.items.length > 0);
+
+const done = projects.filter((p) => p.data.status !== 'development');
+const next = projects.filter((p) => p.data.status === 'development');
+const summary = cv.summary?.[lang] ?? tr('cv.auto').replace('{n}', String(projects.length)).replace('{live}', String(done.length));
+const contacts = cv.contacts.filter((c) => c.url);
+const show = (url: string) => url.replace(/^(https?:\/\/(www\.)?|mailto:|tel:)/, '').replace(/\/$/, '');
+const period = (p: string | { tr: string; en: string }) => (typeof p === 'string' ? p : p[lang]);
 ---
 <Base lang={lang} current="cv" title={tr('cv.title')} alternates={{ tr: routes.cv.tr, en: routes.cv.en }}>
-  <section class="cv mx-auto max-w-4xl px-4 pt-14 sm:px-6">
-    <div class="cv-top">
-      <div>
-        <p class="prompt mb-3"><b>~/cv</b> <i>main</i> $ cat cv.md</p>
-        <h1 class="hero-title !text-[clamp(1.8rem,5vw,3rem)]"><span class="hl hl-accent" data-n="1">{cv.name}</span></h1>
-        <p class="mt-2 pl-[2.4rem] font-mono text-sm text-white/70">{cv.role[lang]}</p>
+  <section class="cv mx-auto max-w-5xl px-4 pt-14 sm:px-6">
+    <div class="cv-bar no-print">
+      <p class="prompt"><b>~/cv</b> <i>main</i> $ cat cv.md</p>
+      <button type="button" class="btn-ghost" onclick="window.print()">{tr('cv.print')}</button>
+    </div>
+
+    <article class="cv-sheet">
+      <header class="cv-head">
+        <div>
+          <h1 class="cv-name">{cv.name}</h1>
+          <p class="cv-role">{cv.role[lang]}</p>
+        </div>
+      </header>
+
+      <p class="cv-summary">{summary}</p>
+
+      {cv.story.length > 0 && (
+        <section class="cv-story no-print">
+          <h2 class="cv-h">{tr('cv.story')}</h2>
+          {cv.story.map((p) => <p>{p[lang]}</p>)}
+        </section>
+      )}
+
+      <div class="cv-grid">
+        <div class="cv-main">
+          {cv.experience.length > 0 && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.experience')}</h2>
+              <ul class="cv-list">
+                {cv.experience.map((e) => (
+                  <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div>{e.text && <p class="cv-text">{e.text[lang]}</p>}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {cv.education.length > 0 && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.education')}</h2>
+              <ul class="cv-list">
+                {cv.education.map((e) => (
+                  <li><div class="cv-row"><b>{e.title[lang]}</b><span>{period(e.period)}</span></div><div class="cv-sub">{e.place}</div></li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section class="cv-sec">
+            <h2 class="cv-h">{tr('cv.done')}</h2>
+            <ul class="cv-done">
+              {done.map((p) => (
+                <li>
+                  <a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a>
+                  <span>{p.data.tagline[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {(next.length > 0 || cv.goals.length > 0) && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.next')}</h2>
+              <ul class="cv-done is-next">
+                {next.map((p) => (
+                  <li>
+                    <a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a>
+                    <span>{p.data.tagline[lang]}</span>
+                  </li>
+                ))}
+                {cv.goals.map((g) => <li><span>{g[lang]}</span></li>)}
+              </ul>
+            </section>
+          )}
+        </div>
+
+        <aside class="cv-side">
+          <section class="cv-sec">
+            <h2 class="cv-h">{tr('cv.contact')}</h2>
+            <ul class="cv-contact">
+              {contacts.map((c) => (
+                <li><span>{c.name}</span><a href={c.url} rel="noopener">{show(c.url)}</a></li>
+              ))}
+            </ul>
+          </section>
+
+          <section class="cv-sec">
+            <h2 class="cv-h">{tr('cv.skills')}</h2>
+            <dl class="cv-skills">
+              {groups.map((g) => (
+                <div>
+                  <dt>{g.name}</dt>
+                  <dd>{g.items.map((s) => <span class="chip">{s}{counts.get(s)! > 1 && <small>×{counts.get(s)}</small>}</span>)}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {cv.interests.length > 0 && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.interests')}</h2>
+              <p class="cv-tags">{cv.interests.map((i) => <span class="chip">{i[lang]}</span>)}</p>
+            </section>
+          )}
+        </aside>
       </div>
-      <button type="button" class="btn-ghost no-print" onclick="window.print()">{tr('cv.print')}</button>
-    </div>
-    <p class="comment mt-6">{tr('cv.text')}</p>
-
-    {cv.summary && (
-      <div class="cv-block"><h2 class="head2">{tr('cv.about')}</h2><p class="mt-3 text-white/75">{cv.summary[lang]}</p></div>
-    )}
-
-    {cv.experience.length > 0 && (
-      <div class="cv-block">
-        <h2 class="head2">{tr('cv.experience')}</h2>
-        <ul class="cv-list">
-          {cv.experience.map((e) => (
-            <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div>{e.text && <p class="mt-1 text-white/70">{e.text[lang]}</p>}</li>
-          ))}
-        </ul>
-      </div>
-    )}
-
-    {cv.education.length > 0 && (
-      <div class="cv-block">
-        <h2 class="head2">{tr('cv.education')}</h2>
-        <ul class="cv-list">
-          {cv.education.map((e) => (
-            <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div></li>
-          ))}
-        </ul>
-      </div>
-    )}
-
-    <div class="cv-block">
-      <h2 class="head2">{tr('cv.skills')}</h2>
-      <p class="mt-4 flex flex-wrap gap-2">
-        {skillList.map(([name, n]) => <span class="chip">{name}<small>×{n}</small></span>)}
-      </p>
-    </div>
-
-    <div class="cv-block">
-      <h2 class="head2">{tr('cv.projects')}</h2>
-      <ul class="cv-list">
-        {projects.map((p) => (
-          <li>
-            <div class="cv-row"><a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a><span>{p.data.status}</span></div>
-            <div class="cv-sub">{p.data.tagline[lang]}</div>
-            <div class="cv-sub">{p.data.tech.join(' · ')}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <div class="cv-block">
-      <h2 class="head2">{tr('cv.links')}</h2>
-      <p class="mt-3 font-mono text-sm"><a href={cv.github} rel="noopener" style="color:var(--brand)">github.com/highlvmami</a></p>
-    </div>
+    </article>
+    <p class="comment mt-4 no-print">{tr('cv.text')}</p>
   </section>
 </Base>
