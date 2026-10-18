@@ -4,9 +4,22 @@ type Text = { tr: string; en: string };
 
 export const cv = {
   name: 'Muhammet Oruçoğlu',
-  role: { tr: 'Yazılım geliştirici', en: 'Software developer' } as Text,
-  site: 'https://lumora.is-a.dev',
-  github: 'https://github.com/highlvmami',
+  role: { tr: 'Yazılım Mühendisliği öğrencisi · Geliştirici', en: 'Software Engineering student · Developer' } as Text,
+  // İletişim ve sosyal medya. Adresi boş olan satır sayfada görünmez; doldurman yeterli.
+  contacts: [
+    { name: 'Web', url: 'https://lumora.is-a.dev' },
+    { name: 'GitHub', url: 'https://github.com/highlvmami' },
+    { name: 'LinkedIn', url: '' },
+    { name: 'E-posta', url: '' }, // mailto:adres@ornek.com
+    { name: 'Instagram', url: '' },
+    { name: 'X', url: '' },
+    { name: 'YouTube', url: '' },
+    { name: 'Discord', url: '' },
+    { name: 'Medium', url: '' },
+    { name: 'Telefon', url: '' }, // tel:+90...
+  ] as { name: string; url: string }[],
+  // "Neler yapacağım" bölümüne geliştirilen projelerin yanında eklenecek hedefler.
+  goals: [] as Text[],
   // Boşsa sayfa projelerden kısa bir özet üretir.
   summary: null as Text | null,
   experience: [
@@ -14,11 +27,16 @@ export const cv = {
   ] as { title: Text; place: string; period: string; text?: Text }[],
   education: [
     {
+      title: { tr: 'Yazılım Mühendisliği', en: 'Software Engineering' },
+      place: 'Manisa Celal Bayar Üniversitesi',
+      period: { tr: '3. sınıf, devam ediyor', en: '3rd year, ongoing' },
+    },
+    {
       title: { tr: 'Veri Tabanı Programcılığı', en: 'Database Programming' },
       place: 'Profilo Barış Mesleki ve Teknik Anadolu Lisesi',
       period: '2018 – 2022',
     },
-  ] as { title: Text; place: string; period: string }[],
+  ] as { title: Text; place: string; period: string | Text }[],
 };
 
 // Teknolojilerin CV'de hangi grupta görüneceği. Listede olmayan "Diğer" grubuna düşer.

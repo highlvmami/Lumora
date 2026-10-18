@@ -312,30 +312,28 @@ html[data-theme='light'] .prose-lumora .chart {
 .cv-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.25rem; flex-wrap: wrap; padding-bottom: 1.25rem; border-bottom: 2px solid var(--brand); }
 .cv-name { font-family: 'Geist Mono Variable', var(--font-mono); font-weight: 600; font-size: clamp(1.9rem, 5vw, 2.9rem); letter-spacing: -0.04em; line-height: 1.05; color: var(--brand); }
 .cv-role { margin-top: 0.35rem; font-family: var(--font-mono); font-size: 0.95rem; color: var(--fg); }
-.cv-contact { display: grid; gap: 0.2rem; font-family: var(--font-mono); font-size: 0.82rem; }
-.cv-contact span { display: inline-block; width: 4.2rem; color: var(--syn-com); }
-.cv-contact a:hover, .cv-row a:hover, .cv-links a:hover { color: var(--brand); }
+.cv-contact { margin-top: 1.1rem; display: grid; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.8rem; }
+.cv-contact li { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 0.5rem; }
+.cv-contact span { color: var(--syn-com); }
+.cv-contact a { overflow-wrap: anywhere; }
+.cv-contact a:hover, .cv-row a:hover, .cv-done a:hover { color: var(--brand); }
+.cv-done { margin-top: 1.1rem; display: grid; gap: 0.7rem; }
+.cv-done li { position: relative; padding-left: 1.2rem; font-size: 0.93rem; line-height: 1.5; }
+.cv-done li::before { content: '✓'; position: absolute; left: 0; color: var(--syn-str); font-family: var(--font-mono); }
+.cv-done.is-next li::before { content: '→'; color: var(--syn-fn); }
+.cv-done b { margin-right: 0.5rem; }
+.cv-done span { color: color-mix(in srgb, var(--fg) 75%, transparent); }
 .cv-summary { margin-top: 1.25rem; max-width: 62ch; line-height: 1.65; color: color-mix(in srgb, var(--fg) 85%, transparent); }
 .cv-grid { display: grid; gap: 2.25rem; margin-top: 2rem; }
-@media (min-width: 860px) { .cv-grid { grid-template-columns: minmax(0, 1fr) 17rem; } .cv-side { border-left: 1px dashed var(--line-strong); padding-left: 1.75rem; } }
+@media (min-width: 860px) { .cv-grid { grid-template-columns: minmax(0, 1fr) 19rem; } .cv-side { border-left: 1px dashed var(--line-strong); padding-left: 1.75rem; } }
 .cv-sec + .cv-sec { margin-top: 2rem; }
 .cv-h { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--syn-com); padding-bottom: 0.45rem; border-bottom: 1px solid var(--line-strong); }
 .cv-list { margin-top: 1.1rem; display: grid; gap: 1.35rem; }
 .cv-row { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
 .cv-row b { font-size: 1.02rem; }
 .cv-row > span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--syn-com); }
-.cv-status.is-live { color: var(--syn-str); }
-.cv-status.is-live::before { content: '● '; }
-.cv-status.is-development, .cv-status.is-beta { color: var(--syn-fn); }
-.cv-status.is-development::before, .cv-status.is-beta::before { content: '○ '; }
 .cv-sub { font-family: var(--font-mono); font-size: 0.75rem; color: var(--syn-com); margin-top: 0.1rem; }
 .cv-text { margin-top: 0.35rem; font-size: 0.93rem; color: color-mix(in srgb, var(--fg) 85%, transparent); }
-.cv-bullets { margin-top: 0.35rem; display: grid; gap: 0.15rem; font-size: 0.86rem; color: color-mix(in srgb, var(--fg) 70%, transparent); }
-.cv-bullets li { position: relative; padding-left: 1rem; }
-.cv-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--brand); }
-.cv-meta { margin-top: 0.45rem; display: flex; justify-content: space-between; gap: 0.25rem 1rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.74rem; color: var(--syn-com); }
-.cv-links { display: inline-flex; gap: 0.9rem; }
-.cv-links a { color: var(--brand); }
 .cv-skills { margin-top: 1.1rem; display: grid; gap: 1rem; }
 .cv-skills dt { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--fg); margin-bottom: 0.4rem; }
 .cv-skills dd { display: flex; flex-wrap: wrap; gap: 0.35rem; }
@@ -349,18 +347,17 @@ html[data-theme='light'] .prose-lumora .chart {
   .cv { max-width: none !important; padding: 0 !important; }
   .cv-sheet { border: 0 !important; padding: 0 !important; background: #fff !important; }
   .cv * { color: #222 !important; border-color: #ccc !important; }
-  .cv .cv-name, .cv .cv-bullets li::before { color: #af3a03 !important; }
+  .cv .cv-name { color: #af3a03 !important; }
   .cv .cv-head { border-bottom-color: #af3a03 !important; }
-  .cv .cv-h, .cv .cv-sub, .cv .cv-meta, .cv .cv-contact span { color: #666 !important; }
-  .cv-grid { grid-template-columns: minmax(0, 1fr) 13rem !important; gap: 1.5rem !important; margin-top: 1.1rem !important; }
+  .cv .cv-h, .cv .cv-sub, .cv .cv-contact span { color: #666 !important; }
+  .cv-done { gap: 0.4rem; } .cv-done li { font-size: 9pt; } .cv-contact { font-size: 8pt; }
+  .cv-grid { grid-template-columns: minmax(0, 1fr) 15.5rem !important; gap: 1.5rem !important; margin-top: 1.1rem !important; }
   .cv-side { border-left: 1px solid #ccc !important; padding-left: 1rem !important; }
   .cv-summary { margin-top: 0.8rem; font-size: 9.5pt; }
   .cv-list { gap: 0.7rem; }
-  .cv-item { break-inside: avoid; }
   .cv-row b { font-size: 10.5pt; }
   .cv-text { font-size: 9pt; margin-top: 0.15rem; }
-  .cv-bullets { font-size: 8.5pt; }
-  .cv-meta, .cv-sub { font-size: 7.5pt; }
+  .cv-sub { font-size: 7.5pt; }
   .cv-skills .chip { font-size: 7.5pt; padding: 0.05rem 0.3rem; }
   .cv a { text-decoration: none; }
 }

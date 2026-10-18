@@ -17,9 +17,12 @@ const groups = [
   { name: tr('cv.other'), items: [...counts.keys()].filter((s) => !grouped.has(s)).sort(byCount) },
 ].filter((g) => g.items.length > 0);
 
-const live = projects.filter((p) => p.data.status === 'live').length;
-const summary = cv.summary?.[lang] ?? tr('cv.auto').replace('{n}', String(projects.length)).replace('{live}', String(live));
-const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const done = projects.filter((p) => p.data.status !== 'development');
+const next = projects.filter((p) => p.data.status === 'development');
+const summary = cv.summary?.[lang] ?? tr('cv.auto').replace('{n}', String(projects.length)).replace('{live}', String(done.length));
+const contacts = cv.contacts.filter((c) => c.url);
+const show = (url: string) => url.replace(/^(https?:\/\/(www\.)?|mailto:|tel:)/, '').replace(/\/$/, '');
+const period = (p: string | { tr: string; en: string }) => (typeof p === 'string' ? p : p[lang]);
 ---
 <Base lang={lang} current="cv" title={tr('cv.title')} alternates={{ tr: routes.cv.tr, en: routes.cv.en }}>
   <section class="cv mx-auto max-w-5xl px-4 pt-14 sm:px-6">
@@ -34,10 +37,6 @@ const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
           <h1 class="cv-name">{cv.name}</h1>
           <p class="cv-role">{cv.role[lang]}</p>
         </div>
-        <ul class="cv-contact">
-          <li><span>web</span><a href={cv.site}>{host(cv.site)}</a></li>
-          <li><span>github</span><a href={cv.github} rel="noopener">{host(cv.github)}</a></li>
-        </ul>
       </header>
 
       <p class="cv-summary">{summary}</p>
@@ -55,48 +54,55 @@ const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '')
             </section>
           )}
 
-          <section class="cv-sec">
-            <h2 class="cv-h">{tr('cv.projects')}</h2>
-            <ul class="cv-list">
-              {projects.map((p) => {
-                const site = p.data.links.find((l) => !/github\.com/.test(l.url));
-                return (
-                  <li class="cv-item">
-                    <div class="cv-row">
-                      <a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a>
-                      <span class={`cv-status is-${p.data.status}`}>{tr(`status.${p.data.status}`)}</span>
-                    </div>
-                    <div class="cv-sub">{p.data.category[lang]}</div>
-                    <p class="cv-text">{p.data.tagline[lang]}</p>
-                    <ul class="cv-bullets">
-                      {p.data.features[lang].slice(0, 2).map((f) => <li>{f}</li>)}
-                    </ul>
-                    <div class="cv-meta">
-                      <span>{[...new Set(p.data.tech.map(skillName))].join(' · ')}</span>
-                      <span class="cv-links">
-                        {site && <a href={site.url} rel="noopener">{host(site.url)}</a>}
-                        <a href={`https://github.com/${p.data.repo}`} rel="noopener">{tr('cv.source')}</a>
-                      </span>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
-
           {cv.education.length > 0 && (
             <section class="cv-sec">
               <h2 class="cv-h">{tr('cv.education')}</h2>
               <ul class="cv-list">
                 {cv.education.map((e) => (
-                  <li><div class="cv-row"><b>{e.title[lang]}</b><span>{e.period}</span></div><div class="cv-sub">{e.place}</div></li>
+                  <li><div class="cv-row"><b>{e.title[lang]}</b><span>{period(e.period)}</span></div><div class="cv-sub">{e.place}</div></li>
                 ))}
+              </ul>
+            </section>
+          )}
+
+          <section class="cv-sec">
+            <h2 class="cv-h">{tr('cv.done')}</h2>
+            <ul class="cv-done">
+              {done.map((p) => (
+                <li>
+                  <a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a>
+                  <span>{p.data.tagline[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {(next.length > 0 || cv.goals.length > 0) && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.next')}</h2>
+              <ul class="cv-done is-next">
+                {next.map((p) => (
+                  <li>
+                    <a href={projectUrl(lang, p.id)}><b>{p.data.name}</b></a>
+                    <span>{p.data.tagline[lang]}</span>
+                  </li>
+                ))}
+                {cv.goals.map((g) => <li><span>{g[lang]}</span></li>)}
               </ul>
             </section>
           )}
         </div>
 
         <aside class="cv-side">
+          <section class="cv-sec">
+            <h2 class="cv-h">{tr('cv.contact')}</h2>
+            <ul class="cv-contact">
+              {contacts.map((c) => (
+                <li><span>{c.name}</span><a href={c.url} rel="noopener">{show(c.url)}</a></li>
+              ))}
+            </ul>
+          </section>
+
           <section class="cv-sec">
             <h2 class="cv-h">{tr('cv.skills')}</h2>
             <dl class="cv-skills">
