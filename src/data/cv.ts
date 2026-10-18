@@ -22,6 +22,25 @@ export const cv = {
   goals: [] as Text[],
   // Projelerde geçmese de bildiğim teknolojiler; Teknolojiler bölümüne eklenir.
   extraSkills: ['C', 'C++'],
+  // "Hikayem" bölümü; her eleman bir paragraf.
+  story: [
+    {
+      tr: "Yazılıma lisede başladım. Profilo Barış Mesleki ve Teknik Anadolu Lisesi'nde Veri Tabanı Programcılığı okurken HTML, CSS, PHP ve MySQL ile ilk web sitelerimi yaptım; boş zamanlarımda pixel art çiziyor, oyun bölümleri ve hikâyeleri tasarlıyordum. O zamanlar hedefim ya web geliştirici ya da oyun geliştirici olmaktı. 2021 yazında Grandoria Turizm'deki stajımla ilk iş deneyimimi edindim.",
+      en: "I started coding in high school. While studying Database Programming at Profilo Barış Vocational and Technical High School, I built my first websites with HTML, CSS, PHP and MySQL, and in my spare time I drew pixel art and designed game levels and stories. Back then I wanted to become either a web developer or a game developer. In the summer of 2021 I got my first work experience as an intern at Grandoria Turizm.",
+    },
+    {
+      tr: "Bugün Manisa Celal Bayar Üniversitesi'nde Yazılım Mühendisliği okuyorum ve o iki hedefi bir araya getiriyorum. Lumora çatısı altında arkadaşlarla birlikte oynanan bir roguelike oyundan gerçek zamanlı bir beyaz tahtaya, sosyal medyadan Windows araçlarına kadar uçtan uca projeler geliştiriyorum. Bir fikri tasarımından yayına kadar götürmeyi ve insanların gerçekten kullandığı şeyler üretmeyi seviyorum.",
+      en: "Today I study Software Engineering at Manisa Celal Bayar University, and I'm bringing those two goals together. Under the Lumora umbrella I build end-to-end projects, from a co-op roguelike you play with friends to a real-time whiteboard, a social network and Windows tools. I love taking an idea from design all the way to release and making things people actually use.",
+    },
+  ] as Text[],
+  // İlgi alanları; Teknolojiler bölümünün altında görünür.
+  interests: [
+    { tr: 'Oyun geliştirme', en: 'Game development' },
+    { tr: 'Pixel art', en: 'Pixel art' },
+    { tr: 'Bölüm tasarımı', en: 'Level design' },
+    { tr: 'Oyun senaryosu', en: 'Game writing' },
+    { tr: 'Gerçek zamanlı uygulamalar', en: 'Real-time apps' },
+  ] as Text[],
   // Boşsa sayfa projelerden kısa bir özet üretir.
   summary: null as Text | null,
   experience: [

@@ -42,6 +42,13 @@ const period = (p: string | { tr: string; en: string }) => (typeof p === 'string
 
       <p class="cv-summary">{summary}</p>
 
+      {cv.story.length > 0 && (
+        <section class="cv-story no-print">
+          <h2 class="cv-h">{tr('cv.story')}</h2>
+          {cv.story.map((p) => <p>{p[lang]}</p>)}
+        </section>
+      )}
+
       <div class="cv-grid">
         <div class="cv-main">
           {cv.experience.length > 0 && (
@@ -115,6 +122,13 @@ const period = (p: string | { tr: string; en: string }) => (typeof p === 'string
               ))}
             </dl>
           </section>
+
+          {cv.interests.length > 0 && (
+            <section class="cv-sec">
+              <h2 class="cv-h">{tr('cv.interests')}</h2>
+              <p class="cv-tags">{cv.interests.map((i) => <span class="chip">{i[lang]}</span>)}</p>
+            </section>
+          )}
         </aside>
       </div>
     </article>
