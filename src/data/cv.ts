@@ -20,6 +20,8 @@ export const cv = {
   ] as { name: string; url: string }[],
   // "Neler yapacağım" bölümüne geliştirilen projelerin yanında eklenecek hedefler.
   goals: [] as Text[],
+  // Projelerde geçmese de bildiğim teknolojiler; Teknolojiler bölümüne eklenir.
+  extraSkills: ['C', 'C++'],
   // Boşsa sayfa projelerden kısa bir özet üretir.
   summary: null as Text | null,
   experience: [
@@ -41,7 +43,7 @@ export const cv = {
 
 // Teknolojilerin CV'de hangi grupta görüneceği. Listede olmayan "Diğer" grubuna düşer.
 export const skillGroups: { name: Text; items: string[] }[] = [
-  { name: { tr: 'Diller', en: 'Languages' }, items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'C#', 'GDScript'] },
+  { name: { tr: 'Diller', en: 'Languages' }, items: ['TypeScript', 'JavaScript', 'Python', 'C#', 'C', 'C++', 'Go', 'GDScript'] },
   { name: { tr: 'Ön yüz', en: 'Frontend' }, items: ['React', 'Next.js', 'SvelteKit', 'Tailwind CSS', 'Canvas', 'Web Push', 'Android TWA'] },
   { name: { tr: 'Arka uç', en: 'Backend' }, items: ['Node.js', 'Express', 'Flask', 'WebSocket', 'Prisma', 'Firebase'] },
   { name: { tr: 'Veritabanı', en: 'Databases' }, items: ['PostgreSQL', 'SQLite', 'SQL Server', 'Turso'] },

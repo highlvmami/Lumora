@@ -10,6 +10,7 @@ const projects = await getProjects();
 // Her teknoloji kaç projede geçiyor (sürüm ekleri birleştirilmiş adla).
 const counts = new Map<string, number>();
 for (const p of projects) for (const s of new Set(p.data.tech.map(skillName))) counts.set(s, (counts.get(s) ?? 0) + 1);
+for (const s of cv.extraSkills) if (!counts.has(s)) counts.set(s, 0);
 const byCount = (a: string, b: string) => counts.get(b)! - counts.get(a)! || a.localeCompare(b);
 const grouped = new Set(skillGroups.flatMap((g) => g.items));
 const groups = [
