@@ -2,7 +2,7 @@
 
 # Lumora
 
-**Lumora projelerinin vitrin sitesi: oyunlar, sosyal ağlar, gerçek zamanlı araçlar ve daha fazlası tek yerde. Türkçe ve İngilizce, koyu ve açık tema, hızlı ve statik.**
+**Lumora projelerinin vitrin sitesi: oyunlar, sosyal ağlar, gerçek zamanlı araçlar ve daha fazlası tek yerde. Türkçe ve İngilizce, dört tema (koyu, açık, yumuşak koyu, sepya), hızlı ve statik.**
 
 **[Siteyi aç → lumora.is-a.dev](https://lumora.is-a.dev)**
 
@@ -54,7 +54,7 @@ Lumora, geliştirdiğimiz projelerin bir arada durduğu ana sitedir. Her projeni
 - **Yazılımcı sitesi görünümü:** terminal temalı ana sayfa, kod yorumu tarzı başlıklar, durum çubuğu altlık ve hafif animasyonlar (hareketi azalt ayarı açıkken kapanır).
 - **CV sayfası:** teknolojiler ve projeler sitedeki projelerden otomatik gelir; "PDF olarak kaydet" düğmesiyle yazdırılabilir.
 - **Yönetici girişi:** site sahibi GitHub ile girip blog yazısı ekleyebilir ve öne çıkan projeleri seçebilir.
-- **Koyu ve açık tema:** sağ üstteki düğmeyle değişir, seçim tarayıcıda saklanır.
+- **Dört tema:** koyu, açık ve göz yormayan yumuşak koyu ile sepya. Sağ üstteki palet düğmesinden seçilir, seçim tarayıcıda saklanır.
 - **Blog:** duyurular, sürüm notları ve grafikli yazılar; Türkçe ve İngilizce.
 - **GitHub bilgileri:** yıldız, son güncelleme ve son sürüm derleme sırasında çekilir; günlük otomatik yeniden derleme ile güncel kalır.
 - **SEO ve paylaşım:** sitemap, hreflang, Open Graph görseli ve güvenlik başlıkları hazırdır.

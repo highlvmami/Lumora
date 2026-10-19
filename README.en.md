@@ -2,7 +2,7 @@
 
 # Lumora
 
-**The showcase site for Lumora projects: games, social networks, real-time tools and more in one place. Turkish and English, dark and light theme, fast and static.**
+**The showcase site for Lumora projects: games, social networks, real-time tools and more in one place. Turkish and English, four themes (dark, light, soft dark, sepia), fast and static.**
 
 **[Open the site → lumora.is-a.dev](https://lumora.is-a.dev)**
 
@@ -54,7 +54,7 @@ Lumora is the main site where our projects live together. Each project has its o
 - **Developer-site look:** a terminal-style home page, code-comment headings, a status-bar footer and light animations (disabled when reduced motion is on).
 - **CV page:** technologies and projects fill in automatically from the projects on the site; printable with a "Save as PDF" button.
 - **Admin sign-in:** the site owner signs in with GitHub to add blog posts and choose featured projects.
-- **Dark and light theme:** toggled from the top right, the choice is stored in the browser.
+- **Four themes:** dark, light, plus the easy-on-the-eyes soft dark and sepia. Picked from the palette button at the top right, the choice is stored in the browser.
 - **Blog:** announcements, release notes and posts with charts; in Turkish and English.
 - **GitHub data:** stars, last update and latest release are fetched at build time and kept fresh by a daily automatic rebuild.
 - **SEO and sharing:** sitemap, hreflang, Open Graph image and security headers are set up.

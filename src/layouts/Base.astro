@@ -34,7 +34,7 @@ const isHome = current === 'home';
     <link rel="alternate" hreflang="en" href={new URL(alternates.en, site).href} />
     <link rel="alternate" hreflang="x-default" href={new URL(alternates.tr, site).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#141311" />
+    <meta name="theme-color" content="#1d2021" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Lumora" />
     <meta property="og:title" content={fullTitle} />
@@ -44,11 +44,12 @@ const isHome = current === 'home';
     <meta property="og:locale" content={lang === 'tr' ? 'tr_TR' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
-      // Tema: kayıtlı tercih varsa o, yoksa cihazın teması. Sayfa çizilmeden önce uygulanır (yanıp sönmesin).
+      // Tema (koyu, açık, yumuşak koyu, sepya): kayıtlı tercih varsa o, yoksa cihazın teması. Sayfa çizilmeden önce uygulanır (yanıp sönmesin).
       try {
         var saved = localStorage.getItem('lumora-theme');
-        var light = saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: light)').matches;
-        document.documentElement.dataset.theme = light ? 'light' : 'dark';
+        var known = ['dark', 'light', 'dim', 'sepia'];
+        document.documentElement.dataset.theme = known.indexOf(saved) >= 0 ? saved
+          : window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
       } catch (_) {
         document.documentElement.dataset.theme = 'dark';
       }
