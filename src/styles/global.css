@@ -80,12 +80,62 @@ html[data-theme='light'] {
   --star: #b57614;
 }
 
+/* Yumuşak koyu: düşük kontrastlı gri-yeşil zemin, sakin renkler (everforest kökenli).
+   Uzun okumada göz yormasın diye yazı saf beyaz değil, vurgu da daha soluk. */
+html[data-theme='dim'] {
+  color-scheme: dark;
+  --bg: #2b3339;
+  --surface: #323c41;
+  --surface-2: #3a454a;
+  --surface-3: #445055;
+  --fg: #d3c6aa;
+  --brand: #e69875;
+  --brand-fg: #2b3339;
+  --line: rgb(211 198 170 / 0.08);
+  --line-strong: rgb(211 198 170 / 0.2);
+  --syn-key: #7fbbb3;
+  --syn-str: #a7c080;
+  --syn-num: #e69875;
+  --syn-kw: #e67e80;
+  --syn-fn: #dbbc7f;
+  --syn-com: #9da9a0;
+  --st-live: #a7c080;
+  --st-beta: #7fbbb3;
+  --st-dev: #dbbc7f;
+  --star: #dbbc7f;
+}
+
+/* Sepya: e-kitap okuyucusu gibi sıcak kâğıt, parlak beyaz yok, kahve yazı. */
+html[data-theme='sepia'] {
+  color-scheme: light;
+  --bg: #f1e7d0;
+  --surface: #f7efdc;
+  --surface-2: #e8dcc0;
+  --surface-3: #d9cba9;
+  --fg: #5b4636;
+  --brand: #9a4a24;
+  --brand-fg: #f7efdc;
+  --line: rgb(91 70 54 / 0.1);
+  --line-strong: rgb(91 70 54 / 0.26);
+  --syn-key: #3f6b70;
+  --syn-str: #5f6420;
+  --syn-num: #9a4a24;
+  --syn-kw: #8f3b2e;
+  --syn-fn: #81601a;
+  --syn-com: #75614f;
+  --st-live: #5f6420;
+  --st-beta: #3f6b70;
+  --st-dev: #81601a;
+  --star: #81601a;
+}
+
 body {
   background-color: var(--bg);
   /* İnce nokta ızgarası: editör zemini. */
   background-image: radial-gradient(var(--line) 1px, transparent 1.2px);
   background-size: 22px 22px;
 }
+html[data-theme='dim'] body, html[data-theme='sepia'] body { background-image: none; }
 
 ::selection { background: var(--brand); color: var(--brand-fg); }
 
@@ -173,6 +223,16 @@ h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
 }
 .iconbtn:hover { background: var(--brand); color: var(--brand-fg); border-color: var(--brand); }
 [data-theme-toggle]:hover svg { transform: rotate(35deg); transition: transform 0.3s ease; }
+/* Tema seçici: simgeye basınca açılan küçük liste. */
+.theme-menu { position: absolute; right: 0; top: calc(100% + 0.5rem); z-index: 50; width: 15.5rem; padding: 0.3rem; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface); box-shadow: 0 18px 40px -20px rgb(0 0 0 / 0.55); font-family: var(--font-mono); font-size: 0.78rem; }
+.theme-menu[hidden] { display: none; }
+@media (max-width: 639px) { .theme-menu { position: fixed; top: 4.25rem; left: 1rem; right: 1rem; width: auto; } }
+.theme-opt { display: flex; width: 100%; align-items: center; gap: 0.6rem; padding: 0.5rem 0.6rem; border-radius: 4px; color: var(--fg); text-align: left; }
+.theme-opt:hover, .theme-opt:focus-visible { background: var(--surface-2); }
+.theme-opt[aria-checked='true'] { color: var(--brand); }
+.theme-opt[aria-checked='true']::after { content: '✓'; margin-left: auto; }
+.theme-sw { width: 1.1rem; height: 1.1rem; flex: none; border-radius: 3px; border: 1px solid rgb(127 127 127 / 0.45); background: linear-gradient(135deg, var(--a) 0 55%, var(--b) 55% 100%); }
+.theme-opt small { display: block; color: var(--syn-com); font-size: 0.68rem; }
 .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 4px; font-family: var(--font-mono); font-size: 0.72rem; overflow: hidden; }
 .seg a { padding: 0.4rem 0.6rem; text-transform: lowercase; color: var(--syn-com); }
 .seg a + a { border-left: 1px solid var(--line-strong); }
@@ -280,7 +340,8 @@ html[data-admin='1'] [data-admin-only] { display: revert !important; }
   background: color-mix(in srgb, var(--color-white) 4%, transparent);
   border: 1px solid var(--line-strong);
 }
-html[data-theme='light'] .prose-lumora .chart {
+html[data-theme='light'] .prose-lumora .chart,
+html[data-theme='sepia'] .prose-lumora .chart {
   --c1: #2a78d6; --c2: #eb6834; --c3: #1baf7a; --c-other: #8a8994;
   --track: rgb(20 17 43 / 0.07);
 }
