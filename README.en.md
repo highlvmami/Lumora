@@ -49,7 +49,7 @@ Lumora is the main site where our projects live together. Each project has its o
 
 ## What's inside
 
-- **Projects:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools, LumoraFiles and LumoraGo are live; Lumora Forge and Lumora Academy are in development.
+- **Projects:** LumoraRPG, LumoraSocial, LumoraBoard, LumoraLink, LumoraTools, LumoraFiles, LumoraGo and LumoraStudio are live; Lumora Forge and Lumora Academy are in development.
 - **Two languages:** Turkish at `/`, English at `/en/`. The TR | EN switch in the top right opens the same page in the other language, the choice is remembered, and first-time visitors are redirected by browser language.
 - **Developer-site look:** a terminal-style home page, code-comment headings, a status-bar footer and light animations (disabled when reduced motion is on).
 - **CV page:** technologies and projects fill in automatically from the projects on the site; printable with a "Save as PDF" button.
