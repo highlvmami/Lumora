@@ -1,6 +1,6 @@
 {
   "name": "Lumora Academy",
-  "order": 9,
+  "order": 10,
   "status": "development",
   "category": { "tr": "Eğitim", "en": "Education" },
   "tagline": {

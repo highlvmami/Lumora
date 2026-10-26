@@ -1,0 +1,76 @@
+{
+  "name": "LumoraStudio",
+  "order": 8,
+  "featured": true,
+  "status": "live",
+  "category": {
+    "tr": "Masaüstü",
+    "en": "Desktop"
+  },
+  "tagline": {
+    "tr": "Siz istemedikçe kalite kaybetmeyen, tamamen yerel çalışan video ve fotoğraf düzenleyici.",
+    "en": "A fully local video and photo editor that never loses quality unless you ask it to."
+  },
+  "description": {
+    "tr": "Kurgu, renk, ses ve fotoğraf çalışma alanları tek pencerede. Sadece kesip birleştirdiyseniz video yeniden kodlanmaz, paketler bit bit kopyalanır; yeniden kodlamak gerekirse \"kaynakla aynı\" seçeneği kodek, çözünürlük, kare hızı, renk ve bit hızını kaynaktan alır. Fotoğraflarda orijinal dosyaya hiç yazılmaz, ayarlar 32 bit kayan noktada hesaplanıp kayıpsız kaydedilir. Otomatik altyazı, altyazı çevirisi, yüz ve plaka bulanıklaştırma, arka plan kaldırma gibi yapay zeka araçları da bu bilgisayarda çalışır; hiçbir görüntü dışarı gönderilmez. Windows için hazır paket olarak dağıtılır ve kendini GitHub Releases'tan günceller. Hâlâ 0.x sürümünde, geliştirme sürüyor.",
+    "en": "Edit, color, audio and photo workspaces in one window. If you only cut and join, the video is not re-encoded and packets are copied bit for bit; when re-encoding is needed, the \"same as source\" option takes the codec, resolution, frame rate, color and bitrate from the source. Photos are never written over: adjustments are computed in 32-bit floating point and saved losslessly. AI tools such as automatic subtitles, subtitle translation, face and license plate blurring and background removal also run on your computer; no image is sent anywhere. It ships as a ready-to-run Windows package and updates itself from GitHub Releases. Still at version 0.x and in active development."
+  },
+  "features": {
+    "tr": [
+      "Kayıpsız kesim: yeniden kodlamadan dışa aktarma",
+      "Çok izli zaman çizelgesi, geçişler, başlık şablonları ve çıkartmalar",
+      "Renk çalışma alanı: eğriler, HSL, renk tekerlekleri, LUT ve kapsamlar",
+      "Fotoğraf: katmanlar, maskeler, RAW ve iPhone (HEIC) desteği",
+      "Hız rampası, ters oynatma ve optik akışla akıcı ağır çekim",
+      "Görüntü sabitleme ve hareket takibi",
+      "Otomatik altyazı ve 9 dil arasında yerel altyazı çevirisi",
+      "Yüz ve plaka bulanıklaştırma, tek tıkla arka plan kaldırma",
+      "Ekran kaydı, sesli anlatım, GIF ve toplu fotoğraf işleme",
+      "Türkçe ve İngilizce arayüz, açık ve koyu tema, F1 ile kullanım kitapçığı"
+    ],
+    "en": [
+      "Lossless cutting: export without re-encoding",
+      "Multi-track timeline, transitions, title templates and stickers",
+      "Color workspace: curves, HSL, color wheels, LUTs and scopes",
+      "Photo: layers, masks, RAW and iPhone (HEIC) support",
+      "Speed ramps, reverse playback and smooth slow motion with optical flow",
+      "Video stabilization and motion tracking",
+      "Automatic subtitles and local subtitle translation between 9 languages",
+      "Face and license plate blurring, one-click background removal",
+      "Screen recording, voice-over, GIF and batch photo processing",
+      "Turkish and English UI, light and dark themes, built-in guide on F1"
+    ]
+  },
+  "tech": [
+    "C++20",
+    "Qt 6",
+    "FFmpeg",
+    "ONNX Runtime",
+    "whisper.cpp",
+    "CMake"
+  ],
+  "repo": "highlvmami/LumoraStudio",
+  "links": [
+    {
+      "label": {
+        "tr": "Windows için indir",
+        "en": "Download for Windows"
+      },
+      "url": "https://github.com/highlvmami/LumoraStudio/releases/latest"
+    }
+  ],
+  "accent": "#f43f5e",
+  "icon": "🎬",
+  "screenshots": [
+    { "src": "/projects/studio-kurgu.webp", "alt": { "tr": "Kurgu çalışma alanı: dosyalar, önizleme, özellikler ve zaman çizelgesi", "en": "Edit workspace: media, preview, properties and timeline" } },
+    { "src": "/projects/studio-renk.webp", "alt": { "tr": "Renk çalışma alanı: dalga biçimi, ışık ayarları ve renk tekerlekleri", "en": "Color workspace: waveform, light controls and color wheels" } },
+    { "src": "/projects/studio-katmanlar.webp", "alt": { "tr": "Fotoğraf katmanları ve elips maske", "en": "Photo layers and an ellipse mask" } },
+    { "src": "/projects/studio-fotograf.webp", "alt": { "tr": "Fotoğraf çalışma alanı: histogram ve ayarlar", "en": "Photo workspace: histogram and adjustments" } },
+    { "src": "/projects/studio-altyazi.webp", "alt": { "tr": "Altyazı izi ve altyazı biçimi", "en": "Subtitle track and subtitle styling" } },
+    { "src": "/projects/studio-takip.webp", "alt": { "tr": "Hareket takibi: başlık nesneyle birlikte hareket ediyor", "en": "Motion tracking: a title follows an object" } },
+    { "src": "/projects/studio-sabitleme.webp", "alt": { "tr": "Titreyen kamerayı sabitleme", "en": "Stabilizing shaky footage" } },
+    { "src": "/projects/studio-disa-aktar.webp", "alt": { "tr": "Dışa aktarma: kayıpsız kesim önerisi ve ne olacağının özeti", "en": "Export: lossless cut suggestion and a summary of what will happen" } },
+    { "src": "/projects/studio-kurgu-gunduz.webp", "alt": { "tr": "Açık tema (Gündüz)", "en": "Light theme (Day)" } },
+    { "src": "/projects/studio-nasil-kullanilir.webp", "alt": { "tr": "Nasıl kullanılır kitapçığı", "en": "How-to guide" } }
+  ]
+}

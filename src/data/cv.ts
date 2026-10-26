@@ -66,13 +66,13 @@ export const skillGroups: { name: Text; items: string[] }[] = [
   { name: { tr: 'Ön yüz', en: 'Frontend' }, items: ['React', 'Next.js', 'SvelteKit', 'Tailwind CSS', 'Canvas', 'Web Push', 'Android TWA'] },
   { name: { tr: 'Arka uç', en: 'Backend' }, items: ['Node.js', 'Express', 'Flask', 'WebSocket', 'Prisma', 'Firebase'] },
   { name: { tr: 'Veritabanı', en: 'Databases' }, items: ['PostgreSQL', 'SQLite', 'SQL Server', 'Turso'] },
-  { name: { tr: 'Masaüstü ve oyun', en: 'Desktop & games' }, items: ['.NET', 'WPF', 'Tkinter', 'customtkinter', 'Godot', 'PyInstaller', 'Velopack', 'pynput', 'mss'] },
-  { name: { tr: 'Yapay zekâ ve API', en: 'AI & APIs' }, items: ['Claude API', 'Google API'] },
-  { name: { tr: 'Araçlar', en: 'Tooling' }, items: ['Docker', 'GitHub Actions', 'Render', 'pytest'] },
+  { name: { tr: 'Masaüstü ve oyun', en: 'Desktop & games' }, items: ['.NET', 'WPF', 'Tkinter', 'customtkinter', 'Godot', 'PyInstaller', 'Velopack', 'pynput', 'mss', 'Qt', 'FFmpeg'] },
+  { name: { tr: 'Yapay zekâ ve API', en: 'AI & APIs' }, items: ['Claude API', 'Google API', 'ONNX Runtime', 'whisper.cpp'] },
+  { name: { tr: 'Araçlar', en: 'Tooling' }, items: ['Docker', 'GitHub Actions', 'Render', 'pytest', 'CMake'] },
 ];
 
 // "Next.js 16", "SQLite FTS5" gibi sürüm/ek içeren adları tek ada indirir.
-const aliases: Record<string, string> = { 'SQLite FTS5': 'SQLite' };
+const aliases: Record<string, string> = { 'SQLite FTS5': 'SQLite', 'C++20': 'C++' };
 export function skillName(raw: string) {
   return aliases[raw] ?? raw.replace(/\s+v?\d+(\.\d+)*$/, '');
 }
