@@ -12,8 +12,8 @@
     "en": "A Megabonk-style 3D pixel-art roguelike survivor: waves of monsters, bosses, pets, a skill tree and live co-op with friends."
   },
   "description": {
-    "tr": "Bir karakter seçip açık bir haritaya iniyorsun; canavarlar her yönden gelir, silahların menzile gireni kendiliğinden vurur, sen de hayatta kalmaya çalışırsın. Her seviyede üç karttan birini seçip o oyunluk güçlenirsin, her beş dakikada bir boss gelir. Kazandığın EXP, altın, eşya ve kasalar hesabında kalır: ekipman, petler ve yetenek ağacıyla bir sonraki oyuna daha güçlü başlarsın. Oyun arasında gece gündüz yaşayan pikselli bir şehir ve gezilebilir bir taverna seni bekler. Tarayıcıda ve Windows'ta çalışır. Çevrimiçi sunucu ücretsiz planda çalıştığı için uzun süre kullanılmazsa uykuya geçer; ilk bağlantı bir dakika kadar sürebilir. Sunucuya ulaşılamazsa oyun çevrimdışı açılır.",
-    "en": "Pick a character and drop onto an open map: monsters pour in from every side, your weapons fire on their own and you try to stay alive. Each level you pick one of three cards to power up for that run, and a boss arrives every five minutes. EXP, gold, items and crates stay on your account, so equipment, pets and the skill tree make every run start stronger. Between runs a pixel town that lives through day and night, and a tavern you can walk around in, are waiting. Runs in the browser and on Windows. The online server runs on a free plan, so it sleeps when idle and the first connection can take about a minute. If it can't be reached, the game opens offline."
+    "tr": "Bir karakter seçip açık bir haritaya iniyorsun; canavarlar her yönden gelir, silahların menzile gireni kendiliğinden vurur, sen de hayatta kalmaya çalışırsın. Her seviyede üç karttan birini seçip o oyunluk güçlenirsin, her beş dakikada bir boss gelir. Kazandığın EXP, altın, eşya ve kasalar hesabında kalır: ekipman, petler ve yetenek ağacıyla bir sonraki oyuna daha güçlü başlarsın. Oyun arasında gece gündüz yaşayan pikselli bir şehir ve gezilebilir bir taverna seni bekler. Tarayıcıda ve Windows'ta çalışır. Çevrimiçi sunucu uykuya geçmez; sunucuya ulaşılamazsa oyun çevrimdışı açılır.",
+    "en": "Pick a character and drop onto an open map: monsters pour in from every side, your weapons fire on their own and you try to stay alive. Each level you pick one of three cards to power up for that run, and a boss arrives every five minutes. EXP, gold, items and crates stay on your account, so equipment, pets and the skill tree make every run start stronger. Between runs a pixel town that lives through day and night, and a tavern you can walk around in, are waiting. Runs in the browser and on Windows. The online server never sleeps; if it can't be reached, the game opens offline."
   },
   "features": {
     "tr": [
@@ -43,7 +43,8 @@
     "Node.js",
     "WebSocket",
     "PostgreSQL",
-    "Render",
+    "Northflank",
+    "Neon",
     "GitHub Actions"
   ],
   "repo": "highlvmami/LumoraRPG",
