@@ -53,15 +53,11 @@
         "tr": "Siteye git",
         "en": "Visit site"
       },
-      "url": "https://lumoraboard-demo.onrender.com"
+      "url": "https://p01--lumoraboard--bnwmr7y8bjlm.code.run"
     }
   ],
   "accent": "#22c55e",
   "icon": "🖍️",
-  "note": {
-    "tr": "Ücretsiz sunucuda çalıştığı için uzun süre ziyaret edilmezse ilk açılış bir dakika kadar sürebilir.",
-    "en": "Runs on a free server, so the first visit after a quiet period can take up to a minute."
-  },
   "screenshots": [
     {
       "src": "/projects/board-ortak-cizim.webp",
