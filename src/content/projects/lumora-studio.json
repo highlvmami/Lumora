@@ -62,15 +62,67 @@
   "accent": "#f43f5e",
   "icon": "🎬",
   "screenshots": [
-    { "src": "/projects/studio-kurgu.webp", "alt": { "tr": "Kurgu çalışma alanı: dosyalar, önizleme, özellikler ve zaman çizelgesi", "en": "Edit workspace: media, preview, properties and timeline" } },
-    { "src": "/projects/studio-renk.webp", "alt": { "tr": "Renk çalışma alanı: dalga biçimi, ışık ayarları ve renk tekerlekleri", "en": "Color workspace: waveform, light controls and color wheels" } },
-    { "src": "/projects/studio-katmanlar.webp", "alt": { "tr": "Fotoğraf katmanları ve elips maske", "en": "Photo layers and an ellipse mask" } },
-    { "src": "/projects/studio-fotograf.webp", "alt": { "tr": "Fotoğraf çalışma alanı: histogram ve ayarlar", "en": "Photo workspace: histogram and adjustments" } },
-    { "src": "/projects/studio-altyazi.webp", "alt": { "tr": "Altyazı izi ve altyazı biçimi", "en": "Subtitle track and subtitle styling" } },
-    { "src": "/projects/studio-takip.webp", "alt": { "tr": "Hareket takibi: başlık nesneyle birlikte hareket ediyor", "en": "Motion tracking: a title follows an object" } },
-    { "src": "/projects/studio-sabitleme.webp", "alt": { "tr": "Titreyen kamerayı sabitleme", "en": "Stabilizing shaky footage" } },
-    { "src": "/projects/studio-disa-aktar.webp", "alt": { "tr": "Dışa aktarma: kayıpsız kesim önerisi ve ne olacağının özeti", "en": "Export: lossless cut suggestion and a summary of what will happen" } },
-    { "src": "/projects/studio-kurgu-gunduz.webp", "alt": { "tr": "Açık tema (Gündüz)", "en": "Light theme (Day)" } },
-    { "src": "/projects/studio-nasil-kullanilir.webp", "alt": { "tr": "Nasıl kullanılır kitapçığı", "en": "How-to guide" } }
+    {
+      "src": "/projects/studio-kapak.webp",
+      "alt": {
+        "tr": "Video ve fotoğraf düzenleme. Ücretsiz, tamamen yerel.",
+        "en": "Video and photo editing. Free and fully local."
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-kurgu.webp",
+      "alt": {
+        "tr": "Bütün vlog, tek ekranda",
+        "en": "A whole vlog on one screen"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-kalite.webp",
+      "alt": {
+        "tr": "Kalite, siz istemedikçe düşmez",
+        "en": "Quality never drops unless you ask"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-yapay-zeka.webp",
+      "alt": {
+        "tr": "Yapay zekâ, kendi bilgisayarında",
+        "en": "AI, on your own computer"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-renk-fotograf.webp",
+      "alt": {
+        "tr": "Renk ve fotoğrafta tam kontrol",
+        "en": "Full control over color and photos"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-altyazi-ceviri.webp",
+      "alt": {
+        "tr": "Altyazını başka dile çevir (0.8.3)",
+        "en": "Translate your subtitles (0.8.3)"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/studio-kurgu-ekran.webp",
+      "alt": {
+        "tr": "Kurgu çalışma alanında bir vlog: görüntü, kamera sesi, seslendirme ve müzik ayrı kanallarda",
+        "en": "A vlog in the edit workspace: video, camera audio, voice-over and music on separate tracks"
+      }
+    },
+    {
+      "src": "/projects/studio-kurgu-gunduz.webp",
+      "alt": {
+        "tr": "Açık tema (Gündüz)",
+        "en": "Light theme (Day)"
+      }
+    }
   ]
 }
