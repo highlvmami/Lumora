@@ -156,7 +156,7 @@ h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
   letter-spacing: -0.045em;
   line-height: 1.04;
 }
-.hero-title { font-family: 'Geist Mono Variable', var(--font-mono); font-weight: 500; font-size: clamp(2rem, 5.6vw, 4.2rem); letter-spacing: -0.04em; line-height: 1.12; }
+.hero-title { font-family: 'Geist Mono Variable', var(--font-mono); font-weight: 500; font-size: clamp(2rem, 5.6vw, 3.6rem); letter-spacing: -0.04em; line-height: 1.12; }
 .hl { display: block; position: relative; padding-left: 2.4rem; }
 .hl::before { content: attr(data-n); position: absolute; left: 0; top: 0.5em; width: 1.4rem; text-align: right; font-size: 0.8rem; font-weight: 400; letter-spacing: 0; color: var(--syn-com); }
 .hl-accent { color: var(--brand); }
@@ -257,10 +257,6 @@ h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
 .term-bar i:nth-child(1) { background: var(--syn-kw); } .term-bar i:nth-child(2) { background: var(--syn-fn); } .term-bar i:nth-child(3) { background: var(--syn-str); }
 .term-bar span { margin-left: 0.5rem; }
 .term-body { padding: 0.9rem 1rem 1rem; display: grid; gap: 0.35rem; line-height: 1.5; }
-.term-line { display: flex; gap: 0.75rem; white-space: nowrap; overflow: hidden; animation: reveal 0.5s steps(30) calc(1.6s + var(--i) * 0.28s) backwards; }
-.term-line .k { color: var(--syn-key); } .term-line .s { color: var(--syn-com); min-width: 4.2rem; }
-.term-line .live { color: var(--st-live); } .term-line .beta { color: var(--st-beta); } .term-line .development { color: var(--st-dev); }
-.term-line .n { color: var(--fg); flex: 1; overflow: hidden; text-overflow: ellipsis; }
 
 /* Bilgi şeridi: JSON gibi */
 .json { font-family: var(--font-mono); font-size: clamp(0.9rem, 2.2vw, 1.15rem); line-height: 1.8; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); padding: 1rem 1.25rem; overflow-x: auto; }

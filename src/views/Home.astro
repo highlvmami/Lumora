@@ -12,38 +12,24 @@ const live = projects.filter((p) => p.data.status === 'live').length;
 const alternates = { tr: routes.home.tr, en: routes.home.en };
 const title = tr('hero.title');
 const words = title.split(' ');
-const cut = Math.ceil(words.length / 2);
-const lines = [words.slice(0, cut).join(' '), words.slice(cut).join(' ')];
+const parts = [words[0] + ' ', words.slice(1).join(' ')];
 let n = 0;
 const cmd = 'lumora --hello';
 const key = (s: string) => s.replace(/\s+/g, '_');
 ---
 <Base lang={lang} current="home" alternates={alternates}>
-  <section class="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-12 pt-12 sm:px-6 sm:pt-16 lg:grid-cols-[1.25fr_1fr]">
+  <section class="mx-auto max-w-6xl px-4 pb-12 pt-12 sm:px-6 sm:pt-16">
     <div>
       <p class="prompt mb-6"><b>~/lumora</b> <i>main</i> $ <span class="typed" style={`--n:${cmd.length}`}>{cmd}</span></p>
       <h1 class="hero-title" aria-label={title}>
-        {lines.map((line, li) => (
-          <span class={`hl${li === 1 ? ' hl-accent' : ''}`} data-n={li + 1} aria-hidden="true">{[...line].map((c) => <span class="ch" style={`--i:${n++}`}>{c}</span>)}{li === lines.length - 1 && <span class="caret"></span>}</span>
-        ))}
+        <span class="hl" data-n="1" aria-hidden="true">{parts.map((part, pi) => (
+          <span class={pi === 1 ? 'hl-accent' : undefined}>{[...part].map((c) => <span class="ch" style={`--i:${n++}`}>{c}</span>)}</span>
+        ))}<span class="caret"></span></span>
       </h1>
-      <p class="rise mt-8 max-w-xl text-lg leading-relaxed text-white/75" style="--d:0">{tr('hero.text')}</p>
+      <p class="rise mt-8 max-w-3xl text-lg leading-relaxed text-white/75" style="--d:0">{tr('hero.text')}</p>
       <div class="rise mt-8 flex flex-wrap gap-3" style="--d:1">
         <a href={routes.projects[lang]} class="btn">{tr('hero.cta')} →</a>
         <a href="https://github.com/highlvmami" rel="noopener" class="btn-ghost">{tr('hero.github')}</a>
-      </div>
-    </div>
-    <div class="term" aria-hidden="true">
-      <div class="term-bar"><i></i><i></i><i></i><span>~/lumora — ls projects/</span></div>
-      <div class="term-body">
-        {projects.map((p, i) => (
-          <div class="term-line" style={`--i:${i}`}>
-            <span class={p.data.status}>●</span>
-            <span class="n">{p.id}/</span>
-            <span class="s">{p.data.status}</span>
-          </div>
-        ))}
-        <div class="term-line" style={`--i:${projects.length}`}><span style="color:var(--syn-str)">$</span><span class="caret" style="margin-left:0"></span></div>
       </div>
     </div>
   </section>
