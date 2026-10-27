@@ -22,7 +22,7 @@ const projects = defineCollection({
     accent: z.string(),
     icon: z.string(),
     screenshots: z
-      .array(z.object({ src: z.string(), alt: text, portrait: z.boolean().default(false) }))
+      .array(z.object({ src: z.string(), alt: text, portrait: z.boolean().default(false), square: z.boolean().default(false) }))
       .default([]),
     note: text.optional(),
   }),
