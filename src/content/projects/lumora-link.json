@@ -3,7 +3,10 @@
   "order": 4,
   "featured": true,
   "status": "live",
-  "category": { "tr": "Araç", "en": "Tool" },
+  "category": {
+    "tr": "Araç",
+    "en": "Tool"
+  },
   "tagline": {
     "tr": "Gizlilik dostu tıklama analitiği ve QR kodlarıyla link kısaltıcı.",
     "en": "Link shortener with privacy-friendly click analytics and QR codes."
@@ -13,14 +16,76 @@
     "en": "Turns long links into short codes or custom aliases. For every link it shows total and unique clicks, a 30-day chart, and breakdowns by referrer, country, device and browser. QR codes download as PNG or SVG. Sign-in is via Google or GitHub, with no passwords stored."
   },
   "features": {
-    "tr": ["Rastgele kod veya özel takma ad", "Link başına detaylı tıklama analitiği", "PNG ve SVG QR kodları", "Bot tıklamalarını ayıklama", "Google ve GitHub ile giriş"],
-    "en": ["Random codes or custom aliases", "Detailed click analytics per link", "PNG and SVG QR codes", "Bot click filtering", "Google and GitHub sign-in"]
+    "tr": [
+      "Rastgele kod veya özel takma ad",
+      "Link başına detaylı tıklama analitiği",
+      "PNG ve SVG QR kodları",
+      "Bot tıklamalarını ayıklama",
+      "Google ve GitHub ile giriş"
+    ],
+    "en": [
+      "Random codes or custom aliases",
+      "Detailed click analytics per link",
+      "PNG and SVG QR codes",
+      "Bot click filtering",
+      "Google and GitHub sign-in"
+    ]
   },
-  "tech": ["Next.js 16", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
+  "tech": [
+    "Next.js 16",
+    "TypeScript",
+    "PostgreSQL",
+    "Prisma",
+    "Tailwind CSS"
+  ],
   "repo": "highlvmami/lumoralink",
   "links": [
-    { "label": { "tr": "Siteye git", "en": "Visit site" }, "url": "https://lumoralink.vercel.app" }
+    {
+      "label": {
+        "tr": "Siteye git",
+        "en": "Visit site"
+      },
+      "url": "https://lumoralink.vercel.app"
+    }
   ],
   "accent": "#f97316",
-  "icon": "🔗"
+  "icon": "🔗",
+  "screenshots": [
+    {
+      "src": "/projects/link-ana-sayfa.webp",
+      "alt": {
+        "tr": "Ana sayfa",
+        "en": "Landing page"
+      },
+      "square": true
+    },
+    {
+      "src": "/projects/link-panel.webp",
+      "alt": {
+        "tr": "Panel: linkleri oluştur ve yönet",
+        "en": "Dashboard: create and manage links"
+      }
+    },
+    {
+      "src": "/projects/link-istatistik.webp",
+      "alt": {
+        "tr": "Link istatistikleri, 30 günlük grafik ve QR kod",
+        "en": "Link stats, 30-day chart and QR code"
+      }
+    },
+    {
+      "src": "/projects/link-giris.webp",
+      "alt": {
+        "tr": "Google veya GitHub ile giriş",
+        "en": "Sign in with Google or GitHub"
+      }
+    },
+    {
+      "src": "/projects/link-dagilim.webp",
+      "alt": {
+        "tr": "Yönlendiren site, ülke, cihaz, tarayıcı ve işletim sistemi dağılımları",
+        "en": "Referrer, country, device, browser and OS breakdowns"
+      }
+    }
+  ]
 }
